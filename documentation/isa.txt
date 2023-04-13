@@ -1,55 +1,110 @@
 
 CPU228 ISA
 
+// registers
+
+    rx = register file register
+    ry = another register file register
+    rz = a third register file register
+
+    Cin = carry in
+    Cout = carry out
+
+    zf = zero flag
+    cf = carry flag
+    pf = Positive flag
+    nf = Negative flag
+
+    pc = program counter
+    sp = stack pointer
+    tos = top of stack
+
+
+// addressing modes
+
+    a          - direct                  | M[a]
+    #i      - immediate                  | i
+    (a)     - indirect                   | M[M[a]]
+    a.ry    - direct indexed             | M[a + ry]
+    (a).ry  - indirect indexed           | M[M[a] + ry]
+    ry      - register                   | ry
+    (ry)    - register indirect          | M[ry]
+    (ry).rz - register indirect indexed  | M[M[ry] + rz]
+
+    * = any addressing mode
+
+// flags
+
+    zero
+    carry
+    pos (Positive)
+    neg (Negative)
+
+    *f = any flag
+
 
 nop - No OPeration
 
 // load operations
 
-ld rx, a       - LoaD direct                     | rx <- M[a]
-ld rx, #i      - LoaD immediate                  | rx <- i
-ld rx, (a)     - LoaD indirect                   | rx <- M[M[a]]
-ld rx, a.ry    - LoaD direct indexed             | rx <- M[a + ry]
-ld rx, #i.ry   - LoaD immediate indexed          | rx <- i + ry
-ld rx, (a).ry  - LoaD indirect indexed           | rx <- M[M[a] + ry]
-ld rx, ry      - LoaD register                   | rx <- ry
-ld rx, (ry)    - LoaD register indirect          | rx <- M[ry]
-ld rx, (ry).rz - LoaD register indirect indexed  | rx <- M[M[ry] + rz]
+ld rx, *       - LoaD rx <- *                    
+
 
 // store operations
 
-st a, rx       - STore direct                    | M[a]          <- rx
-st (a), rx     - STore indirect                  | M[M[a]]       <- rx
-st a.ry, rx    - STore direct indexed            | M[a + ry]     <- rx
-st (a).ry, rx  - STore indirect indexed          | M[M[a] + ry]  <- rx
-st (ry), rx    - STore register indirect         | M[ry]         <- rx
-st (ry).rx, rx - STore register indirect indexed | M[M[ry] + rz] <- rx
+st *, rx       - STore * <- rx
 
 // ALU operations
 // Note: all of these also update the status flags according to the result of the operation
 
-ref rx - REFlect rx | rx <- rx
-add rx, ry - ADD with carry | rx <- rx + ry + Cin
-adwc rx, ry - ADd Without Carry | rx <- rx + ry
-sub rx, ry - SUBstract with borrow | rx <- rx - ry + Cin (?) ; Note: double check this
-sbwb rx, ry - SuBstract Without Borrow | rx <- rx - ry
-mul rx, ry - MULtiply | rx <- rx * ry ; Note: result truncated to 16 bits
-inc rx - INCrement | rx <- rx + 1
-dec rx - DECrement | rx <- rx - 1
-chs rx - CHange Sign | rx <- ~rx + 1
-and rx, ry - bitwise AND | rx <- rx & ry
-or rx, ry - bitwise OR | rx <- rx | ry
-not rx - bitwise NOT | rx <- ~rx
-xor rx, ry - bitwise XOR | rx <- rx xor ry
-sl rx - Shift Left | rx <- rx << 1
-sr rx - Shift Right | rx <- rx >> 1
-sl rx, ry - Shift Left by ry | rx <- rx << ry
-sr rx, ry - Shift Right by ry | rx <- rx >> ry
-rol rx - ROll Left | rx <- rx{Cin} << 1
-ror rx - ROll Right | rx <- {Cin}rx >> 1
-rol rx, ry - ROll Left by ry| rx <- rx{Cin} << ry
-ror rx, ry - ROll Right by ry | rx <- {Cin}rx >> ry
-cmp rx, ry - CoMPare | rx - ry ; Note: does not write back, only updates flags
-bit rx, ry - BIt Test | rx & ry ; Note: does not write back, only updates flags
+ref  rx       - REFlect rx               | rx <-  rx
+add  rx, *    - ADD with carry           | rx <-  rx + * + Cin
+adwc rx, *    - ADd Without Carry        | rx <-  rx + *
+sub  rx, *    - SUBstract with borrow    | rx <-  rx - * + Cin (?) ; Note: double check this
+sbwb rx, *    - SuBstract Without Borrow | rx <-  rx - *
+mul  rx, *    - MULtiply                 | rx <-  rx * * ; Note: result truncated to 16 bits
+inc  rx       - INCrement                | rx <-  rx + 1
+dec  rx       - DECrement                | rx <-  rx - 1
+chs  rx       - CHange Sign              | rx <- ~rx + 1
+and  rx, *    - bitwise AND              | rx <-  rx & *
+or   rx, *    - bitwise OR               | rx <-  rx | *
+not  rx       - bitwise NOT              | rx <- ~rx
+xor  rx, *    - bitwise XOR              | rx <-  rx xor *
+sl   rx       - Shift Left               | rx <-  rx << 1
+sr   rx       - Shift Right              | rx <-  rx >> 1
+sl   rx, *    - Shift Left by ry         | rx <-  rx << *
+sr   rx, *    - Shift Right by ry        | rx <-  rx >> *
+rol  rx       - ROll Left                | rx <-  rx{Cout} << 1
+ror  rx       - ROll Right               | rx <-  {Cin}rx >> 1
+rol  rx, *    - ROll Left by ry          | rx <-  rx{Cout} << *
+ror  rx, *    - ROll Right by ry         | rx <-  {Cin}rx >> *
+cmp  rx, *    - CoMPare                  | rx - * ; Note: does not write back, only updates flags
+bit  rx, *    - BIt Test                 | rx & * ; Note: does not write back, only updates flags
 
+// clear / set flags
+
+zc            - Zero Clear flag          | zf <- 0
+zs            - Zero Set flag            | zf <- 1
+cc            - Carry Clear flag         | cf <- 0
+cs            - Carry Set flag           | cf <- 1
+pc            - Positive Clear flag      | pf <- 0 
+ps            - Positive Set flag        | pf <- 1
+nc            - Negative Clear flag      | nf <- 0
+ns            - Negative Set flag        | nf <- 1
+
+// jump instructions
+
+jmp *         - JuMP                     | pc <- *
+jco *, *f     - Jump COnditinal          | if *f == 1 then pc <- *
+jnc *, *f     - Jump Not Conditinal      | if *f == 0 then pc <- *
+
+// stack operations
+
+psh rx        - PuSH                     | tos <- rx & sp++
+pul rx        - PULl                     | sp-- & rx <- tos 
+
+// sub routines
+
+jsr *         - Jump Sub Routine         | tos <- pc & sp++ & pc <- *
+rts           - ReTurn Sub routine       | sp-- & pc <- tos
 
