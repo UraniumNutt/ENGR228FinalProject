@@ -1,3 +1,4 @@
+// Ethan Thummel | Amir Bahmandar | Fabiola Sore 4/13/23
 
 CPU228 ISA
 
@@ -19,10 +20,9 @@ CPU228 ISA
     sp = stack pointer
     tos = top of stack
 
-
 // addressing modes
 
-    a          - direct                  | M[a]
+    a       - direct                     | M[a]
     #i      - immediate                  | i
     (a)     - indirect                   | M[M[a]]
     a.ry    - direct indexed             | M[a + ry]
@@ -42,17 +42,16 @@ CPU228 ISA
 
     *f = any flag
 
-
 nop - No OPeration
 
 // load operations
 
-ld rx, *       - LoaD rx <- *                    
+ld rx, *      - LoaD                     | rx <- *                    
 
 
 // store operations
 
-st *, rx       - STore * <- rx
+st *, rx      - STore                    | * <- rx
 
 // ALU operations
 // Note: all of these also update the status flags according to the result of the operation
