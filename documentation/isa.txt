@@ -29,18 +29,8 @@ CPU228 ISA
     (a).ry  - indirect indexed           | M[M[a] + ry]
     ry      - register                   | ry
     (ry)    - register indirect          | M[ry]
-    (ry).rz - register indirect indexed  | M[M[ry] + rz]
 
     * = any addressing mode
-
-// flags
-
-    zero
-    carry
-    pos (Positive)
-    neg (Negative)
-
-    *f = any flag
 
 nop - No OPeration
 
@@ -94,8 +84,12 @@ ns            - Negative Set flag        | nf <- 1
 // jump instructions
 
 jmp *         - JuMP                     | pc <- *
-jco *, *f     - Jump COnditinal          | if *f == 1 then pc <- *
-jnc *, *f     - Jump Not Conditinal      | if *f == 0 then pc <- *
+jz  *         - Jump Zero                | if *zf == 1 then pc <- *
+jnz *         - Jump Not Zero            | if *zf == 0 then pc <- *
+jp  *         - Jump Positive            | if *pf == 1 then pc <- *
+jnp *         - Jump Not Positive        | if *pf == 0 then pc <- *
+jn  *         - Jump Negative            | if *nf == 1 then pc <- *
+jnn *         - Jump Not Negative        | if *nf == 0 then pc <- *
 
 // stack operations
 
