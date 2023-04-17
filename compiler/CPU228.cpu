@@ -2,14 +2,14 @@
 
 #subruledef register
 {
-	r0 => 0b000
-	r1 => 0b001
-	r2 => 0b010
-	r3 => 0b011
-	r4 => 0b100
-	r5 => 0b101
-	r6 => 0b110
-	r7 => 0b111
+	r0 => 0b000`3
+	r1 => 0b001`3
+	r2 => 0b010`3
+	r3 => 0b011`3
+	r4 => 0b100`3
+	r5 => 0b101`3
+	r6 => 0b110`3
+	r7 => 0b111`3
 
 }
 
@@ -21,12 +21,12 @@
 
 #subruledef addressingMode
 {
-	{address}            => 0b000 @ r0       @ 0b0 @ address`16   ; direct
-	#{immediate}         => 0b001 @ r0       @ 0b0 @ immediate`16 ; immediate
-	({indirect})         => 0b010 @ r0       @ 0b0 @ indirect`16  ; indirect
-	{address}.{register} => 0b011 @ register @ 0b0 @ address`16   ; direct indexed
-	{register}           => 0b100 @ register @ 0b0 				  ; register
-	({register})		 => 0b101 @ register @ 0b0				  ; register indirect
+	{address}            => 0b000`3 @ r0       @ 0b0`1 @ address`16   ; direct
+	#{immediate}         => 0b001`3 @ r0       @ 0b0`1 @ immediate`16 ; immediate
+	({indirect})         => 0b010`3 @ r0       @ 0b0`1 @ indirect`16  ; indirect
+	{address}.{register} => 0b011`3 @ register @ 0b0`1 @ address`16   ; direct indexed
+	{register}           => 0b100`3 @ register @ 0b0`1 				  ; register
+	({register})		 => 0b101`3 @ register @ 0b0`1				  ; register indirect
 
 }
 
@@ -34,6 +34,6 @@
 {
 
 	nop => 0x0000
-	ld {r: register}, {am: addressingMode} => 0x001 @ r @ am
+	ld {r: register}, {am: addressingMode} => 0b000001`6 @ r @ am
 	
 }
