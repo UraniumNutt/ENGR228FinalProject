@@ -12,8 +12,10 @@ module ProgramCounter(
 
     );
 
+    localparam startVector = 16'h0000; // location in memory where execution starts. change as needed
+
     reg [15:0] counter;
-    initial counter = 0;
+    initial counter = startVector;
 
     assign addressOut = counter;
 
@@ -22,7 +24,7 @@ module ProgramCounter(
         if (CountUp == 1) begin
             counter = counter + 1;
         end 
-        
+
         if (Jump == 1) begin
             counter = addressIn;
         end

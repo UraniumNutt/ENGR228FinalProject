@@ -1,0 +1,39 @@
+#bits 16
+
+#subruledef register
+{
+	r0 => 0b000
+	r1 => 0b001
+	r2 => 0b010
+	r3 => 0b011
+	r4 => 0b100
+	r5 => 0b101
+	r6 => 0b110
+	r7 => 0b111
+
+}
+
+#subruledef argument
+{
+
+
+}
+
+#subruledef addressingMode
+{
+	{address}            => 0b000 @ r0       @ 0b0 @ address`16   ; direct
+	#{immediate}         => 0b001 @ r0       @ 0b0 @ immediate`16 ; immediate
+	({indirect})         => 0b010 @ r0       @ 0b0 @ indirect`16  ; indirect
+	{address}.{register} => 0b011 @ register @ 0b0 @ address`16   ; direct indexed
+	{register}           => 0b100 @ register @ 0b0 				  ; register
+	({register})		 => 0b101 @ register @ 0b0				  ; register indirect
+
+}
+
+#ruledef
+{
+
+	nop => 0x0000
+	ld {r: register}, {am: addressingMode} => 0x001 @ r @ am
+	
+}
