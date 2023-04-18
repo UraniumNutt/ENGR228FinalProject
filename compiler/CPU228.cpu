@@ -1,6 +1,6 @@
 #bits 16
 
-#subruledef register
+#ruledef register
 {
 	r0 => 0b000`3
 	r1 => 0b001`3
@@ -19,7 +19,7 @@
 
 }
 
-#subruledef addressingMode
+#ruledef addressingMode
 {
 	{address}            => 0b000`3 @ r0       @ 0b0`1 @ address`16   ; direct
 	#{immediate}         => 0b001`3 @ r0       @ 0b0`1 @ immediate`16 ; immediate
@@ -33,7 +33,7 @@
 #ruledef
 {
 
-	nop => 0x0000
+	nop => 0b000000
 	ld {r: register}, {am: addressingMode} => 0b000001`6 @ r @ am
 	
 }
