@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (lin64) Build 3671981 Fri Oct 14 04:59:54 MDT 2022
-| Date         : Thu Apr 13 10:58:06 2023
+| Date         : Tue Apr 18 14:04:28 2023
 | Host         : nutt running 64-bit Arch Linux
 | Command      : report_methodology -file CPU_methodology_drc_routed.rpt -pb CPU_methodology_drc_routed.pb -rpx CPU_methodology_drc_routed.rpx
 | Design       : CPU
@@ -23,23 +23,12 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 2
-+-----------+----------+-------------------------------+------------+
-| Rule      | Severity | Description                   | Violations |
-+-----------+----------+-------------------------------+------------+
-| TIMING-18 | Warning  | Missing input or output delay | 2          |
-+-----------+----------+-------------------------------+------------+
+             Violations found: 0
++------+----------+-------------+------------+
+| Rule | Severity | Description | Violations |
++------+----------+-------------+------------+
++------+----------+-------------+------------+
 
 2. REPORT DETAILS
 -----------------
-TIMING-18#1 Warning
-Missing input or output delay  
-An input delay is missing on sw relative to clock(s) sys_clk_pin
-Related violations: <none>
-
-TIMING-18#2 Warning
-Missing input or output delay  
-An output delay is missing on led relative to clock(s) sys_clk_pin
-Related violations: <none>
-
 
