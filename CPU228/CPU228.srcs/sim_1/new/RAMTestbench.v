@@ -22,12 +22,11 @@ module RAMTestbench;
 
     initial begin
         
-        address = 0; #10
-        dataIn = 420; readWrite = 1; clk = 1; #10 clk = 0; #10
-        readWrite = 0;
-        dataIn = 12345; address = 16'h00ff; readWrite = 1; clk = 1; #10 clk = 0;
-
-        #10 readWrite = 0;
+        readWrite = 1;
+        #10 address = 0; 
+        #10 address = 1; 
+        #10 address = 2; 
+        #10 address = 3; 
 
 
     end

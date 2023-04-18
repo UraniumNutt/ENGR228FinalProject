@@ -12,7 +12,7 @@ module RAM(
 
     );
 
-    reg [15:0] ram [9:0];
+    reg [15:0] ram [1023:0];
 
     // there is not enough room on the FPGA for 64k X 16 bit memory, so just do 1k X 16
     assign dataOut = ram[address[9:0]];
