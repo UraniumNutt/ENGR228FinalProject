@@ -1,5 +1,6 @@
 #include "CPU228.cpu"
 
-#align 32
-
-    0xffff
+    rts
+    zc
+#d16
+    0x0420
