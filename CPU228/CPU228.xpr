@@ -61,6 +61,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <Option Name="WTXSimLaunchSim" Val="23"/>
 =======
     <Option Name="WTXSimLaunchSim" Val="13"/>
@@ -68,6 +69,9 @@
 =======
     <Option Name="WTXSimLaunchSim" Val="13"/>
 >>>>>>> f673ac051b546339314d49294f46a630547c13a5
+=======
+    <Option Name="WTXSimLaunchSim" Val="13"/>
+>>>>>>> origin
 =======
     <Option Name="WTXSimLaunchSim" Val="13"/>
 >>>>>>> origin
