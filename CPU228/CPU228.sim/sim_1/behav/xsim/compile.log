@@ -1,18 +1,6 @@
-<<<<<<< HEAD
-=======
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/InstructionRegister.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module InstructionRegister
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sim_1/new/InstructionRegisterTestbench.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module InstructionRegisterTestbench
 INFO: [VRFC 10-2263] Analyzing Verilog file "/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module glbl
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
->>>>>>> main
-=======
->>>>>>> f673ac051b546339314d49294f46a630547c13a5
-=======
->>>>>>> origin
-=======
->>>>>>> origin
