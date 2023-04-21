@@ -49,7 +49,7 @@ st *, rx      - STore                    | * <- rx
 ref  rx       - REFlect rx               | rx <-  rx
 add  rx, *    - ADD with carry           | rx <-  rx + * + Cin
 adwc rx, *    - ADd Without Carry        | rx <-  rx + *
-sub  rx, *    - SUBstract with borrow    | rx <-  rx - * + Cin (?) ; Note: double check this
+sub  rx, *    - SUBstract with borrow    | rx <-  rx - * - ~Cin (?) ; Note: double check this
 sbwb rx, *    - SuBstract Without Borrow | rx <-  rx - *
 mul  rx, *    - MULtiply                 | rx <-  rx * * ; Note: result truncated to 16 bits
 inc  rx       - INCrement                | rx <-  rx + 1
