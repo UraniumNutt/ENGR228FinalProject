@@ -5,8 +5,9 @@ CCPU288/CPU228.runs/
 CCPU288/CPU228.sim/
 CCPU288/CPU228.sim/sim_1/
 CPU228.xpr
+CPU228/CPU228.sim/sim_1/behav/xsim/compile.sh
+CPU228/CPU228.sim/sim_1/behav/xsim/elaborate.sh
 *.log
-compile.sh
 elaborate.sh
 *.wdb
 simulate.sh
