@@ -3,7 +3,7 @@
 Oct 14 2022
 05:07:14
 /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.sim/sim_1/behav/xsim/glbl.v,1682110706,verilog,,,,glbl,,,,,,,,
-/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sim_1/new/InstructionRegisterTestbench.v,1682037632,verilog,,,,InstructionRegisterTestbench,,,,,,,,
+/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sim_1/new/InstructionRegisterTestbench.v,1682110707,verilog,,,,InstructionRegisterTestbench,,,,,,,,
 /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sim_1/new/ProgramCounterTestbench.v,1681760888,verilog,,,,ProgramCounterTestbench,,,,,,,,
 /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sim_1/new/RAMTestbench.v,1681852192,verilog,,,,RAMTestbench,,,,,,,,
 /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sim_1/new/RegisterFileTestbench.v,1681759889,verilog,,,,RegisterFileTestbench,,,,,,,,
