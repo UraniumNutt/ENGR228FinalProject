@@ -48,7 +48,7 @@ module ALU(
             ref:   internalResult = A;
             add:   internalResult = A + B + currentFlags[4];  // add carry flag
             adwc:  internalResult = A + B;
-            sub:   internalResult = A - B + currentFlags[4];
+            sub:   internalResult = A - B - currentFlags[4];
             suwb:  internalResult = A - B;
             mul:   internalResult = (A * B);            // truncate
             inc:   internalResult = A + 1;
