@@ -5,12 +5,12 @@
 module ALU(
 
     input clk,
-    input [15:0] A,
-    input [15:0] B,
+    input signed [15:0] A,
+    input signed [15:0] B,
     input [4:0] functionSelect,
     input [4:0] overwriteFlagsMask,
     input [4:0] setFlagBits, // carry overflow zero pos neg
-    output [15:0] result,
+    output signed [15:0] result,
     output reg [4:0] currentFlags    // carry overflow zero pos neg
     
     );
@@ -73,7 +73,7 @@ module ALU(
         else begin
 
             // carry flag
-            if (internalResult[16] == 1) begin
+            if (internalResult > 65536) begin
                 currentFlags[4] = 1;
             end
 
@@ -83,7 +83,7 @@ module ALU(
 
             // overflow flag
             if (functionSelect == mul) begin
-                if (internalResult[31] == 1) begin
+                if (internalResult > 32767 || internalResult < -32768) begin
                     currentFlags[3] = 1;
                 end
 
