@@ -15,6 +15,7 @@ CPU228 ISA
     cf = carry flag
     pf = Positive flag
     nf = Negative flag
+    of = Overflow flag
 
     pc = program counter
     sp = stack pointer
@@ -49,8 +50,8 @@ st *, rx      - STore                    | * <- rx
 ref  rx       - REFlect rx               | rx <-  rx
 add  rx, *    - ADD with carry           | rx <-  rx + * + Cin
 adwc rx, *    - ADd Without Carry        | rx <-  rx + *
-sub  rx, *    - SUBstract with borrow    | rx <-  rx - * - ~Cin (?) ; Note: double check this
-sbwb rx, *    - SuBstract Without Borrow | rx <-  rx - *
+sub  rx, *    - SUBstract with carry     | rx <-  rx - * + Cin (?) ; Note: double check this
+sbwc rx, *    - SuBstract Without Carry  | rx <-  rx - *
 mul  rx, *    - MULtiply                 | rx <-  rx * * ; Note: result truncated to 16 bits
 inc  rx       - INCrement                | rx <-  rx + 1
 dec  rx       - DECrement                | rx <-  rx - 1
@@ -61,12 +62,6 @@ not  rx       - bitwise NOT              | rx <- ~rx
 xor  rx, *    - bitwise XOR              | rx <-  rx xor *
 sl   rx       - Shift Left               | rx <-  rx << 1
 sr   rx       - Shift Right              | rx <-  rx >> 1
-sl   rx, *    - Shift Left by ry         | rx <-  rx << *
-sr   rx, *    - Shift Right by ry        | rx <-  rx >> *
-rol  rx       - ROll Left                | rx <-  rx{Cout} << 1
-ror  rx       - ROll Right               | rx <-  {Cin}rx >> 1
-rol  rx, *    - ROll Left by ry          | rx <-  rx{Cout} << *
-ror  rx, *    - ROll Right by ry         | rx <-  {Cin}rx >> *
 cmp  rx, *    - CoMPare                  | rx - * ; Note: does not write back, only updates flags
 bit  rx, *    - BIt Test                 | rx & * ; Note: does not write back, only updates flags
 
@@ -76,6 +71,8 @@ zc            - Zero Clear flag          | zf <- 0
 zs            - Zero Set flag            | zf <- 1
 cc            - Carry Clear flag         | cf <- 0
 cs            - Carry Set flag           | cf <- 1
+oc            - Overflow Clear flag      | oc <- 0
+os            - Overflow Set flag        | oc <- 1
 pc            - Positive Clear flag      | pf <- 0 
 ps            - Positive Set flag        | pf <- 1
 nc            - Negative Clear flag      | nf <- 0
@@ -84,12 +81,16 @@ ns            - Negative Set flag        | nf <- 1
 // jump instructions
 
 jmp *         - JuMP                     | pc <- *
-jz  *         - Jump Zero                | if *zf == 1 then pc <- *
-jnz *         - Jump Not Zero            | if *zf == 0 then pc <- *
-jp  *         - Jump Positive            | if *pf == 1 then pc <- *
-jnp *         - Jump Not Positive        | if *pf == 0 then pc <- *
-jn  *         - Jump Negative            | if *nf == 1 then pc <- *
-jnn *         - Jump Not Negative        | if *nf == 0 then pc <- *
+jz  *         - Jump Zero                | if zf == 1 then pc <- *
+jnz *         - Jump Not Zero            | if zf == 0 then pc <- *
+jc  *         - Jump Carry               | if cf == 1 then pc <- *
+jnc *         - Jump Not Carry           | if cf == 0 then pc <- *
+jo *          - Jump Overflow            | if of == 1 then pc <- *
+jno           - Jump Not Overflow        | if of == 0 then pc <- *
+jp  *         - Jump Positive            | if pf == 1 then pc <- *
+jnp *         - Jump Not Positive        | if pf == 0 then pc <- *
+jn  *         - Jump Negative            | if nf == 1 then pc <- *
+jnn *         - Jump Not Negative        | if nf == 0 then pc <- *
 
 // stack operations
 
