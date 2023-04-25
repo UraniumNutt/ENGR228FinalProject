@@ -17,8 +17,8 @@ module ALU(
 
     // what the current state of the flags is, and how it should start
     initial currentFlags = 5'b00100;
-    // a 17 bit result {carrybit, result}
-    reg [16:0] internalResult;
+    // a 32 bit result
+    reg signed [31:0] internalResult;
     assign result = internalResult[15:0];
 
     // instruction aliases
@@ -41,7 +41,7 @@ module ALU(
     localparam bit   = 5'd16; // bit  rx, *    - BIt Test                 | rx & * ; Note: does not write back, only updates flags
     localparam changeFlags  = 5'd17; // do nothing to internalResult
 
-    always @(functionSelect) begin
+    always @(posedge clk) begin
         
         case (functionSelect)
             
@@ -50,7 +50,7 @@ module ALU(
             adwc:  internalResult = A + B;
             sub:   internalResult = A - B - currentFlags[4];
             suwb:  internalResult = A - B;
-            mul:   internalResult = (A * B);            // truncate
+            mul:   internalResult = (A * B);            // truncate NOTE: need to fix mul flag sets
             inc:   internalResult = A + 1;
             dec:   internalResult = A - 1;
             chs:   internalResult = ~A + 1;
@@ -64,12 +64,7 @@ module ALU(
             bit:   internalResult = A * B;               
 
         endcase
-
-    end
-
-    // updating the flags is synchronous
-    always @(posedge clk) begin
-
+        
         // explicitly change flags
         if (functionSelect == changeFlags) begin
             currentFlags = setFlagBits & overwriteFlagsMask;
@@ -87,13 +82,24 @@ module ALU(
             end
 
             // overflow flag
-            if ((internalResult[15] == 0 && A[15] == 1 && B[15] == 1) || (internalResult[15] == 1 && A[15] == 0 && B[15] == 0)) begin
-                currentFlags[3] = 1;
+            if (functionSelect == mul) begin
+                if (internalResult[31] == 1) begin
+                    currentFlags[3] = 1;
+                end
 
+                else begin
+                    currentFlags[3] = 0;
+                end
             end
+
+            if (functionSelect != mul) begin
+                if ((internalResult[15] == 0 && A[15] == 1 && B[15] == 1) || (internalResult[15] == 1 && A[15] == 0 && B[15] == 0)) begin
+                currentFlags[3] = 1;
+                end
 
             else begin
                 currentFlags[3] = 0;
+                end
             end
 
             //zero
@@ -126,6 +132,7 @@ module ALU(
         end
 
     end
+
 
 
 endmodule
