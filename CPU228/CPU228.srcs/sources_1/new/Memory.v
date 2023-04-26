@@ -2,7 +2,7 @@
 
 `timescale 1ns / 1ps
 
-module RAM(
+module Memory(
 
     input clk,
     input readWrite,
