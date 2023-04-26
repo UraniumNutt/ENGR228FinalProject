@@ -7,6 +7,7 @@
 module MemoryAddressRegister(
 
     input clk,
+    input loadMemoryAddress,
     input [15:0] memoryAddressIn,
     output [15:0] memoryAddressOut
 
@@ -21,7 +22,9 @@ module MemoryAddressRegister(
 
     always @(posedge clk) begin
 
-        currentMemoryAddress = memoryAddressIn;
+        if (loadMemoryAddress == 1) begin
+            currentMemoryAddress = memoryAddressIn;
+        end
 
     end
 endmodule

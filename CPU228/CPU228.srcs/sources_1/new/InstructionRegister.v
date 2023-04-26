@@ -5,6 +5,7 @@
 module InstructionRegister(
 
     input clk,
+    input loadInstruction,
     input [15:0] instructionIn,
     output [15:0] instructionOut
 
@@ -19,7 +20,9 @@ module InstructionRegister(
 
     always @(posedge clk) begin
 
-        currentInstruction = instructionIn;
+        if (loadInstruction == 1) begin
+            currentInstruction = instructionIn;
+        end
 
     end
 endmodule

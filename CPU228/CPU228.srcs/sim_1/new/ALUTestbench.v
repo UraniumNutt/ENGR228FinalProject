@@ -13,7 +13,7 @@ module ALUTestbench;
     wire signed [15:0] result;
     wire [4:0] currentFlags;    // carry overflow zero pos neg
 
-    ALU uut(
+    ArithmeticLogicUnit uut(
 
         .clk(clk),
         .A(A),
