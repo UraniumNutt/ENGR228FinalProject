@@ -11,12 +11,15 @@ module CPU(
 
     );
 
+    wire clk;    
+
     clkModule mainClk(boardclk, clk);
 
     wire programCounterCountUP;
     wire programCounterJump;
     wire [15:0] programCounterAddressIn;
     wire [15:0] programCounterAddressOut;
+    assign programCounterAddressIn = bus;
 
     ProgramCounter PC(
 
@@ -31,6 +34,7 @@ module CPU(
     wire loadInstruction;
     wire [15:0] instructionIn;
     wire [15:0] instructionOut;
+    assign instructionIn = bus;
 
     InstructionRegister IR(
 
@@ -44,6 +48,7 @@ module CPU(
     wire loadMemoryAddress;
     wire [15:0] memoryAddressIn;
     wire [15:0] memoryAddressOut;
+    assign memoryAddressIn = bus;
 
     MemoryAddressRegister MR(
 
@@ -54,41 +59,38 @@ module CPU(
 
     );
 
-    wire CountUp;
-    wire CountDown;
+    wire StackCountUp;
+    wire StackCountDown;
     wire [15:0] TopOfStack;
 
     StackPointer SP(
 
         clk,
-        CountUp,
-        CountDown,
+        StackCountUp,
+        StackCountDown,
         TopOfStack
 
     );
 
-    wire WriteEnable; 
-    wire [15:0] WriteAddress;
-    wire [15:0] WriteData;
-    wire [15:0] ReadAddressA;
-    wire [15:0] ReadAddressB;
-    wire [15:0] ReadAddressIndex;
+    wire RegFileWriteEnable; 
+    wire [2:0] RegFileWriteAddress;
+    wire [15:0] RegFileWriteData;
+    wire [2:0] ReadAddressA;
+    wire [2:0] ReadAddressB;
     wire [15:0] ReadDataA;
     wire [15:0] ReadDataB;
-    wire [15:0] ReadDataIndex;
+    assign RegFileWriteData = bus;
 
     RegisterFile RF(
 
         clk,
-        WriteEnable,
-        WriteAddress,
-        WriteData,
+        RegFileWriteEnable,
+        RegFileWriteAddress,
+        RegFileWriteData,
         ReadAddressA,
         ReadAddressB,
-        ReadAddressIndex,
         ReadDataA,
         ReadDataB,
-        ReadDataIndex
 
     );
 
@@ -117,6 +119,7 @@ module CPU(
     wire [15:0] RAMaddress;
     wire [15:0] RAMdataIn;
     wire [15:0] RAMdataOut;
+    assign RAMdataIn = bus;
 
     Memory RAM(
 
@@ -126,6 +129,47 @@ module CPU(
         RAMdataInm,
         RAMdataOut
         
+    );
+
+    ControlLogic CL(
+
+        clk,
+        instructionOut,
+        currentFlags,
+        programCounterCountUP,
+        programCounterJump,
+        loadInstruction,
+        loadMemoryAddress,
+        StackCountUp,
+        StackCountDown,
+        RegFileWriteEnable,
+        RegFileWriteAddress,
+        ReadAddressA,
+        ReadAddressB,
+        functionSelect,
+        overwriteFlagsMask,
+        setFlagBits,
+        RAMreadWrite,
+        busDrive
+
+    );
+
+    wire [2:0] busDrive;
+    wire [15:0] bus;
+
+    Bus BUS(
+
+        busDrive,
+        programCounterAddressOut,
+        instructionOut,
+        TopOfStack,
+        result,
+        RAMdataOut,
+        16'h0000,
+        16'h0000,
+        16'h0000,
+        bus
+
     );
     
 endmodule

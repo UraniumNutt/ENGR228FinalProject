@@ -70,8 +70,6 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param xicom.use_bs_reader 1
-set_param chipscope.maxJobs 2
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a35tcpg236-1
 
@@ -82,14 +80,19 @@ set_property webtalk.parent_dir /home/uraniumnutt/Documents/VerilogProjects/ENGR
 set_property parent.project_path /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.xpr [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property board_part_repo_paths {/home/uraniumnutt/.Xilinx/Vivado/2022.2/xhub/board_store/xilinx_board_store} [current_project]
-set_property board_part digilentinc.com:basys3:part0:1.2 [current_project]
 set_property ip_output_repo /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/RAM.v
+  /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ArithmeticLogicUnit.v
+  /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/InstructionRegister.v
+  /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/Memory.v
+  /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/MemoryAddressRegister.v
+  /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ProgramCounter.v
+  /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/RegisterFile.v
+  /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/StackPointer.v
+  /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/clkModule.v
   /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v
 }
 OPTRACE "Adding files" END { }

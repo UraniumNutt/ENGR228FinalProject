@@ -14,18 +14,17 @@ module Memory(
 
     reg [15:0] ram [1023:0];
 
-    // there is not enough room on the FPGA for 64k X 16 bit memory, so just do 1k X 16
     assign dataOut = ram[address[9:0]];
 
     always @(posedge clk) begin
         
         if (readWrite == 1) begin
-            ram[address[9:0]] = dataIn;
+            ram[address] = dataIn;
         end
 
     end
 
     initial begin
-        $readmemb("/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/compiler/test.bin", ram);
+        $readmemb("/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/compiler/output.txt", ram);
     end
 endmodule
