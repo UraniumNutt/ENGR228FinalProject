@@ -77,8 +77,8 @@ module CPU(
     wire [15:0] RegFileWriteData;
     wire [2:0] ReadAddressA;
     wire [2:0] ReadAddressB;
-    wire [15:0] ReadDataA;
-    wire [15:0] ReadDataB;
+    wire signed [15:0] ReadDataA;
+    wire signed [15:0] ReadDataB;
     assign RegFileWriteData = bus;
 
     RegisterFile RF(
@@ -94,19 +94,19 @@ module CPU(
 
     );
 
-    wire signed [15:0] A;
-    wire signed [15:0] B;
     wire [4:0] functionSelect;
     wire [4:0] overwriteFlagsMask;
     wire [4:0] setFlagBits;
     wire signed [15:0] result;
     wire [4:0] currentFlags;
 
+
+
     ArithmeticLogicUnit ALU(
 
         clk,
-        A,
-        B,
+        ReadDataA,
+        ReadDataB,
         functionSelect,
         overwriteFlagsMask,
         setFlagBits,
@@ -115,7 +115,7 @@ module CPU(
 
     );
 
-    wire RAMreadWrite;
+    wire RAMWriteRead;
     wire [15:0] RAMaddress;
     wire [15:0] RAMdataIn;
     wire [15:0] RAMdataOut;
@@ -124,7 +124,7 @@ module CPU(
     Memory RAM(
 
         clk,
-        RAMreadWrite,
+        RAMWriteRead,
         RAMaddress,
         RAMdataInm,
         RAMdataOut
@@ -149,7 +149,7 @@ module CPU(
         functionSelect,
         overwriteFlagsMask,
         setFlagBits,
-        RAMreadWrite,
+        RAMWriteRead,
         busDrive
 
     );
@@ -160,12 +160,12 @@ module CPU(
     Bus BUS(
 
         busDrive,
+        16'h0000,
         programCounterAddressOut,
         instructionOut,
         TopOfStack,
         result,
         RAMdataOut,
-        16'h0000,
         16'h0000,
         16'h0000,
         bus

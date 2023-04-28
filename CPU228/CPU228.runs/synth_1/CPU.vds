@@ -73,7 +73,7 @@ WARNING: [Synth 8-3848] Net B in module/entity CPU does not have driver. [/home/
 WARNING: [Synth 8-3848] Net functionSelect in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:99]
 WARNING: [Synth 8-3848] Net overwriteFlagsMask in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:100]
 WARNING: [Synth 8-3848] Net setFlagBits in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:101]
-WARNING: [Synth 8-3848] Net RAMreadWrite in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:118]
+WARNING: [Synth 8-3848] Net RAMWriteRead in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:118]
 WARNING: [Synth 8-3848] Net RAMaddress in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:119]
 WARNING: [Synth 8-7129] Port address[15] in module Memory is either unconnected or has no load
 WARNING: [Synth 8-7129] Port address[14] in module Memory is either unconnected or has no load

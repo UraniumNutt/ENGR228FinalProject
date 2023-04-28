@@ -7,73 +7,73 @@ module ControlLogic(
     input clk,
     input [15:0] instructionOut,
     input [4:0] currentFlags,
-    output programCounterCountUp,
-    output programCounterJump,
-    output loadInstruction,
-    output loadMemoryAddress,
-    output StackCountUp,
-    output StackCountDown,
-    output RegFileWriteEnable,
-    output [2:0] RegFileWriteAddress,
-    output [2:0] ReadAddressA,
-    output [2:0] ReadAddressB,
-    output [4:0] functionSelect,
-    output [4:0] overwriteFlagsMask,
-    output [4:0] setFlagBits,
-    output RAMreadWrite,
-    output [2:0] busDrive
+    output reg programCounterCountUp,
+    output reg programCounterJump,
+    output reg loadInstruction,
+    output reg loadMemoryAddress,
+    output reg StackCountUp,
+    output reg StackCountDown,
+    output reg RegFileWriteEnable,
+    output reg [2:0] RegFileWriteAddress,
+    output reg [2:0] ReadAddressA,
+    output reg [2:0] ReadAddressB,
+    output reg [4:0] functionSelect,
+    output reg [4:0] overwriteFlagsMask,
+    output reg [4:0] setFlagBits,
+    output reg RAMWriteRead,
+    output reg [2:0] busDrive
 
     );
 
     wire opcode = instructionOut[15:10];
-    wire rx     = instrcutionOut[9:7];
+    wire rx     = instructionOut[9:7];
     wire am     = instructionOut[6:4];
     wire ry     = instructionOut[3:1];
 
-    wire rxWrite = {7'b0000000, rx, 25'b0000000000000000000000000};
-    wire ryWrite = {7'b0000000, ry, 25'b0000000000000000000000000};
+    // wire rxWrite = {7'b0000000, rx, 25'b0000000000000000000000000};
+    // wire ryWrite = {7'b0000000, ry, 25'b0000000000000000000000000};
 
-    wire rxReadA = {10'b00000000000, rx, 22'b0000000000000000000000};
-    wire rxReadB = {13'b00000000000000, rx, 19'b0000000000000000000};
-    wire ryReadA = {10'b00000000000, ry, 22'b0000000000000000000000};
-    wire ryReadB = {13'b00000000000000, ry, 19'b0000000000000000000};
+    // wire rxReadA = {10'b00000000000, rx, 22'b0000000000000000000000};
+    // wire rxReadB = {13'b00000000000000, rx, 19'b0000000000000000000};
+    // wire ryReadA = {10'b00000000000, ry, 22'b0000000000000000000000};
+    // wire ryReadB = {13'b00000000000000, ry, 19'b0000000000000000000};
 
-    reg [34:0] controlWord;
-    initial controlWord = 0;
+    // reg [34:0] controlWord;
+    // initial controlWord = 0;
 
-    assign programCounterCountUp = controlWord[34];
-    assign programCounterJump    = controlWord[33];
-    assign loadInstruction       = controlWord[32];
-    assign loadMemoryAddress     = controlWord[31];
-    assign StackCountUp          = controlWord[30];
-    assign StackCountDown        = controlWord[29];
-    assign RegFileWriteEnable    = controlWord[28];
-    assign RegFileWriteAddress   = controlWord[27:25];
-    assign ReadAddressA          = controlWord[24:22];
-    assign ReadAddressB          = controlWord[21:19];
-    assign functionSelect        = controlWord[18:14];
-    assign overwriteFlagsMask    = controlWord[13:9];
-    assign setFlagBits           = controlWord[8:4];
-    assign RAMreadWrite          = controlWord[3];
-    assign busDrive              = controlWord[2:0];
+    // assign programCounterCountUp = controlWord[34];
+    // assign programCounterJump    = controlWord[33];
+    // assign loadInstruction       = controlWord[32];
+    // assign loadMemoryAddress     = controlWord[31];
+    // assign StackCountUp          = controlWord[30];
+    // assign StackCountDown        = controlWord[29];
+    // assign RegFileWriteEnable    = controlWord[28];
+    // assign RegFileWriteAddress   = controlWord[27:25];
+    // assign ReadAddressA          = controlWord[24:22];
+    // assign ReadAddressB          = controlWord[21:19];
+    // assign functionSelect        = controlWord[18:14];
+    // assign overwriteFlagsMask    = controlWord[13:9];
+    // assign setFlagBits           = controlWord[8:4];
+    // assign RAMWriteRead          = controlWord[3];
+    // assign busDrive              = controlWord[2:0];
 
-    localparam emptyControlWord      = 35'b00000000000000000000000000000000000;
+    // localparam emptyControlWord      = 35'b00000000000000000000000000000000000;
 
-    localparam PCup                  = 35'b10000000000000000000000000000000000;   //1
-    localparam PCJump                = 35'b01000000000000000000000000000000000;   //1
-    localparam IRin                  = 35'b00100000000000000000000000000000000;   //1
-    localparam MAin                  = 35'b00010000000000000000000000000000000;   //1
-    localparam SPup                  = 35'b00001000000000000000000000000000000;   //1
-    localparam SPdown                = 35'b00000100000000000000000000000000000;   //1
-    localparam RFWriteEnable         = 35'b00000010000000000000000000000000000;   //1
-    localparam RFWriteAddress        = 35'b00000001110000000000000000000000000;   //3
-    localparam RFReadA               = 35'b00000000001110000000000000000000000;   //3
-    localparam RFReadB               = 35'b00000000000001110000000000000000000;   //3
-    localparam ALUFunctionSelect     = 35'b00000000000000001111100000000000000;   //5
-    localparam ALUOverwriteFlagsMask = 35'b00000000000000000000011111000000000;   //5
-    localparam ALUsetFlagBits        = 35'b00000000000000000000000000111110000;   //5
-    localparam RAMRW                 = 35'b00000000000000000000000000000001000;   //1
-    localparam BUSSelect             = 35'b00000000000000000000000000000000111;   //3
+    // localparam PCup                  = 35'b10000000000000000000000000000000000;   //1
+    // localparam PCJump                = 35'b01000000000000000000000000000000000;   //1
+    // localparam IRin                  = 35'b00100000000000000000000000000000000;   //1
+    // localparam MAin                  = 35'b00010000000000000000000000000000000;   //1
+    // localparam SPup                  = 35'b00001000000000000000000000000000000;   //1
+    // localparam SPdown                = 35'b00000100000000000000000000000000000;   //1
+    // localparam RFWriteEnable         = 35'b00000010000000000000000000000000000;   //1
+    // localparam RFWriteAddress        = 35'b00000001110000000000000000000000000;   //3
+    // localparam RFReadA               = 35'b00000000001110000000000000000000000;   //3
+    // localparam RFReadB               = 35'b00000000000001110000000000000000000;   //3
+    // localparam ALUFunctionSelect     = 35'b00000000000000001111100000000000000;   //5
+    // localparam ALUOverwriteFlagsMask = 35'b00000000000000000000011111000000000;   //5
+    // localparam ALUsetFlagBits        = 35'b00000000000000000000000000111110000;   //5
+    // localparam RAMRW                 = 35'b00000000000000000000000000000001000;   //1
+    // localparam BUSSelect             = 35'b00000000000000000000000000000000111;   //3
     
     localparam r0 = 3'b000;
     localparam r1 = 3'b001;
@@ -138,11 +138,11 @@ module ControlLogic(
     localparam register         = 3'b101;
     localparam registerIndirect = 3'b110;
 
-    localparam progarmCounterOut      = 3'b000;
-    localparam instructionRegisterOut = 3'b001;
-    localparam stackOut               = 3'b010;
-    localparam ALUOut                 = 3'b011;
-    localparam RAMOut                 = 3'b100;
+    localparam progarmCounterOut      = 3'b001;
+    localparam instructionRegisterOut = 3'b010;
+    localparam stackOut               = 3'b011;
+    localparam ALUOut                 = 3'b100;
+    localparam RAMOut                 = 3'b101;
 
     reg [2:0] microInstructionCounter;
     initial microInstructionCounter = 0;
@@ -171,13 +171,38 @@ module ControlLogic(
                 case (microInstructionCounter) 
 
                     0: begin
-                        controlWord = PCup;
+                        programCounterCountUp = 1;
+                        programCounterJump    = 0;
+                        loadInstruction       = 0;
+                        loadMemoryAddress     = 1;
+                        StackCountUp          = 0;
+                        StackCountDown        = 0;
+                        RegFileWriteEnable    = 0;
+                        RegFileWriteAddress   = 0;
+                        ReadAddressA          = 0;
+                        ReadAddressB          = 0;
+                        functionSelect        = 0;
+                        overwriteFlagsMask    = 0;
+                        setFlagBits           = 0;
+                        RAMWriteRead          = 0;
+                        busDrive              = progarmCounterOut;
                     end
                     1: begin
-                        controlWord = (BUSSelect && progarmCounterOut) || IRin;
-                    end
-                    2: begin
-                        controlWord = emptyControlWord;
+                        programCounterCountUp = 0;
+                        programCounterJump    = 0;
+                        loadInstruction       = 1;
+                        loadMemoryAddress     = 0;
+                        StackCountUp          = 0;
+                        StackCountDown        = 0;
+                        RegFileWriteEnable    = 0;
+                        RegFileWriteAddress   = 0;
+                        ReadAddressA          = 0;
+                        ReadAddressB          = 0;
+                        functionSelect        = 0;
+                        overwriteFlagsMask    = 0;
+                        setFlagBits           = 0;
+                        RAMWriteRead          = 0;
+                        busDrive              = RAMOut;
                         microInstructionCounterReset = 1;
                     end
 
@@ -194,29 +219,262 @@ module ControlLogic(
                         case (microInstructionCounter)
 
                             0: begin
-                                controlWord = PCup || (BUSSelect && progarmCounterOut) || MAin;
+                                programCounterCountUp = 1;
+                                programCounterJump    = 0;
+                                loadInstruction       = 0;
+                                loadMemoryAddress     = 0;
+                                StackCountUp          = 0;
+                                StackCountDown        = 0;
+                                RegFileWriteEnable    = 1;
+                                RegFileWriteAddress   = rx;
+                                ReadAddressA          = 0;
+                                ReadAddressB          = 0;
+                                functionSelect        = 0;
+                                overwriteFlagsMask    = 0;
+                                setFlagBits           = 0;
+                                RAMWriteRead          = 0;
+                                busDrive              = 0;
+                                microInstructionCounterReset = 0;
                             end
                             1: begin
-                                controlWord = (RFWriteAddress && rxWrite) || RFWriteEnable || (BUSSelect && RAMOut)
+                                programCounterCountUp = 1;
+                                programCounterJump    = 0;
+                                loadInstruction       = 0;
+                                loadMemoryAddress     = 1;
+                                StackCountUp          = 0;
+                                StackCountDown        = 0;
+                                RegFileWriteEnable    = 0;
+                                RegFileWriteAddress   = 0;
+                                ReadAddressA          = 0;
+                                ReadAddressB          = 0;
+                                functionSelect        = 0;
+                                overwriteFlagsMask    = 0;
+                                setFlagBits           = 0;
+                                RAMWriteRead          = 0;
+                                busDrive              = progarmCounterOut;
+                                microInstructionCounterReset = 0;
                             end
                             2: begin
-                                
+                                programCounterCountUp = 0;
+                                programCounterJump    = 0;
+                                loadInstruction       = 1;
+                                loadMemoryAddress     = 0;
+                                StackCountUp          = 0;
+                                StackCountDown        = 0;
+                                RegFileWriteEnable    = 0;
+                                RegFileWriteAddress   = 0;
+                                ReadAddressA          = 0;
+                                ReadAddressB          = 0;
+                                functionSelect        = 0;
+                                overwriteFlagsMask    = 0;
+                                setFlagBits           = 0;
+                                RAMWriteRead          = 0;
+                                busDrive              = RAMOut;
+                                microInstructionCounterReset = 1;
                             end
 
                         endcase
 
                     end
 
+
+
                     default: begin
 
                         case (microInstructionCounter)
 
+                        0: begin
+                            programCounterCountUp = 1;
+                            programCounterJump    = 0;
+                            loadInstruction       = 0;
+                            loadMemoryAddress     = 1;
+                            StackCountUp          = 0;
+                            StackCountDown        = 0;
+                            RegFileWriteEnable    = 0;
+                            RegFileWriteAddress   = 0;
+                            ReadAddressA          = 0;
+                            ReadAddressB          = 0;
+                            functionSelect        = 0;
+                            overwriteFlagsMask    = 0;
+                            setFlagBits           = 0;
+                            RAMWriteRead          = 0;
+                            busDrive              = progarmCounterOut;
+                        end
+                        1: begin
+                            programCounterCountUp = 0;
+                            programCounterJump    = 0;
+                            loadInstruction       = 1;
+                            loadMemoryAddress     = 0;
+                            StackCountUp          = 0;
+                            StackCountDown        = 0;
+                            RegFileWriteEnable    = 0;
+                            RegFileWriteAddress   = 0;
+                            ReadAddressA          = 0;
+                            ReadAddressB          = 0;
+                            functionSelect        = 0;
+                            overwriteFlagsMask    = 0;
+                            setFlagBits           = 0;
+                            RAMWriteRead          = 0;
+                            busDrive              = RAMOut;
+                            microInstructionCounterReset = 1;
+                        end
+
+                        endcase
+
+                    end
+
+                endcase
+
+            end
+
+            st: begin
+
+                case (am) 
+
+                    register: begin
+
+                        case (microInstructionCounter)
+
                             0: begin
-                                controlWord = emptyControlWord;
-                                microInstructionCounterReset = 1;
+
+                                programCounterCountUp = 0;
+                                programCounterJump    = 0;
+                                loadInstruction       = 0;
+                                loadMemoryAddress     = 0;
+                                StackCountUp          = 0;
+                                StackCountDown        = 0;
+                                RegFileWriteEnable    = 1;
+                                RegFileWriteAddress   = ry;
+                                ReadAddressA          = rx;
+                                ReadAddressB          = 0;
+                                functionSelect        = 0;
+                                overwriteFlagsMask    = 0;
+                                setFlagBits           = 0;
+                                RAMWriteRead          = 0;
+                                busDrive              = 0;
+                                microInstructionCounterReset = 0;
+
+                            end
+
+                            1: begin
+
+                                programCounterCountUp = 1;
+                                programCounterJump    = 0;
+                                loadInstruction       = 0;
+                                loadMemoryAddress     = 1;
+                                StackCountUp          = 0;
+                                StackCountDown        = 0;
+                                RegFileWriteEnable    = 0;
+                                RegFileWriteAddress   = 0;
+                                ReadAddressA          = 0;
+                                ReadAddressB          = 0;
+                                functionSelect        = 0;
+                                overwriteFlagsMask    = 0;
+                                setFlagBits           = 0;
+                                RAMWriteRead          = 0;
+                                busDrive              = progarmCounterOut;
+
+                            end
+
+                            2: begin
+
+                                programCounterCountUp = 0;
+                                programCounterJump    = 0;
+                                loadInstruction       = 1;
+                                loadMemoryAddress     = 0;
+                                StackCountUp          = 0;
+                                StackCountDown        = 0;
+                                RegFileWriteEnable    = 0;
+                                RegFileWriteAddress   = 0;
+                                ReadAddressA          = 0;
+                                ReadAddressB          = 0;
+                                functionSelect        = 0;
+                                overwriteFlagsMask    = 0;
+                                setFlagBits           = 0;
+                                RAMWriteRead          = 0;
+                                busDrive              = RAMOut;
+                                microInstructionCounterReset = 1; 
+
                             end
 
                         endcase
+
+                    end
+
+                endcase
+
+
+            end
+
+            add: begin
+
+                case (am) 
+
+                    immediate: begin
+
+                    case (microInstructionCounter)
+
+                        0: begin
+
+                            programCounterCountUp = 1;
+                            programCounterJump    = 0;
+                            loadInstruction       = 0;
+                            loadMemoryAddress     = 1;
+                            StackCountUp          = 0;
+                            StackCountDown        = 0;
+                            RegFileWriteEnable    = 0;
+                            RegFileWriteAddress   = 0;
+                            ReadAddressA          = 0;
+                            ReadAddressB          = 0;
+                            functionSelect        = 0;
+                            overwriteFlagsMask    = 0;
+                            setFlagBits           = 0;
+                            RAMWriteRead          = 0;
+                            busDrive              = progarmCounterOut;
+
+                        end
+
+                        1: begin
+
+                            programCounterCountUp = 0;
+                            programCounterJump    = 0;
+                            loadInstruction       = 0;
+                            loadMemoryAddress     = 0;
+                            StackCountUp          = 0;
+                            StackCountDown        = 0;
+                            RegFileWriteEnable    = 1;
+                            RegFileWriteAddress   = ry;
+                            ReadAddressA          = 0;
+                            ReadAddressB          = 0;
+                            functionSelect        = 0;
+                            overwriteFlagsMask    = 0;
+                            setFlagBits           = 0;
+                            RAMWriteRead          = 0;
+                            busDrive              = RAMOut;
+
+                        end
+
+                        2: begin
+
+                            programCounterCountUp = 0;
+                            programCounterJump    = 0;
+                            loadInstruction       = 0;
+                            loadMemoryAddress     = 0;
+                            StackCountUp          = 0;
+                            StackCountDown        = 0;
+                            RegFileWriteEnable    = 0;
+                            RegFileWriteAddress   = 0;
+                            ReadAddressA          = 0;
+                            ReadAddressB          = 0;
+                            functionSelect        = 0;
+                            overwriteFlagsMask    = 0;
+                            setFlagBits           = 0;
+                            RAMWriteRead          = 0;
+                            busDrive              = 0;
+
+                        end
+
+                    endcase
 
                     end
 
@@ -229,8 +487,39 @@ module ControlLogic(
                 case (microInstructionCounter) 
 
                     0: begin
-                        controlWord = emptyControlWord;
-                        microInstructionCounterReset = 1; 
+                        programCounterCountUp = 1;
+                        programCounterJump    = 0;
+                        loadInstruction       = 0;
+                        loadMemoryAddress     = 1;
+                        StackCountUp          = 0;
+                        StackCountDown        = 0;
+                        RegFileWriteEnable    = 0;
+                        RegFileWriteAddress   = 0;
+                        ReadAddressA          = 0;
+                        ReadAddressB          = 0;
+                        functionSelect        = 0;
+                        overwriteFlagsMask    = 0;
+                        setFlagBits           = 0;
+                        RAMWriteRead          = 0;
+                        busDrive              = progarmCounterOut;
+                    end
+                    1: begin
+                        programCounterCountUp = 0;
+                        programCounterJump    = 0;
+                        loadInstruction       = 1;
+                        loadMemoryAddress     = 0;
+                        StackCountUp          = 0;
+                        StackCountDown        = 0;
+                        RegFileWriteEnable    = 0;
+                        RegFileWriteAddress   = 0;
+                        ReadAddressA          = 0;
+                        ReadAddressB          = 0;
+                        functionSelect        = 0;
+                        overwriteFlagsMask    = 0;
+                        setFlagBits           = 0;
+                        RAMWriteRead          = 0;
+                        busDrive              = RAMOut;
+                        microInstructionCounterReset = 1;
                     end
 
                 endcase

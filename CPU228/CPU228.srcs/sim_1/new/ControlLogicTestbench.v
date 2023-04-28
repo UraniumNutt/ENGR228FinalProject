@@ -20,7 +20,7 @@ module ControlLogicTestbench;
     wire [4:0] functionSelect;
     wire [4:0] overwriteFlagsMask;
     wire [4:0] setFlagBits;
-    wire RAMreadWrite;
+    wire RAMWriteRead;
     wire [2:0] busDrive;
 
     ControlLogic uut(
@@ -41,14 +41,14 @@ module ControlLogicTestbench;
         .functionSelect(functionSelect),
         .overwriteFlagsMask(overwriteFlagsMask),
         .setFlagBits(setFlagBits),
-        .RAMreadWrite(RAMreadWrite),
+        .RAMWriteRead(RAMWriteRead),
         .busDrive(busDrive)
 
     );
 
     initial begin
 
-        currentFlags = 0; instructionOut = 0;
+        currentFlags = 0; instructionOut = 0; clk = 0;
         #10 clk = 1; #10 clk = 0;
         #10 clk = 1; #10 clk = 0;
         #10 clk = 1; #10 clk = 0;

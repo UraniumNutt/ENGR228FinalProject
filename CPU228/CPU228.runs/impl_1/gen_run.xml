@@ -13,16 +13,16 @@
   <File Type="ROUTE-DRC-RPX" Name="CPU_drc_routed.rpx"/>
   <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="CPU_methodology_drc_routed.pb"/>
   <File Type="ROUTE-METHODOLOGY-DRC" Name="CPU_methodology_drc_routed.rpt"/>
-  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="CPU_postroute_physopt_bb.dcp"/>
-  <File Type="POSTROUTE-PHYSOPT-DCP" Name="CPU_postroute_physopt.dcp"/>
-  <File Type="PHYSOPT-DCP" Name="CPU_physopt.dcp"/>
   <File Type="PLACE-IO" Name="CPU_io_placed.rpt"/>
   <File Type="OPT-DRC" Name="CPU_drc_opted.rpt"/>
   <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
   <File Type="BITSTR-LTX" Name="CPU.ltx"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="CPU_postroute_physopt_bb.dcp"/>
   <File Type="BITSTR-SYSDEF" Name="CPU.sysdef"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="CPU_postroute_physopt.dcp"/>
   <File Type="BITSTR-MMI" Name="CPU.mmi"/>
   <File Type="BITSTR-BMM" Name="CPU_bd.bmm"/>
+  <File Type="PHYSOPT-DCP" Name="CPU_physopt.dcp"/>
   <File Type="PLACE-UTIL-PB" Name="CPU_utilization_placed.pb"/>
   <File Type="BG-BGN" Name="CPU.bgn"/>
   <File Type="OPT-DCP" Name="CPU_opt.dcp"/>
@@ -41,10 +41,10 @@
   <File Type="PLACE-DCP" Name="CPU_placed.dcp"/>
   <File Type="BITSTR-MSK" Name="CPU.msk"/>
   <File Type="PWROPT-DCP" Name="CPU_pwropt.dcp"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="CPU_incremental_reuse_pre_placed.rpt"/>
   <File Type="BITSTR-RBT" Name="CPU.rbt"/>
   <File Type="POSTPLACE-PWROPT-DCP" Name="CPU_postplace_pwropt.dcp"/>
   <File Type="BITSTR-NKY" Name="CPU.nky"/>
-  <File Type="PLACE-PRE-SIMILARITY" Name="CPU_incremental_reuse_pre_placed.rpt"/>
   <File Type="ROUTE-DRC" Name="CPU_drc_routed.rpt"/>
   <File Type="ROUTE-DRC-PB" Name="CPU_drc_routed.pb"/>
   <File Type="ROUTE-PWR" Name="CPU_power_routed.rpt"/>
