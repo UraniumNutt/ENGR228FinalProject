@@ -4,6 +4,7 @@
 
 module RegisterFile(
 
+    output [15:0] temp,
     input clk,
     input RegFileWriteEnable, 
     input [2:0] RegFileWriteAddress, 
@@ -19,6 +20,8 @@ module RegisterFile(
 
     assign ReadDataA = File[ReadAddressA];
     assign ReadDataB = File[ReadAddressB];
+
+    assign temp = File[0];
 
     always @(posedge clk) begin
 

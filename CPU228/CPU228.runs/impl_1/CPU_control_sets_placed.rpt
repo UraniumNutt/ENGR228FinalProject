@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (lin64) Build 3671981 Fri Oct 14 04:59:54 MDT 2022
-| Date         : Thu Apr 27 12:01:37 2023
+| Date         : Sat Apr 29 21:15:42 2023
 | Host         : archlinux running 64-bit Arch Linux
 | Command      : report_control_sets -verbose -file CPU_control_sets_placed.rpt
 | Design       : CPU
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |     0 |
-|    Minimum number of control sets                        |     0 |
+| Total control sets                                       |    15 |
+|    Minimum number of control sets                        |    15 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |     0 |
+| Unused register locations in slices containing registers |    30 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |     0 |
-| >= 0 to < 4        |     0 |
-| >= 4 to < 6        |     0 |
+| Total control sets |    15 |
+| >= 0 to < 4        |     1 |
+| >= 4 to < 6        |     1 |
 | >= 6 to < 8        |     0 |
 | >= 8 to < 10       |     0 |
-| >= 10 to < 12      |     0 |
+| >= 10 to < 12      |     1 |
 | >= 12 to < 14      |     0 |
-| >= 14 to < 16      |     0 |
-| >= 16              |     0 |
+| >= 14 to < 16      |     1 |
+| >= 16              |    11 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,20 +58,36 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |               0 |            0 |
+| No           | No                    | No                     |              36 |           12 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |               0 |            0 |
-| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | No                     |             202 |           74 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |               0 |            0 |
+| Yes          | Yes                   | No                     |               4 |            1 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+--------------+---------------+------------------+------------------+----------------+--------------+
-| Clock Signal | Enable Signal | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
-+--------------+---------------+------------------+------------------+----------------+--------------+
++---------------------+-------------------------------------+--------------------------------+------------------+----------------+--------------+
+|     Clock Signal    |            Enable Signal            |        Set/Reset Signal        | Slice Load Count | Bel Load Count | Bels / Slice |
++---------------------+-------------------------------------+--------------------------------+------------------+----------------+--------------+
+| ~boardclk_IBUF_BUFG |                                     |                                |                1 |              1 |         1.00 |
+| ~boardclk_IBUF_BUFG | IR/microInstructionCounter_reg[2]_0 | IR/currentInstruction_reg[6]_1 |                1 |              4 |         4.00 |
+|  boardclk_IBUF_BUFG | CL/loadMemoryAddress_reg_0[0]       |                                |                2 |             10 |         5.00 |
+|  boardclk_IBUF_BUFG | CL/E[0]                             |                                |                6 |             15 |         2.50 |
+|  boardclk_IBUF_BUFG | CL/programCounterJump_reg_1         |                                |                4 |             16 |         4.00 |
+|  boardclk_IBUF_BUFG | CL/RegFileWriteEnable_reg_1[0]      |                                |                7 |             16 |         2.29 |
+|  boardclk_IBUF_BUFG | CL/RegFileWriteEnable_reg_2[0]      |                                |                5 |             16 |         3.20 |
+|  boardclk_IBUF_BUFG | CL/RegFileWriteEnable_reg_3[0]      |                                |                6 |             16 |         2.67 |
+|  boardclk_IBUF_BUFG | CL/RegFileWriteEnable_reg_4[0]      |                                |                6 |             16 |         2.67 |
+|  boardclk_IBUF_BUFG | CL/RegFileWriteEnable_reg_5[0]      |                                |                6 |             16 |         2.67 |
+|  boardclk_IBUF_BUFG | CL/RegFileWriteEnable_reg_6[0]      |                                |                7 |             16 |         2.29 |
+|  boardclk_IBUF_BUFG | CL/RegFileWriteEnable_reg_7[0]      |                                |                5 |             16 |         3.20 |
+| ~boardclk_IBUF_BUFG | IR/microInstructionCounter_reg[2]_0 |                                |                8 |             17 |         2.12 |
+|  boardclk_IBUF_BUFG | CL/RegFileWriteEnable_reg_0[0]      |                                |               12 |             32 |         2.67 |
+|  boardclk_IBUF_BUFG |                                     |                                |               21 |             75 |         3.57 |
++---------------------+-------------------------------------+--------------------------------+------------------+----------------+--------------+
 
 

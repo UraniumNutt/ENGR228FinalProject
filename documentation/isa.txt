@@ -85,7 +85,7 @@ jz  *         - Jump Zero                | if zf == 1 then pc <- *
 jnz *         - Jump Not Zero            | if zf == 0 then pc <- *
 jc  *         - Jump Carry               | if cf == 1 then pc <- *
 jnc *         - Jump Not Carry           | if cf == 0 then pc <- *
-jo *          - Jump Overflow            | if of == 1 then pc <- *
+jo  *         - Jump Overflow            | if of == 1 then pc <- *
 jno           - Jump Not Overflow        | if of == 0 then pc <- *
 jp  *         - Jump Positive            | if pf == 1 then pc <- *
 jnp *         - Jump Not Positive        | if pf == 0 then pc <- *

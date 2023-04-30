@@ -13,7 +13,25 @@ module Bus(
     input [15:0] input5,
     input [15:0] input6,
     input [15:0] input7,
-    output [15:0] busDrive
+    output reg [15:0] busDrive
 
     );
+
+    always @(driveSelect) begin
+        
+        case (driveSelect)
+
+            0: busDrive = input0;
+            1: busDrive = input1;
+            2: busDrive = input2;
+            3: busDrive = input3;   
+            4: busDrive = input4;
+            5: busDrive = input5;
+            6: busDrive = input6;
+            7: busDrive = input7;
+
+        endcase
+
+    end
+
 endmodule

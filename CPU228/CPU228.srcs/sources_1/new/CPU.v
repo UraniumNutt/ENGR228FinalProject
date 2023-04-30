@@ -4,18 +4,79 @@
 
 module CPU(
 
+    output [15:0] led,
     input boardclk,
-    input btnC,
-    input [15:0] sw,
-    output [15:0] led
+    output wire [15:0] instructionOutTest,  
+    output wire [4:0] currentFlagsTest,        
+    output wire programCounterCountUpTest,     
+    output wire programCounterJumpTest,        
+    output wire loadInstructionTest,           
+    output wire loadMemoryAddressTest,         
+    output wire StackCountUpTest,              
+    output wire StackCountDownTest,            
+    output wire RegFileWriteEnableTest,        
+    output wire [2:0] RegFileWriteAddressTest, 
+    output wire [2:0] ReadAddressATest,        
+    output wire [2:0] ReadAddressBTest,        
+    output wire [4:0] functionSelectTest,      
+    output wire [4:0] overwriteFlagsMaskTest,  
+    output wire [4:0] setFlagBitsTest,         
+    output wire RAMWriteReadTest,              
+    output wire bSourceTest,                  
+    output wire [2:0] busDriveTest,
+    output wire [15:0] busTest
+
 
     );
 
+    assign busTest                   = bus;
+    assign instructionOutTest        = instructionOut;
+    assign currentFlagsTest          = currentFlags;
+    assign programCounterCountUpTest = programCounterCountUp;
+    assign programCounterJumpTest    = programCounterJump;
+    assign loadInstructionTest       = loadInstruction;
+    assign loadMemoryAddressTest     = loadMemoryAddress;
+    assign StackCountUpTest          = StackCountUp;
+    assign StackCountDownTest        = StackCountDown;
+    assign RegFileWriteEnableTest    = RegFileWriteEnable;
+    assign RegFileWriteAddressTest   = RegFileWriteAddress;
+    assign ReadAddressATest          = ReadAddressA;
+    assign ReadAddressBTest          = ReadAddressB;
+    assign functionSelectTest        = functionSelect;
+    assign overwriteFlagsMaskTest    = overwriteFlagsMask;
+    assign setFlagBitsTest           = setFlagBits;
+    assign RAMWriteReadTest          = RAMWriteRead;
+    assign bSourceTest               = bSource;
+    assign busDriveTest              = busDrive;
+
     wire clk;    
 
-    clkModule mainClk(boardclk, clk);
+    assign clk = boardclk;
+    //clkModule mainClk(boardclk, clk);
 
-    wire programCounterCountUP;
+    wire [2:0] busDrive;
+    wire [15:0] bus;
+    wire [15:0] TopOfStack;
+    wire signed [15:0] result;
+    wire [15:0] RAMdataOut;
+
+    Bus BUS(
+
+        busDrive,
+        16'h0000,
+        programCounterAddressOut,
+        16'h0000,   
+        TopOfStack,
+        result,
+        RAMdataOut,
+        16'h0000,
+        16'h0000,
+        bus
+
+    );
+
+
+    wire programCounterCountUp;
     wire programCounterJump;
     wire [15:0] programCounterAddressIn;
     wire [15:0] programCounterAddressOut;
@@ -24,7 +85,7 @@ module CPU(
     ProgramCounter PC(
 
         clk,
-        programCounterCountUP,
+        programCounterCountUp,
         programCounterJump,
         programCounterAddressIn,
         programCounterAddressOut
@@ -61,7 +122,7 @@ module CPU(
 
     wire StackCountUp;
     wire StackCountDown;
-    wire [15:0] TopOfStack;
+    
 
     StackPointer SP(
 
@@ -83,6 +144,7 @@ module CPU(
 
     RegisterFile RF(
 
+        led,
         clk,
         RegFileWriteEnable,
         RegFileWriteAddress,
@@ -90,16 +152,15 @@ module CPU(
         ReadAddressA,
         ReadAddressB,
         ReadDataA,
-        ReadDataB,
+        ReadDataB
 
     );
 
     wire [4:0] functionSelect;
     wire [4:0] overwriteFlagsMask;
     wire [4:0] setFlagBits;
-    wire signed [15:0] result;
     wire [4:0] currentFlags;
-
+    wire bSource;
 
 
     ArithmeticLogicUnit ALU(
@@ -107,6 +168,8 @@ module CPU(
         clk,
         ReadDataA,
         ReadDataB,
+        bus,
+        bSource,
         functionSelect,
         overwriteFlagsMask,
         setFlagBits,
@@ -118,25 +181,26 @@ module CPU(
     wire RAMWriteRead;
     wire [15:0] RAMaddress;
     wire [15:0] RAMdataIn;
-    wire [15:0] RAMdataOut;
     assign RAMdataIn = bus;
+    assign RAMaddress = memoryAddressOut;
 
     Memory RAM(
 
         clk,
         RAMWriteRead,
         RAMaddress,
-        RAMdataInm,
+        RAMdataIn,
         RAMdataOut
         
     );
+
 
     ControlLogic CL(
 
         clk,
         instructionOut,
         currentFlags,
-        programCounterCountUP,
+        programCounterCountUp,
         programCounterJump,
         loadInstruction,
         loadMemoryAddress,
@@ -150,26 +214,11 @@ module CPU(
         overwriteFlagsMask,
         setFlagBits,
         RAMWriteRead,
+        bSource,
         busDrive
 
     );
 
-    wire [2:0] busDrive;
-    wire [15:0] bus;
 
-    Bus BUS(
-
-        busDrive,
-        16'h0000,
-        programCounterAddressOut,
-        instructionOut,
-        TopOfStack,
-        result,
-        RAMdataOut,
-        16'h0000,
-        16'h0000,
-        bus
-
-    );
     
 endmodule

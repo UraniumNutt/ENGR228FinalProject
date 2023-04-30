@@ -7,6 +7,8 @@ module ArithmeticLogicUnit(
     input clk,
     input signed [15:0] A,
     input signed [15:0] B,
+    input signed [15:0] constant,
+    input bSource,
     input [4:0] functionSelect,
     input [4:0] overwriteFlagsMask,
     input [4:0] setFlagBits, // carry overflow zero pos neg
@@ -19,7 +21,9 @@ module ArithmeticLogicUnit(
     initial currentFlags = 5'b00100;
     // a 32 bit result
     reg signed [31:0] internalResult;
-    assign result = internalResult[15:0];
+    //assign result = internalResult[15:0];
+    wire [15:0] secondArg;
+    assign secondArg = (B && ~{15{bSource}}) || (constant && {15{bSource}});
 
     // instruction aliases
     localparam ref   = 5'd0;  // ref  rx       - REFlect rx               | rx <-  rx
@@ -41,27 +45,29 @@ module ArithmeticLogicUnit(
     localparam bit   = 5'd16; // bit  rx, *    - BIt Test                 | rx & * ; Note: does not write back, only updates flags
     localparam changeFlags  = 5'd17; // do nothing to internalResult
 
+    assign result = internalResult[15:0];
+
     always @(posedge clk) begin
-        
+
         case (functionSelect)
             
             ref:   internalResult = A;
-            add:   internalResult = A + B + currentFlags[4];  // add carry flag
-            adwc:  internalResult = A + B;
-            sub:   internalResult = A - B - currentFlags[4];
-            suwb:  internalResult = A - B;
-            mul:   internalResult = (A * B);            // truncate NOTE: need to fix mul flag sets
+            add:   internalResult = A + secondArg + currentFlags[4];  // add carry flag
+            adwc:  internalResult = A + secondArg;
+            sub:   internalResult = A - secondArg - currentFlags[4];
+            suwb:  internalResult = A - secondArg;
+            mul:   internalResult = (A * secondArg);            // truncate NOTE: need to fix mul flag sets
             inc:   internalResult = A + 1;
             dec:   internalResult = A - 1;
             chs:   internalResult = ~A + 1;
-            AND:   internalResult = A & B;
-            OR:    internalResult = A | B;
+            AND:   internalResult = A & secondArg;
+            OR:    internalResult = A | secondArg;
             NOT:   internalResult = ~A;
-            XOR:   internalResult = A ^ B;
+            XOR:   internalResult = A ^ secondArg;
             SL:    internalResult = A << 1;
             SR:    internalResult = A >> 1;  
-            cmp:   internalResult = A - B;                     
-            bit:   internalResult = A * B;               
+            cmp:   internalResult = A - secondArg;                     
+            bit:   internalResult = A * secondArg;               
 
         endcase
         
@@ -93,7 +99,7 @@ module ArithmeticLogicUnit(
             end
 
             if (functionSelect != mul) begin
-                if ((internalResult[15] == 0 && A[15] == 1 && B[15] == 1) || (internalResult[15] == 1 && A[15] == 0 && B[15] == 0)) begin
+                if ((internalResult[15] == 0 && A[15] == 1 && secondArg[15] == 1) || (internalResult[15] == 1 && A[15] == 0 && secondArg[15] == 0)) begin
                 currentFlags[3] = 1;
                 end
 

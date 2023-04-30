@@ -5,7 +5,7 @@
 module ControlLogic(
 
     input clk,
-    input [15:0] instructionOut,
+    input [15:0] instructionIn,
     input [4:0] currentFlags,
     output reg programCounterCountUp,
     output reg programCounterJump,
@@ -21,59 +21,146 @@ module ControlLogic(
     output reg [4:0] overwriteFlagsMask,
     output reg [4:0] setFlagBits,
     output reg RAMWriteRead,
+    output reg bSource,
     output reg [2:0] busDrive
 
     );
 
-    wire opcode = instructionOut[15:10];
-    wire rx     = instructionOut[9:7];
-    wire am     = instructionOut[6:4];
-    wire ry     = instructionOut[3:1];
+    // these are the internal control bits
+    reg pcup;
+    reg pcjmp;
+    reg irin;
+    reg marin;
+    reg spup;
+    reg spdwn;
+    reg rfw;
+    reg [2:0] rfwa;
+    reg [2:0] raa;
+    reg [2:0] rab;
+    reg [4:0] fs;
+    reg [4:0] owfm;
+    reg [4:0] sfb;
+    reg ramw;
+    reg bs;
+    reg [2:0] bd;
 
-    // wire rxWrite = {7'b0000000, rx, 25'b0000000000000000000000000};
-    // wire ryWrite = {7'b0000000, ry, 25'b0000000000000000000000000};
+    initial pcup  = 0;
+    initial pcjmp = 0;
+    initial irin  = 0;
+    initial marin = 0;
+    initial spup  = 0;
+    initial spdwn = 0;
+    initial rfw   = 0;
+    initial rfwa  = 0;
+    initial raa   = 0;
+    initial rab   = 0;
+    initial fs    = 0;
+    initial owfm  = 0;
+    initial sfb   = 0;
+    initial ramw  = 0;
+    initial bs    = 0;
+    initial bd    = 0;
 
-    // wire rxReadA = {10'b00000000000, rx, 22'b0000000000000000000000};
-    // wire rxReadB = {13'b00000000000000, rx, 19'b0000000000000000000};
-    // wire ryReadA = {10'b00000000000, ry, 22'b0000000000000000000000};
-    // wire ryReadB = {13'b00000000000000, ry, 19'b0000000000000000000};
+    // macro for setting external control bits to internal control bit, then clearing the internal control bits for the next cycle
+    `define latchClear() \
+        programCounterCountUp = pcup; \
+        programCounterJump = pcjmp; \
+        loadInstruction = irin; \
+        loadMemoryAddress = marin; \
+        StackCountUp = spup; \
+        StackCountDown = spdwn; \
+        RegFileWriteEnable = rfw; \
+        RegFileWriteAddress = rfwa; \
+        ReadAddressA = raa; \
+        ReadAddressB = rab; \
+        functionSelect = fs; \
+        overwriteFlagsMask = owfm; \
+        setFlagBits = sfb; \
+        RAMWriteRead = ramw; \
+        bSource = bs; \
+        busDrive = bd; \
+        pcup = 0; \
+        pcjmp = 0; \
+        irin = 0; \
+        marin = 0; \
+        spup = 0; \
+        spdwn = 0; \
+        rfw = 0; \
+        rfwa = 0; \
+        raa = 0; \
+        rab = 0; \
+        fs = 0; \
+        owfm = 0; \
+        sfb = 0; \
+        ramw = 0; \
+        bs = 0; \
+        bd = 0;
 
-    // reg [34:0] controlWord;
-    // initial controlWord = 0;
+    `define fetchnext0() \
+        pcup  = 1; \
+        pcjmp = 0; \
+        irin  = 0; \
+        marin = 0; \
+        spup  = 0; \
+        spdwn = 0; \
+        rfw   = 0; \
+        rfwa  = 0; \
+        raa   = 0; \
+        rab   = 0; \
+        fs    = 0; \
+        owfm  = 0; \
+        sfb   = 0; \
+        ramw  = 0; \
+        bs    = 0; \
+        bd    = 0;
 
-    // assign programCounterCountUp = controlWord[34];
-    // assign programCounterJump    = controlWord[33];
-    // assign loadInstruction       = controlWord[32];
-    // assign loadMemoryAddress     = controlWord[31];
-    // assign StackCountUp          = controlWord[30];
-    // assign StackCountDown        = controlWord[29];
-    // assign RegFileWriteEnable    = controlWord[28];
-    // assign RegFileWriteAddress   = controlWord[27:25];
-    // assign ReadAddressA          = controlWord[24:22];
-    // assign ReadAddressB          = controlWord[21:19];
-    // assign functionSelect        = controlWord[18:14];
-    // assign overwriteFlagsMask    = controlWord[13:9];
-    // assign setFlagBits           = controlWord[8:4];
-    // assign RAMWriteRead          = controlWord[3];
-    // assign busDrive              = controlWord[2:0];
+    `define fetchnext1() \
+        pcup  = 0; \
+        pcjmp = 0; \
+        irin  = 0; \
+        marin = 1; \
+        spup  = 0; \
+        spdwn = 0; \
+        rfw   = 0; \
+        rfwa  = 0; \
+        raa   = 0; \
+        rab   = 0; \
+        fs    = 0; \
+        owfm  = 0; \
+        sfb   = 0; \
+        ramw  = 0; \
+        bs    = 0; \
+        bd    = programCounterOut;
+        
 
-    // localparam emptyControlWord      = 35'b00000000000000000000000000000000000;
+    `define fetchnext2() \
+        pcup  = 0; \
+        pcjmp = 0; \
+        irin  = 1; \
+        marin = 0; \
+        spup  = 0; \
+        spdwn = 0; \
+        rfw   = 0; \
+        rfwa  = 0; \
+        raa   = 0; \
+        rab   = 0; \
+        fs    = 0; \
+        owfm  = 0; \
+        sfb   = 0; \
+        ramw  = 0; \
+        bs    = 0; \
+        bd    = RAMOut; \
+        microInstructionReset = 1;
 
-    // localparam PCup                  = 35'b10000000000000000000000000000000000;   //1
-    // localparam PCJump                = 35'b01000000000000000000000000000000000;   //1
-    // localparam IRin                  = 35'b00100000000000000000000000000000000;   //1
-    // localparam MAin                  = 35'b00010000000000000000000000000000000;   //1
-    // localparam SPup                  = 35'b00001000000000000000000000000000000;   //1
-    // localparam SPdown                = 35'b00000100000000000000000000000000000;   //1
-    // localparam RFWriteEnable         = 35'b00000010000000000000000000000000000;   //1
-    // localparam RFWriteAddress        = 35'b00000001110000000000000000000000000;   //3
-    // localparam RFReadA               = 35'b00000000001110000000000000000000000;   //3
-    // localparam RFReadB               = 35'b00000000000001110000000000000000000;   //3
-    // localparam ALUFunctionSelect     = 35'b00000000000000001111100000000000000;   //5
-    // localparam ALUOverwriteFlagsMask = 35'b00000000000000000000011111000000000;   //5
-    // localparam ALUsetFlagBits        = 35'b00000000000000000000000000111110000;   //5
-    // localparam RAMRW                 = 35'b00000000000000000000000000000001000;   //1
-    // localparam BUSSelect             = 35'b00000000000000000000000000000000111;   //3
+    
+
+
+    wire [5:0] opcode = instructionIn[15:10];
+    wire [2:0] rx     = instructionIn[9:7];
+    wire [2:0] am     = instructionIn[6:4];
+    wire [2:0] ry     = instructionIn[3:1];
+
+    
     
     localparam r0 = 3'b000;
     localparam r1 = 3'b001;
@@ -130,6 +217,26 @@ module ControlLogic(
     localparam jsr  = 6'b101011;
     localparam rts  = 6'b101100;
 
+    localparam ALUref   = 5'd0;  // ref  rx       - REFlect rx               | rx <-  rx
+    localparam ALUadd   = 5'd1;  // add  rx, *    - ADD with carry           | rx <-  rx + * + Cin
+    localparam ALUadwc  = 5'd2;  // adwc rx, *    - ADd Without Carry        | rx <-  rx + *
+    localparam ALUsub   = 5'd3;  // sub  rx, *    - SUBstract with carry     | rx <-  rx - * + Cin (?) ; Note: double check this
+    localparam ALUsuwb  = 5'd4;  // sbwc rx, *    - SuBstract Without Carry  | rx <-  rx - *
+    localparam ALUmul   = 5'd5;  // mul  rx, *    - MULtiply                 | rx <-  rx * * ; Note: result truncated to 16 bits
+    localparam ALUinc   = 5'd6;  // inc  rx       - INCrement                | rx <-  rx + 1
+    localparam ALUdec   = 5'd7;  // dec  rx       - DECrement                | rx <-  rx - 1
+    localparam ALUchs   = 5'd8;  // chs  rx       - CHange Sign              | rx <- ~rx + 1
+    localparam ALUAND   = 5'd9;  // and  rx, *    - bitwise AND              | rx <-  rx & *
+    localparam ALUOR    = 5'd10; // or   rx, *    - bitwise OR               | rx <-  rx | *
+    localparam ALUNOT   = 5'd11; // not  rx       - bitwise NOT              | rx <- ~rx
+    localparam ALUXOR   = 5'd12; // xor  rx, *    - bitwise XOR              | rx <-  rx xor *
+    localparam ALUSL    = 5'd13; // sl   rx       - Shift Left               | rx <-  rx << 1
+    localparam ALUSR    = 5'd14; // sr   rx       - Shift Right              | rx <-  rx >> 1
+    localparam ALUcmp   = 5'd15; // cmp  rx, *    - CoMPare                  | rx - * ; Note: does not write back, only updates flags
+    localparam ALUbit   = 5'd16; // bit  rx, *    - BIt Test                 | rx & * ; Note: does not write back, only updates flags
+    localparam ALUchangeFlags  = 5'd17; // do nothing to internalResult
+
+
     localparam direct           = 3'b000;
     localparam immediate        = 3'b001;
     localparam indirect         = 3'b010;
@@ -138,7 +245,7 @@ module ControlLogic(
     localparam register         = 3'b101;
     localparam registerIndirect = 3'b110;
 
-    localparam progarmCounterOut      = 3'b001;
+    localparam programCounterOut      = 3'b001;
     localparam instructionRegisterOut = 3'b010;
     localparam stackOut               = 3'b011;
     localparam ALUOut                 = 3'b100;
@@ -146,17 +253,17 @@ module ControlLogic(
 
     reg [2:0] microInstructionCounter;
     initial microInstructionCounter = 0;
+    reg microInstructionReset;
+    initial microInstructionReset = 0;
 
-    reg microInstructionCounterReset;
-    initial microInstructionCounterReset = 0;
 
     always @(posedge clk) begin
-        if (microInstructionCounterReset == 1) begin
+
+        if (microInstructionReset == 1) begin
             microInstructionCounter = 0;
-            microInstructionCounterReset = 0;
         end
 
-        else begin
+        else begin 
             microInstructionCounter = microInstructionCounter + 1;
         end
 
@@ -171,39 +278,18 @@ module ControlLogic(
                 case (microInstructionCounter) 
 
                     0: begin
-                        programCounterCountUp = 1;
-                        programCounterJump    = 0;
-                        loadInstruction       = 0;
-                        loadMemoryAddress     = 1;
-                        StackCountUp          = 0;
-                        StackCountDown        = 0;
-                        RegFileWriteEnable    = 0;
-                        RegFileWriteAddress   = 0;
-                        ReadAddressA          = 0;
-                        ReadAddressB          = 0;
-                        functionSelect        = 0;
-                        overwriteFlagsMask    = 0;
-                        setFlagBits           = 0;
-                        RAMWriteRead          = 0;
-                        busDrive              = progarmCounterOut;
+                        microInstructionReset = 0;
+                        `fetchnext0
+                        `latchClear
                     end
                     1: begin
-                        programCounterCountUp = 0;
-                        programCounterJump    = 0;
-                        loadInstruction       = 1;
-                        loadMemoryAddress     = 0;
-                        StackCountUp          = 0;
-                        StackCountDown        = 0;
-                        RegFileWriteEnable    = 0;
-                        RegFileWriteAddress   = 0;
-                        ReadAddressA          = 0;
-                        ReadAddressB          = 0;
-                        functionSelect        = 0;
-                        overwriteFlagsMask    = 0;
-                        setFlagBits           = 0;
-                        RAMWriteRead          = 0;
-                        busDrive              = RAMOut;
-                        microInstructionCounterReset = 1;
+                        `fetchnext1
+                        `latchClear
+                    end
+
+                    2: begin 
+                        `fetchnext2
+                        `latchClear
                     end
 
                 endcase
@@ -219,58 +305,35 @@ module ControlLogic(
                         case (microInstructionCounter)
 
                             0: begin
-                                programCounterCountUp = 1;
-                                programCounterJump    = 0;
-                                loadInstruction       = 0;
-                                loadMemoryAddress     = 0;
-                                StackCountUp          = 0;
-                                StackCountDown        = 0;
-                                RegFileWriteEnable    = 1;
-                                RegFileWriteAddress   = rx;
-                                ReadAddressA          = 0;
-                                ReadAddressB          = 0;
-                                functionSelect        = 0;
-                                overwriteFlagsMask    = 0;
-                                setFlagBits           = 0;
-                                RAMWriteRead          = 0;
-                                busDrive              = 0;
-                                microInstructionCounterReset = 0;
+                                microInstructionReset = 0;
+                                pcup = 1;
+                                `latchClear
+
                             end
                             1: begin
-                                programCounterCountUp = 1;
-                                programCounterJump    = 0;
-                                loadInstruction       = 0;
-                                loadMemoryAddress     = 1;
-                                StackCountUp          = 0;
-                                StackCountDown        = 0;
-                                RegFileWriteEnable    = 0;
-                                RegFileWriteAddress   = 0;
-                                ReadAddressA          = 0;
-                                ReadAddressB          = 0;
-                                functionSelect        = 0;
-                                overwriteFlagsMask    = 0;
-                                setFlagBits           = 0;
-                                RAMWriteRead          = 0;
-                                busDrive              = progarmCounterOut;
-                                microInstructionCounterReset = 0;
+                                bd = programCounterOut;
+                                marin = 1;
+                                `latchClear
                             end
                             2: begin
-                                programCounterCountUp = 0;
-                                programCounterJump    = 0;
-                                loadInstruction       = 1;
-                                loadMemoryAddress     = 0;
-                                StackCountUp          = 0;
-                                StackCountDown        = 0;
-                                RegFileWriteEnable    = 0;
-                                RegFileWriteAddress   = 0;
-                                ReadAddressA          = 0;
-                                ReadAddressB          = 0;
-                                functionSelect        = 0;
-                                overwriteFlagsMask    = 0;
-                                setFlagBits           = 0;
-                                RAMWriteRead          = 0;
-                                busDrive              = RAMOut;
-                                microInstructionCounterReset = 1;
+                                rfw = 1;
+                                rfwa = rx;
+                                bd = RAMOut;
+                                `latchClear
+                            end
+                            3: begin
+                                `fetchnext0
+                                `latchClear
+                            end
+
+                            4: begin
+                                `fetchnext1
+                                `latchClear
+                            end
+
+                            5: begin
+                                `fetchnext2
+                                `latchClear
                             end
 
                         endcase
@@ -283,41 +346,19 @@ module ControlLogic(
 
                         case (microInstructionCounter)
 
-                        0: begin
-                            programCounterCountUp = 1;
-                            programCounterJump    = 0;
-                            loadInstruction       = 0;
-                            loadMemoryAddress     = 1;
-                            StackCountUp          = 0;
-                            StackCountDown        = 0;
-                            RegFileWriteEnable    = 0;
-                            RegFileWriteAddress   = 0;
-                            ReadAddressA          = 0;
-                            ReadAddressB          = 0;
-                            functionSelect        = 0;
-                            overwriteFlagsMask    = 0;
-                            setFlagBits           = 0;
-                            RAMWriteRead          = 0;
-                            busDrive              = progarmCounterOut;
-                        end
-                        1: begin
-                            programCounterCountUp = 0;
-                            programCounterJump    = 0;
-                            loadInstruction       = 1;
-                            loadMemoryAddress     = 0;
-                            StackCountUp          = 0;
-                            StackCountDown        = 0;
-                            RegFileWriteEnable    = 0;
-                            RegFileWriteAddress   = 0;
-                            ReadAddressA          = 0;
-                            ReadAddressB          = 0;
-                            functionSelect        = 0;
-                            overwriteFlagsMask    = 0;
-                            setFlagBits           = 0;
-                            RAMWriteRead          = 0;
-                            busDrive              = RAMOut;
-                            microInstructionCounterReset = 1;
-                        end
+                            0: begin
+                                microInstructionReset = 0;
+                                `fetchnext0
+                                `latchClear
+                            end
+                            1: begin
+                                `fetchnext1
+                                `latchClear
+                            end
+                            2: begin
+                                `fetchnext2
+                                `latchClear
+                            end
 
                         endcase
 
@@ -336,64 +377,33 @@ module ControlLogic(
                         case (microInstructionCounter)
 
                             0: begin
-
-                                programCounterCountUp = 0;
-                                programCounterJump    = 0;
-                                loadInstruction       = 0;
-                                loadMemoryAddress     = 0;
-                                StackCountUp          = 0;
-                                StackCountDown        = 0;
-                                RegFileWriteEnable    = 1;
-                                RegFileWriteAddress   = ry;
-                                ReadAddressA          = rx;
-                                ReadAddressB          = 0;
-                                functionSelect        = 0;
-                                overwriteFlagsMask    = 0;
-                                setFlagBits           = 0;
-                                RAMWriteRead          = 0;
-                                busDrive              = 0;
-                                microInstructionCounterReset = 0;
+                                
+                                microInstructionReset = 0;
+                                rfw = 1;
+                                rfwa = ry;
+                                raa = rx;
+                                `latchClear
 
                             end
 
                             1: begin
 
-                                programCounterCountUp = 1;
-                                programCounterJump    = 0;
-                                loadInstruction       = 0;
-                                loadMemoryAddress     = 1;
-                                StackCountUp          = 0;
-                                StackCountDown        = 0;
-                                RegFileWriteEnable    = 0;
-                                RegFileWriteAddress   = 0;
-                                ReadAddressA          = 0;
-                                ReadAddressB          = 0;
-                                functionSelect        = 0;
-                                overwriteFlagsMask    = 0;
-                                setFlagBits           = 0;
-                                RAMWriteRead          = 0;
-                                busDrive              = progarmCounterOut;
+                                `fetchnext0
+                                `latchClear
 
                             end
 
                             2: begin
 
-                                programCounterCountUp = 0;
-                                programCounterJump    = 0;
-                                loadInstruction       = 1;
-                                loadMemoryAddress     = 0;
-                                StackCountUp          = 0;
-                                StackCountDown        = 0;
-                                RegFileWriteEnable    = 0;
-                                RegFileWriteAddress   = 0;
-                                ReadAddressA          = 0;
-                                ReadAddressB          = 0;
-                                functionSelect        = 0;
-                                overwriteFlagsMask    = 0;
-                                setFlagBits           = 0;
-                                RAMWriteRead          = 0;
-                                busDrive              = RAMOut;
-                                microInstructionCounterReset = 1; 
+                                `fetchnext1
+                                `latchClear 
+
+                            end
+
+                            3: begin
+
+                                `fetchnext2
+                                `latchClear
 
                             end
 
@@ -416,62 +426,104 @@ module ControlLogic(
 
                         0: begin
 
-                            programCounterCountUp = 1;
-                            programCounterJump    = 0;
-                            loadInstruction       = 0;
-                            loadMemoryAddress     = 1;
-                            StackCountUp          = 0;
-                            StackCountDown        = 0;
-                            RegFileWriteEnable    = 0;
-                            RegFileWriteAddress   = 0;
-                            ReadAddressA          = 0;
-                            ReadAddressB          = 0;
-                            functionSelect        = 0;
-                            overwriteFlagsMask    = 0;
-                            setFlagBits           = 0;
-                            RAMWriteRead          = 0;
-                            busDrive              = progarmCounterOut;
+                            microInstructionReset = 0;
+                            pcup = 1;
+                            `latchClear
+                            
 
                         end
 
                         1: begin
 
-                            programCounterCountUp = 0;
-                            programCounterJump    = 0;
-                            loadInstruction       = 0;
-                            loadMemoryAddress     = 0;
-                            StackCountUp          = 0;
-                            StackCountDown        = 0;
-                            RegFileWriteEnable    = 1;
-                            RegFileWriteAddress   = ry;
-                            ReadAddressA          = 0;
-                            ReadAddressB          = 0;
-                            functionSelect        = 0;
-                            overwriteFlagsMask    = 0;
-                            setFlagBits           = 0;
-                            RAMWriteRead          = 0;
-                            busDrive              = RAMOut;
+                            bd = programCounterOut;
+                            marin = 1;
+                            `latchClear 
+                            
+                        end
+
+                        2: begin
+
+                            bd = RAMOut;
+                            bs = 1;
+                            fs = ALUadd;
+                            raa = rx;
+                            `latchClear
+
+                        end
+
+                        3: begin
+
+                            bd = ALUOut;
+                            rfw = 1;
+                            rfwa = rx;
+                            `latchClear
+
+                        end
+
+                        4: begin
+
+                            `fetchnext0
+                            `latchClear
+
+                        end
+
+                        5: begin 
+                            `fetchnext1
+                            `latchClear
+                        end
+
+                        6: begin
+                            `fetchnext2
+                            `latchClear
+                        end
+
+                    endcase
+
+                    end
+
+                endcase
+
+            end
+
+            jmp: begin
+
+                case (am)
+
+                    direct: begin
+
+                    case (microInstructionCounter)
+
+                        0: begin
+                            microInstructionReset = 0;
+                            pcup = 1;
+                            `latchClear
+
+                        end
+
+                        1: begin
+
+                            bd = programCounterOut;
+                            marin = 1;
+                            `latchClear
 
                         end
 
                         2: begin
 
-                            programCounterCountUp = 0;
-                            programCounterJump    = 0;
-                            loadInstruction       = 0;
-                            loadMemoryAddress     = 0;
-                            StackCountUp          = 0;
-                            StackCountDown        = 0;
-                            RegFileWriteEnable    = 0;
-                            RegFileWriteAddress   = 0;
-                            ReadAddressA          = 0;
-                            ReadAddressB          = 0;
-                            functionSelect        = 0;
-                            overwriteFlagsMask    = 0;
-                            setFlagBits           = 0;
-                            RAMWriteRead          = 0;
-                            busDrive              = 0;
+                            bd = RAMOut;
+                            pcjmp = 1;
+                            `latchClear
 
+                        end
+
+                        3: begin
+                            `fetchnext1 // already set pc
+                            `latchClear
+                        end
+
+                        4: begin
+                            `fetchnext2 
+                            `latchClear
                         end
 
                     endcase
@@ -487,39 +539,18 @@ module ControlLogic(
                 case (microInstructionCounter) 
 
                     0: begin
-                        programCounterCountUp = 1;
-                        programCounterJump    = 0;
-                        loadInstruction       = 0;
-                        loadMemoryAddress     = 1;
-                        StackCountUp          = 0;
-                        StackCountDown        = 0;
-                        RegFileWriteEnable    = 0;
-                        RegFileWriteAddress   = 0;
-                        ReadAddressA          = 0;
-                        ReadAddressB          = 0;
-                        functionSelect        = 0;
-                        overwriteFlagsMask    = 0;
-                        setFlagBits           = 0;
-                        RAMWriteRead          = 0;
-                        busDrive              = progarmCounterOut;
+                        microInstructionReset = 0;
+                        `fetchnext0
+                        `latchClear
                     end
                     1: begin
-                        programCounterCountUp = 0;
-                        programCounterJump    = 0;
-                        loadInstruction       = 1;
-                        loadMemoryAddress     = 0;
-                        StackCountUp          = 0;
-                        StackCountDown        = 0;
-                        RegFileWriteEnable    = 0;
-                        RegFileWriteAddress   = 0;
-                        ReadAddressA          = 0;
-                        ReadAddressB          = 0;
-                        functionSelect        = 0;
-                        overwriteFlagsMask    = 0;
-                        setFlagBits           = 0;
-                        RAMWriteRead          = 0;
-                        busDrive              = RAMOut;
-                        microInstructionCounterReset = 1;
+                        `fetchnext1
+                        `latchClear
+                    end
+
+                    3: begin
+                        `fetchnext2
+                        `latchClear
                     end
 
                 endcase

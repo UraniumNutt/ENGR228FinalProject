@@ -9,21 +9,18 @@ module MemoryAddressRegister(
     input clk,
     input loadMemoryAddress,
     input [15:0] memoryAddressIn,
-    output [15:0] memoryAddressOut
+    output reg [15:0] memoryAddressOut
 
     );
 
     localparam initialAddress = 16'h0000; // what the memory address register starts at
 
-    reg [15:0] currentMemoryAddress;
-    initial currentMemoryAddress = initialAddress;
-
-    assign memoryAddressOut = currentMemoryAddress;
+    initial memoryAddressOut = initialAddress;
 
     always @(posedge clk) begin
 
         if (loadMemoryAddress == 1) begin
-            currentMemoryAddress = memoryAddressIn;
+            memoryAddressOut = memoryAddressIn;
         end
 
     end

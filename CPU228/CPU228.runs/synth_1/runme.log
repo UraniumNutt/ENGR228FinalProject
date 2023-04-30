@@ -21,17 +21,26 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 16468
+INFO: [Synth 8-7075] Helper process launched with PID 173631
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [/opt/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
-INFO: [Synth 8-11241] undeclared symbol 'RAMdataInm', assumed default net type 'wire' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:128]
+INFO: [Synth 8-11241] undeclared symbol 'programCounterAddressOut', assumed default net type 'wire' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:65]
+WARNING: [Synth 8-8895] 'programCounterAddressOut' is already implicitly declared on line 65 [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:80]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1941.004 ; gain = 371.770 ; free physical = 1699 ; free virtual = 13267
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1377.874; parent = 1168.921; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 2936.625; parent = 1941.008; children = 995.617
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1941.969 ; gain = 372.738 ; free physical = 3194 ; free virtual = 7884
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1448.211; parent = 1208.952; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2937.590; parent = 1941.973; children = 995.617
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'CPU' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:5]
-INFO: [Synth 8-6157] synthesizing module 'clkModule' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/clkModule.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'clkModule' (0#1) [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/clkModule.v:6]
+INFO: [Synth 8-6157] synthesizing module 'Bus' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/Bus.v:5]
+WARNING: [Synth 8-567] referenced signal 'input0' should be on the sensitivity list [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/Bus.v:20]
+WARNING: [Synth 8-567] referenced signal 'input1' should be on the sensitivity list [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/Bus.v:20]
+WARNING: [Synth 8-567] referenced signal 'input2' should be on the sensitivity list [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/Bus.v:20]
+WARNING: [Synth 8-567] referenced signal 'input3' should be on the sensitivity list [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/Bus.v:20]
+WARNING: [Synth 8-567] referenced signal 'input4' should be on the sensitivity list [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/Bus.v:20]
+WARNING: [Synth 8-567] referenced signal 'input5' should be on the sensitivity list [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/Bus.v:20]
+WARNING: [Synth 8-567] referenced signal 'input6' should be on the sensitivity list [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/Bus.v:20]
+WARNING: [Synth 8-567] referenced signal 'input7' should be on the sensitivity list [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/Bus.v:20]
+INFO: [Synth 8-6155] done synthesizing module 'Bus' (0#1) [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/Bus.v:5]
 INFO: [Synth 8-6157] synthesizing module 'ProgramCounter' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ProgramCounter.v:5]
 INFO: [Synth 8-6155] done synthesizing module 'ProgramCounter' (0#1) [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ProgramCounter.v:5]
 INFO: [Synth 8-6157] synthesizing module 'InstructionRegister' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/InstructionRegister.v:5]
@@ -43,146 +52,55 @@ INFO: [Synth 8-6155] done synthesizing module 'StackPointer' (0#1) [/home/uraniu
 INFO: [Synth 8-6157] synthesizing module 'RegisterFile' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/RegisterFile.v:5]
 INFO: [Synth 8-6155] done synthesizing module 'RegisterFile' (0#1) [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/RegisterFile.v:5]
 INFO: [Synth 8-6157] synthesizing module 'ArithmeticLogicUnit' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ArithmeticLogicUnit.v:5]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ArithmeticLogicUnit.v:46]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ArithmeticLogicUnit.v:52]
 INFO: [Synth 8-6155] done synthesizing module 'ArithmeticLogicUnit' (0#1) [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ArithmeticLogicUnit.v:5]
 INFO: [Synth 8-6157] synthesizing module 'Memory' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/Memory.v:5]
 INFO: [Synth 8-3876] $readmem data file '/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/compiler/output.txt' is read successfully [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/Memory.v:28]
 INFO: [Synth 8-6155] done synthesizing module 'Memory' (0#1) [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/Memory.v:5]
+INFO: [Synth 8-6157] synthesizing module 'ControlLogic' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ControlLogic.v:5]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ControlLogic.v:258]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ControlLogic.v:285]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ControlLogic.v:316]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ControlLogic.v:346]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ControlLogic.v:342]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ControlLogic.v:394]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ControlLogic.v:390]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ControlLogic.v:453]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ControlLogic.v:449]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ControlLogic.v:489]
+INFO: [Synth 8-6155] done synthesizing module 'ControlLogic' (0#1) [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ControlLogic.v:5]
 INFO: [Synth 8-6155] done synthesizing module 'CPU' (0#1) [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:5]
-WARNING: [Synth 8-3848] Net led in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:10]
-WARNING: [Synth 8-3848] Net RAMdataInm in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:128]
-WARNING: [Synth 8-3848] Net programCounterCountUP in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:18]
-WARNING: [Synth 8-3848] Net programCounterJump in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:19]
-WARNING: [Synth 8-3848] Net programCounterAddressIn in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:20]
-WARNING: [Synth 8-3848] Net loadInstruction in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:33]
-WARNING: [Synth 8-3848] Net instructionIn in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:34]
-WARNING: [Synth 8-3848] Net loadMemoryAddress in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:46]
-WARNING: [Synth 8-3848] Net memoryAddressIn in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:47]
-WARNING: [Synth 8-3848] Net CountUp in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:59]
-WARNING: [Synth 8-3848] Net CountDown in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:60]
-WARNING: [Synth 8-3848] Net WriteEnable in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:72]
-WARNING: [Synth 8-3848] Net WriteAddress in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:73]
-WARNING: [Synth 8-3848] Net WriteData in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:74]
-WARNING: [Synth 8-3848] Net ReadAddressA in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:75]
-WARNING: [Synth 8-3848] Net ReadAddressB in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:76]
-WARNING: [Synth 8-3848] Net ReadAddressIndex in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:77]
-WARNING: [Synth 8-3848] Net A in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:97]
-WARNING: [Synth 8-3848] Net B in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:98]
-WARNING: [Synth 8-3848] Net functionSelect in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:99]
-WARNING: [Synth 8-3848] Net overwriteFlagsMask in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:100]
-WARNING: [Synth 8-3848] Net setFlagBits in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:101]
-WARNING: [Synth 8-3848] Net RAMreadWrite in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:118]
-WARNING: [Synth 8-3848] Net RAMaddress in module/entity CPU does not have driver. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:119]
+WARNING: [Synth 8-7129] Port instructionIn[0] in module ControlLogic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port currentFlags[4] in module ControlLogic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port currentFlags[3] in module ControlLogic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port currentFlags[2] in module ControlLogic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port currentFlags[1] in module ControlLogic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port currentFlags[0] in module ControlLogic is either unconnected or has no load
 WARNING: [Synth 8-7129] Port address[15] in module Memory is either unconnected or has no load
 WARNING: [Synth 8-7129] Port address[14] in module Memory is either unconnected or has no load
 WARNING: [Synth 8-7129] Port address[13] in module Memory is either unconnected or has no load
 WARNING: [Synth 8-7129] Port address[12] in module Memory is either unconnected or has no load
 WARNING: [Synth 8-7129] Port address[11] in module Memory is either unconnected or has no load
 WARNING: [Synth 8-7129] Port address[10] in module Memory is either unconnected or has no load
-WARNING: [Synth 8-7129] Port WriteAddress[15] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port WriteAddress[14] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port WriteAddress[13] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port WriteAddress[12] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port WriteAddress[11] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port WriteAddress[10] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port WriteAddress[9] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port WriteAddress[8] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port WriteAddress[7] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port WriteAddress[6] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port WriteAddress[5] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port WriteAddress[4] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port WriteAddress[3] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressA[15] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressA[14] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressA[13] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressA[12] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressA[11] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressA[10] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressA[9] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressA[8] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressA[7] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressA[6] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressA[5] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressA[4] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressA[3] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressB[15] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressB[14] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressB[13] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressB[12] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressB[11] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressB[10] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressB[9] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressB[8] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressB[7] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressB[6] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressB[5] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressB[4] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressB[3] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressIndex[15] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressIndex[14] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressIndex[13] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressIndex[12] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressIndex[11] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressIndex[10] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressIndex[9] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressIndex[8] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressIndex[7] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressIndex[6] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressIndex[5] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressIndex[4] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port ReadAddressIndex[3] in module RegisterFile is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[15] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[14] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[13] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[12] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[11] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[10] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[9] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[8] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[7] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[6] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[5] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[4] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[3] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[2] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[1] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[0] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port btnC in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[15] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[14] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[13] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[12] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[11] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[10] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[9] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[8] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[7] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[6] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[5] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[4] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[3] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[2] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[1] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port sw[0] in module CPU is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2008.973 ; gain = 439.738 ; free physical = 1775 ; free virtual = 13344
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1377.874; parent = 1168.921; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3004.594; parent = 2008.977; children = 995.617
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2018.938 ; gain = 449.707 ; free physical = 3272 ; free virtual = 7963
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1448.211; parent = 1208.952; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3014.559; parent = 2018.941; children = 995.617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2026.785 ; gain = 457.551 ; free physical = 1771 ; free virtual = 13340
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1377.874; parent = 1168.921; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3022.406; parent = 2026.789; children = 995.617
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2036.750 ; gain = 467.520 ; free physical = 3267 ; free virtual = 7958
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1448.211; parent = 1208.952; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3032.371; parent = 2036.754; children = 995.617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2026.785 ; gain = 457.551 ; free physical = 1771 ; free virtual = 13340
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1377.874; parent = 1168.921; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3022.406; parent = 2026.789; children = 995.617
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2036.750 ; gain = 467.520 ; free physical = 3267 ; free virtual = 7958
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1448.211; parent = 1208.952; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3032.371; parent = 2036.754; children = 995.617
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2026.785 ; gain = 0.000 ; free physical = 1766 ; free virtual = 13335
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2036.750 ; gain = 0.000 ; free physical = 3263 ; free virtual = 7954
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -193,67 +111,72 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/CPU_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2164.535 ; gain = 0.000 ; free physical = 1639 ; free virtual = 13207
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2193.500 ; gain = 0.000 ; free physical = 3166 ; free virtual = 7857
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2164.535 ; gain = 0.000 ; free physical = 1639 ; free virtual = 13207
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2193.500 ; gain = 0.000 ; free physical = 3166 ; free virtual = 7857
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [/opt/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2164.535 ; gain = 595.301 ; free physical = 1649 ; free virtual = 13218
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1424.515; parent = 1215.593; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3128.141; parent = 2132.523; children = 995.617
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2193.500 ; gain = 624.270 ; free physical = 3241 ; free virtual = 7932
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1448.211; parent = 1208.952; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3157.105; parent = 2161.488; children = 995.617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2164.535 ; gain = 595.301 ; free physical = 1649 ; free virtual = 13218
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1424.515; parent = 1215.593; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3128.141; parent = 2132.523; children = 995.617
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2193.500 ; gain = 624.270 ; free physical = 3241 ; free virtual = 7932
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1448.211; parent = 1208.952; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3157.105; parent = 2161.488; children = 995.617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2164.535 ; gain = 595.301 ; free physical = 1649 ; free virtual = 13218
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1424.515; parent = 1215.593; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3128.141; parent = 2132.523; children = 995.617
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2193.500 ; gain = 624.270 ; free physical = 3241 ; free virtual = 7932
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1448.211; parent = 1208.952; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3157.105; parent = 2161.488; children = 995.617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2164.535 ; gain = 595.301 ; free physical = 1636 ; free virtual = 13206
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1424.515; parent = 1215.593; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3128.141; parent = 2132.523; children = 995.617
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2193.500 ; gain = 624.270 ; free physical = 3224 ; free virtual = 7916
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1448.211; parent = 1208.952; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3157.105; parent = 2161.488; children = 995.617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   4 Input   32 Bit       Adders := 1     
-	   3 Input   18 Bit       Adders := 1     
+	   3 Input   32 Bit       Adders := 2     
+	   2 Input   18 Bit       Adders := 1     
+	   2 Input   17 Bit       Adders := 1     
 	   3 Input   16 Bit       Adders := 1     
-	   2 Input    8 Bit       Adders := 2     
+	   2 Input    3 Bit       Adders := 1     
 +---XORs : 
 	   2 Input     32 Bit         XORs := 1     
 +---Registers : 
 	               32 Bit    Registers := 1     
-	               16 Bit    Registers := 3     
-	                8 Bit    Registers := 1     
-	                5 Bit    Registers := 1     
-	                1 Bit    Registers := 1     
+	               16 Bit    Registers := 12    
+	                5 Bit    Registers := 4     
+	                3 Bit    Registers := 6     
+	                1 Bit    Registers := 9     
 +---Muxes : 
-	   5 Input   32 Bit        Muxes := 1     
-	  11 Input   32 Bit        Muxes := 1     
-	  18 Input   16 Bit        Muxes := 1     
-	   2 Input    5 Bit        Muxes := 4     
-	  18 Input    4 Bit        Muxes := 1     
-	  18 Input    3 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 2     
+	  18 Input   32 Bit        Muxes := 2     
+	   2 Input    5 Bit        Muxes := 9     
+	   4 Input    5 Bit        Muxes := 2     
+	   6 Input    5 Bit        Muxes := 2     
+	   2 Input    3 Bit        Muxes := 15    
+	   4 Input    3 Bit        Muxes := 7     
+	   6 Input    3 Bit        Muxes := 5     
+	   2 Input    1 Bit        Muxes := 55    
 	   3 Input    1 Bit        Muxes := 1     
+	   4 Input    1 Bit        Muxes := 18    
+	   7 Input    1 Bit        Muxes := 1     
+	   6 Input    1 Bit        Muxes := 7     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -270,37 +193,30 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
-WARNING: [Synth 8-6014] Unused sequential element RF/File_reg was removed. 
-WARNING: [Synth 8-6014] Unused sequential element RAM/ram_reg was removed. 
-DSP Report: Generating DSP ALU/internalResult0, operation Mode is: A*B.
-DSP Report: operator ALU/internalResult0 is absorbed into DSP ALU/internalResult0.
-WARNING: [Synth 8-7129] Port led[15] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[14] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[13] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[12] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[11] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[10] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[9] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[8] in module CPU is either unconnected or has no load
-WARNING: [Synth 8-7129] Port led[7] in module CPU is either unconnected or has no load
-INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+WARNING: [Synth 8-3936] Found unconnected internal register 'MR/memoryAddressOut_reg' and it is trimmed from '16' to '10' bits. [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/MemoryAddressRegister.v:23]
+WARNING: [Synth 8-7129] Port instructionIn[0] in module ControlLogic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port currentFlags[4] in module ControlLogic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port currentFlags[3] in module ControlLogic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port currentFlags[2] in module ControlLogic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port currentFlags[1] in module ControlLogic is either unconnected or has no load
+WARNING: [Synth 8-7129] Port currentFlags[0] in module ControlLogic is either unconnected or has no load
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2164.535 ; gain = 595.301 ; free physical = 1628 ; free virtual = 13202
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1424.515; parent = 1215.593; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3128.141; parent = 2132.523; children = 995.617
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2193.500 ; gain = 624.270 ; free physical = 3217 ; free virtual = 7913
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1448.211; parent = 1208.952; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3157.105; parent = 2161.488; children = 995.617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 
-DSP: Preliminary Mapping Report (see note below. The ' indicates corresponding REG is set)
-+--------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|Module Name         | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
-+--------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|ArithmeticLogicUnit | A*B         | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-+--------------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+Distributed RAM: Preliminary Mapping Report (see note below)
++------------+-------------+-----------+----------------------+-----------------+
+|Module Name | RTL Object  | Inference | Size (Depth x Width) | Primitives      | 
++------------+-------------+-----------+----------------------+-----------------+
+|CPU         | RAM/ram_reg | Implied   | 1 K x 16             | RAM256X1S x 64  | 
++------------+-------------+-----------+----------------------+-----------------+
 
-Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+Note: The table above is a preliminary report that shows the Distributed RAMs at the current stage of the synthesis flow. Some Distributed RAMs may be reimplemented as non Distributed RAM primitives later in the synthesis flow. Multiple instantiated RAMs are reported only once.
 ---------------------------------------------------------------------------------
 Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
@@ -308,25 +224,39 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2164.535 ; gain = 595.301 ; free physical = 1514 ; free virtual = 13088
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1467.631; parent = 1258.740; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3128.141; parent = 2132.523; children = 995.617
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2193.500 ; gain = 624.270 ; free physical = 3095 ; free virtual = 7792
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1537.116; parent = 1297.857; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3157.105; parent = 2161.488; children = 995.617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2164.535 ; gain = 595.301 ; free physical = 1514 ; free virtual = 13088
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1467.756; parent = 1258.865; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3128.141; parent = 2132.523; children = 995.617
+Finished Timing Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 2193.500 ; gain = 624.270 ; free physical = 3096 ; free virtual = 7793
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1541.147; parent = 1301.889; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3157.105; parent = 2161.488; children = 995.617
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Distributed RAM: Final Mapping Report
++------------+-------------+-----------+----------------------+-----------------+
+|Module Name | RTL Object  | Inference | Size (Depth x Width) | Primitives      | 
++------------+-------------+-----------+----------------------+-----------------+
+|CPU         | RAM/ram_reg | Implied   | 1 K x 16             | RAM256X1S x 64  | 
++------------+-------------+-----------+----------------------+-----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2164.535 ; gain = 595.301 ; free physical = 1511 ; free virtual = 13085
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1467.982; parent = 1259.092; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3128.141; parent = 2132.523; children = 995.617
+Finished Technology Mapping : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 2193.500 ; gain = 624.270 ; free physical = 3098 ; free virtual = 7794
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1541.147; parent = 1301.889; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3157.105; parent = 2161.488; children = 995.617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -344,49 +274,49 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2164.535 ; gain = 595.301 ; free physical = 1512 ; free virtual = 13086
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1468.213; parent = 1259.322; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3128.141; parent = 2132.523; children = 995.617
+Finished IO Insertion : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 2193.500 ; gain = 624.270 ; free physical = 3107 ; free virtual = 7803
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1541.147; parent = 1301.889; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3157.105; parent = 2161.488; children = 995.617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2164.535 ; gain = 595.301 ; free physical = 1512 ; free virtual = 13086
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1468.229; parent = 1259.338; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3128.141; parent = 2132.523; children = 995.617
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 2193.500 ; gain = 624.270 ; free physical = 3107 ; free virtual = 7803
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1541.147; parent = 1301.889; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3157.105; parent = 2161.488; children = 995.617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2164.535 ; gain = 595.301 ; free physical = 1512 ; free virtual = 13086
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1468.244; parent = 1259.354; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3128.141; parent = 2132.523; children = 995.617
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 2193.500 ; gain = 624.270 ; free physical = 3107 ; free virtual = 7803
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1541.147; parent = 1301.889; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3157.105; parent = 2161.488; children = 995.617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2164.535 ; gain = 595.301 ; free physical = 1512 ; free virtual = 13086
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1468.307; parent = 1259.416; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3128.141; parent = 2132.523; children = 995.617
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 2193.500 ; gain = 624.270 ; free physical = 3107 ; free virtual = 7803
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1541.147; parent = 1301.889; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3157.105; parent = 2161.488; children = 995.617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2164.535 ; gain = 595.301 ; free physical = 1512 ; free virtual = 13086
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1468.307; parent = 1259.416; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3128.141; parent = 2132.523; children = 995.617
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 2193.500 ; gain = 624.270 ; free physical = 3107 ; free virtual = 7803
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1541.147; parent = 1301.889; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3157.105; parent = 2161.488; children = 995.617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2164.535 ; gain = 595.301 ; free physical = 1512 ; free virtual = 13086
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1468.322; parent = 1259.432; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3128.141; parent = 2132.523; children = 995.617
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 2193.500 ; gain = 624.270 ; free physical = 3107 ; free virtual = 7803
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1541.147; parent = 1301.889; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3157.105; parent = 2161.488; children = 995.617
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -399,32 +329,47 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+------+------+
-|      |Cell  |Count |
-+------+------+------+
-|1     |OBUFT |    16|
-+------+------+------+
++------+----------+------+
+|      |Cell      |Count |
++------+----------+------+
+|1     |BUFG      |     1|
+|2     |CARRY4    |     8|
+|3     |LUT1      |     1|
+|4     |LUT2      |    11|
+|5     |LUT3      |    45|
+|6     |LUT4      |    32|
+|7     |LUT5      |    40|
+|8     |LUT6      |   126|
+|9     |MUXF7     |     8|
+|10    |RAM256X1S |    10|
+|11    |FDRE      |   226|
+|12    |IBUF      |     1|
+|13    |OBUF      |    16|
++------+----------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2164.535 ; gain = 595.301 ; free physical = 1512 ; free virtual = 13086
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1468.354; parent = 1259.463; children = 208.953
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3128.141; parent = 2132.523; children = 995.617
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 2193.500 ; gain = 624.270 ; free physical = 3107 ; free virtual = 7803
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1541.147; parent = 1301.889; children = 239.259
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3157.105; parent = 2161.488; children = 995.617
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 36 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2164.535 ; gain = 457.551 ; free physical = 1568 ; free virtual = 13142
-Synthesis Optimization Complete : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 2164.535 ; gain = 595.301 ; free physical = 1568 ; free virtual = 13142
+Synthesis finished with 0 errors, 0 critical warnings and 8 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:20 ; elapsed = 00:00:22 . Memory (MB): peak = 2193.500 ; gain = 467.520 ; free physical = 3158 ; free virtual = 7855
+Synthesis Optimization Complete : Time (s): cpu = 00:00:22 ; elapsed = 00:00:24 . Memory (MB): peak = 2193.500 ; gain = 624.270 ; free physical = 3158 ; free virtual = 7855
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2164.535 ; gain = 0.000 ; free physical = 1555 ; free virtual = 13129
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2193.500 ; gain = 0.000 ; free physical = 3270 ; free virtual = 7966
+INFO: [Netlist 29-17] Analyzing 26 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2164.535 ; gain = 0.000 ; free physical = 1619 ; free virtual = 13193
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2193.500 ; gain = 0.000 ; free physical = 3224 ; free virtual = 7920
 INFO: [Project 1-111] Unisim Transformation Summary:
-No Unisim elements were transformed.
+  A total of 10 instances were transformed.
+  RAM256X1S => RAM256X1S (MUXF7(x2), MUXF8, RAMS64E(x4)): 10 instances
 
-Synth Design complete, checksum: 81cda530
+Synth Design complete, checksum: bf5ee779
 INFO: [Common 17-83] Releasing license: Synthesis
-43 Infos, 127 Warnings, 0 Critical Warnings and 0 Errors encountered.
+56 Infos, 29 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:25 ; elapsed = 00:00:24 . Memory (MB): peak = 2164.535 ; gain = 844.684 ; free physical = 1827 ; free virtual = 13401
+synth_design: Time (s): cpu = 00:00:27 ; elapsed = 00:00:27 . Memory (MB): peak = 2193.500 ; gain = 874.621 ; free physical = 3435 ; free virtual = 8132
 INFO: [Common 17-1381] The checkpoint '/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.runs/synth_1/CPU.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file CPU_utilization_synth.rpt -pb CPU_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Apr 27 12:00:55 2023...
+INFO: [Common 17-206] Exiting Vivado at Sat Apr 29 21:15:01 2023...

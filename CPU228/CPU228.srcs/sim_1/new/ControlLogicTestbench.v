@@ -5,7 +5,7 @@
 module ControlLogicTestbench;
 
     reg clk;
-    reg [15:0] instructionOut;
+    reg [15:0] instructionIn;
     reg [4:0] currentFlags;
     wire programCounterCountUp;
     wire programCounterJump;
@@ -21,12 +21,13 @@ module ControlLogicTestbench;
     wire [4:0] overwriteFlagsMask;
     wire [4:0] setFlagBits;
     wire RAMWriteRead;
+    wire bSource;
     wire [2:0] busDrive;
 
     ControlLogic uut(
 
         .clk(clk),
-        .instructionOut(instructionOut),
+        .instructionIn(instructionIn),
         .currentFlags(currentFlags),
         .programCounterCountUp(programCounterCountUp),
         .programCounterJump(programCounterJump),
@@ -42,13 +43,14 @@ module ControlLogicTestbench;
         .overwriteFlagsMask(overwriteFlagsMask),
         .setFlagBits(setFlagBits),
         .RAMWriteRead(RAMWriteRead),
+        .bSource(bSource),
         .busDrive(busDrive)
 
     );
 
     initial begin
 
-        currentFlags = 0; instructionOut = 0; clk = 0;
+        currentFlags = 0; instructionIn = 16'b00001000_01010010; clk = 0;
         #10 clk = 1; #10 clk = 0;
         #10 clk = 1; #10 clk = 0;
         #10 clk = 1; #10 clk = 0;

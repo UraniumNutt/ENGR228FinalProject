@@ -14,7 +14,7 @@ module Memory(
 
     reg [15:0] ram [1023:0];
 
-    assign dataOut = ram[address[9:0]];
+    assign dataOut = ram[address];
 
     always @(posedge clk) begin
         
