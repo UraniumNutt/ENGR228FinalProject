@@ -22,8 +22,8 @@ module ArithmeticLogicUnit(
     // a 32 bit result
     reg signed [31:0] internalResult;
     //assign result = internalResult[15:0];
-    wire [15:0] secondArg;
-    assign secondArg = (B && ~{15{bSource}}) || (constant && {15{bSource}});
+    wire signed [15:0] secondArg;
+    assign secondArg = (B & ~{16{bSource}}) | (constant & {16{bSource}});
 
     // instruction aliases
     localparam ref   = 5'd0;  // ref  rx       - REFlect rx               | rx <-  rx

@@ -5,49 +5,49 @@
 module CPU(
 
     output [15:0] led,
-    input boardclk,
-    output wire [15:0] instructionOutTest,  
-    output wire [4:0] currentFlagsTest,        
-    output wire programCounterCountUpTest,     
-    output wire programCounterJumpTest,        
-    output wire loadInstructionTest,           
-    output wire loadMemoryAddressTest,         
-    output wire StackCountUpTest,              
-    output wire StackCountDownTest,            
-    output wire RegFileWriteEnableTest,        
-    output wire [2:0] RegFileWriteAddressTest, 
-    output wire [2:0] ReadAddressATest,        
-    output wire [2:0] ReadAddressBTest,        
-    output wire [4:0] functionSelectTest,      
-    output wire [4:0] overwriteFlagsMaskTest,  
-    output wire [4:0] setFlagBitsTest,         
-    output wire RAMWriteReadTest,              
-    output wire bSourceTest,                  
-    output wire [2:0] busDriveTest,
-    output wire [15:0] busTest
+    input boardclk
+    // output wire [15:0] instructionOutTest,  
+    // output wire [4:0] currentFlagsTest,        
+    // output wire programCounterCountUpTest,     
+    // output wire programCounterJumpTest,        
+    // output wire loadInstructionTest,           
+    // output wire loadMemoryAddressTest,         
+    // output wire StackCountUpTest,              
+    // output wire StackCountDownTest,            
+    // output wire RegFileWriteEnableTest,        
+    // output wire [2:0] RegFileWriteAddressTest, 
+    // output wire [2:0] ReadAddressATest,        
+    // output wire [2:0] ReadAddressBTest,        
+    // output wire [4:0] functionSelectTest,      
+    // output wire [4:0] overwriteFlagsMaskTest,  
+    // output wire [4:0] setFlagBitsTest,         
+    // output wire RAMWriteReadTest,              
+    // output wire bSourceTest,                  
+    // output wire [2:0] busDriveTest,
+    // output wire [15:0] busTest
 
 
     );
 
-    assign busTest                   = bus;
-    assign instructionOutTest        = instructionOut;
-    assign currentFlagsTest          = currentFlags;
-    assign programCounterCountUpTest = programCounterCountUp;
-    assign programCounterJumpTest    = programCounterJump;
-    assign loadInstructionTest       = loadInstruction;
-    assign loadMemoryAddressTest     = loadMemoryAddress;
-    assign StackCountUpTest          = StackCountUp;
-    assign StackCountDownTest        = StackCountDown;
-    assign RegFileWriteEnableTest    = RegFileWriteEnable;
-    assign RegFileWriteAddressTest   = RegFileWriteAddress;
-    assign ReadAddressATest          = ReadAddressA;
-    assign ReadAddressBTest          = ReadAddressB;
-    assign functionSelectTest        = functionSelect;
-    assign overwriteFlagsMaskTest    = overwriteFlagsMask;
-    assign setFlagBitsTest           = setFlagBits;
-    assign RAMWriteReadTest          = RAMWriteRead;
-    assign bSourceTest               = bSource;
-    assign busDriveTest              = busDrive;
+    // assign busTest                   = bus;
+    // assign instructionOutTest        = instructionOut;
+    // assign currentFlagsTest          = currentFlags;
+    // assign programCounterCountUpTest = programCounterCountUp;
+    // assign programCounterJumpTest    = programCounterJump;
+    // assign loadInstructionTest       = loadInstruction;
+    // assign loadMemoryAddressTest     = loadMemoryAddress;
+    // assign StackCountUpTest          = StackCountUp;
+    // assign StackCountDownTest        = StackCountDown;
+    // assign RegFileWriteEnableTest    = RegFileWriteEnable;
+    // assign RegFileWriteAddressTest   = RegFileWriteAddress;
+    // assign ReadAddressATest          = ReadAddressA;
+    // assign ReadAddressBTest          = ReadAddressB;
+    // assign functionSelectTest        = functionSelect;
+    // assign overwriteFlagsMaskTest    = overwriteFlagsMask;
+    // assign setFlagBitsTest           = setFlagBits;
+    // assign RAMWriteReadTest          = RAMWriteRead;
+    // assign bSourceTest               = bSource;
+    // assign busDriveTest              = busDrive;
 
     wire clk;    
 

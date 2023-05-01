@@ -7,6 +7,8 @@ module ALUTestbench;
     reg clk;
     reg signed [15:0] A;
     reg signed [15:0] B;
+    reg signed [15:0] constant;
+    reg bSource;
     reg [4:0] functionSelect;
     reg [4:0] overwriteFlagsMask;
     reg [4:0] setFlagBits; // carry overflow zero pos neg
@@ -18,6 +20,8 @@ module ALUTestbench;
         .clk(clk),
         .A(A),
         .B(B),
+        .constant(constant),
+        .bSource(bSource),
         .functionSelect(functionSelect),
         .overwriteFlagsMask(overwriteFlagsMask),
         .setFlagBits(setFlagBits),
@@ -32,8 +36,8 @@ module ALUTestbench;
 
     initial begin
 
-        // A = 14; B = 28; functionSelect = 1; 
-        // #10 clk = 1; #10 clk = 0;
+        A = 14; B = 28; constant = 28; functionSelect = 2; bSource = 0;
+        #10 clk = 1; #10 clk = 0;
 
         // #10 functionSelect = 17; overwriteFlagsMask = 5'b11111; setFlagBits = 5'b00100;
         // #10 clk = 1; #10 clk = 0;
@@ -62,10 +66,10 @@ module ALUTestbench;
         // #10 functionSelect = 17; overwriteFlagsMask = 5'b11111; setFlagBits = 5'b00000;
         // #10 clk = 1; #10 clk = 0;
 
-        #10 functionSelect = 17; overwriteFlagsMask = 5'b11111; setFlagBits = 5'b00000;
+        // #10 functionSelect = 17; overwriteFlagsMask = 5'b11111; setFlagBits = 5'b00000;
         
-        #10 A = 256; B = 512; functionSelect = 5;
-        #10 clk = 1; #10 clk = 0;        
+        // #10 A = 256; B = 512; functionSelect = 5;
+        // #10 clk = 1; #10 clk = 0;        
         
         // #10 functionSelect = 17; overwriteFlagsMask = 5'b11111; setFlagBits = 5'b00000;
         // A = 42; functionSelect = 8;
