@@ -152,25 +152,13 @@ module ControlLogic(
         bd    = RAMOut; \
         microInstructionReset = 1;
 
-    
-
-
+    // where in the instruction the information is stored
     wire [5:0] opcode = instructionIn[15:10];
     wire [2:0] rx     = instructionIn[9:7];
     wire [2:0] am     = instructionIn[6:4];
     wire [2:0] ry     = instructionIn[3:1];
 
-    
-    
-    localparam r0 = 3'b000;
-    localparam r1 = 3'b001;
-    localparam r2 = 3'b010;
-    localparam r3 = 3'b011;
-    localparam r4 = 3'b100;
-    localparam r5 = 3'b101;
-    localparam r6 = 3'b110;
-    localparam r7 = 3'b111;
-
+    // opcodes and their values
     localparam nop  = 6'b000000;
     localparam ld   = 6'b000001;
     localparam st   = 6'b000010;
@@ -217,6 +205,7 @@ module ControlLogic(
     localparam jsr  = 6'b101011;
     localparam rts  = 6'b101100;
 
+    // alu operations and their values
     localparam ALUref   = 5'd0;  // ref  rx       - REFlect rx               | rx <-  rx
     localparam ALUadd   = 5'd1;  // add  rx, *    - ADD with carry           | rx <-  rx + * + Cin
     localparam ALUadwc  = 5'd2;  // adwc rx, *    - ADd Without Carry        | rx <-  rx + *
@@ -236,7 +225,7 @@ module ControlLogic(
     localparam ALUbit   = 5'd16; // bit  rx, *    - BIt Test                 | rx & * ; Note: does not write back, only updates flags
     localparam ALUchangeFlags  = 5'd17; // do nothing to internalResult
 
-
+    // addressing modes and their values
     localparam direct           = 3'b000;
     localparam immediate        = 3'b001;
     localparam indirect         = 3'b010;
@@ -245,12 +234,14 @@ module ControlLogic(
     localparam register         = 3'b101;
     localparam registerIndirect = 3'b110;
 
+    // bus drive sources
     localparam programCounterOut      = 3'b001;
     localparam instructionRegisterOut = 3'b010;
     localparam stackOut               = 3'b011;
     localparam ALUOut                 = 3'b100;
     localparam RAMOut                 = 3'b101;
 
+    // micro instruction step counter
     reg [2:0] microInstructionCounter;
     initial microInstructionCounter = 0;
     reg microInstructionReset;
