@@ -4,16 +4,15 @@
 
 module RegisterFile(
 
+    output [15:0] temp,
     input clk,
-    input WriteEnable, 
-    input [15:0] WriteAddress, 
-    input [15:0] WriteData, 
-    input [15:0] ReadAddressA,
-    input [15:0] ReadAddressB,
-    input [15:0] ReadAddressIndex,
+    input RegFileWriteEnable, 
+    input [2:0] RegFileWriteAddress, 
+    input [15:0] RegFileWriteData, 
+    input [2:0] ReadAddressA,
+    input [2:0] ReadAddressB,
     output [15:0] ReadDataA,
-    output [15:0] ReadDataB,
-    output [15:0] ReadDataIndex
+    output [15:0] ReadDataB
 
     );
 
@@ -21,13 +20,14 @@ module RegisterFile(
 
     assign ReadDataA = File[ReadAddressA];
     assign ReadDataB = File[ReadAddressB];
-    assign ReadDataIndex = File[ReadAddressIndex];
+
+    assign temp = File[0];
 
     always @(posedge clk) begin
 
-        if (WriteEnable == 1) begin
+        if (RegFileWriteEnable == 1) begin
 
-            File [WriteAddress] = WriteData;
+            File [RegFileWriteAddress] = RegFileWriteData;
 
         end
 

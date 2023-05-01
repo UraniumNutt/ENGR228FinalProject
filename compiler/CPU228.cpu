@@ -29,7 +29,7 @@
 {
 
 	; nop
-	nop 									 => 0b00000000`8
+	nop 									 => 0b0000000`16
 
 	; load / store
 	ld   {r: register}, {am: addressingMode} => 0b000001`6 @ r @ am
@@ -51,29 +51,30 @@
 	xor  {r: register}, {am: addressingMode} => 0b001111`6 @ r @ am
 	sl   {r: register}                       => 0b010000`6 @ r @ 0b0000000`7
 	sr   {r: register}                       => 0b010001`6 @ r @ 0b0000000`7
-	sl   {r: register}, {am: addressingMode} => 0b010010`6 @ r @ am
-	sr   {r: register}, {am: addressingMode} => 0b010011`6 @ r @ am
-	rol  {r: register}                       => 0b010100`6 @ r @ 0b0000000`7
-	ror  {r: register}                       => 0b010101`6 @ r @ 0b0000000`7
-	rol  {r: register}, {am: addressingMode} => 0b010110`6 @ r @ am
-	ror  {r: register}, {am: addressingMode} => 0b010111`6 @ r @ am
-	cmp  {r: register}, {am: addressingMode} => 0b011000`6 @ r @ am
-	bit  {r: register}, {am: addressingMode} => 0b011001`6 @ r @ am
+	cmp  {r: register}, {am: addressingMode} => 0b010010`6 @ r @ am
+	bit  {r: register}, {am: addressingMode} => 0b010011`6 @ r @ am
 
 	; clear / set flags
-	zc										 => 0b011010`6 @ 0b0000000000`10
-	zs										 => 0b011011`6 @ 0b0000000000`10
-	cc										 => 0b011100`6 @ 0b0000000000`10
-	cs										 => 0b011101`6 @ 0b0000000000`10
-	pc										 => 0b011110`6 @ 0b0000000000`10
-	ps										 => 0b011111`6 @ 0b0000000000`10
-	nc										 => 0b100000`6 @ 0b0000000000`10
-	ns										 => 0b100001`6 @ 0b0000000000`10
+	zc										 => 0b010100`6 @ 0b0000000000`10
+	zs										 => 0b010101`6 @ 0b0000000000`10
+	cc										 => 0b010110`6 @ 0b0000000000`10
+	cs										 => 0b010111`6 @ 0b0000000000`10
+	oc										 => 0b011000`6 @ 0b0000000000`10
+	os										 => 0b011001`6 @ 0b0000000000`10
+	pc										 => 0b011010`6 @ 0b0000000000`10
+	ps										 => 0b011011`6 @ 0b0000000000`10
+	nc										 => 0b011100`6 @ 0b0000000000`10
+	ns										 => 0b011101`6 @ 0b0000000000`10
+
 
 	; jump instructions
-	jmp {am: addressingMode} 				 => 0b100010`6 @ 0b000`3 @ am
-	jz  {am: addressingMode} 				 => 0b100011`6 @ 0b000`3 @ am
-	jnz {am: addressingMode} 				 => 0b100100`6 @ 0b000`3 @ am
+	jmp {am: addressingMode} 				 => 0b011110`6 @ 0b000`3 @ am
+	jz  {am: addressingMode} 				 => 0b011111`6 @ 0b000`3 @ am
+	jnz {am: addressingMode} 				 => 0b100000`6 @ 0b000`3 @ am
+	jc  {am: addressingMode}				 => 0b100001`6 @ 0b000`3 @ am
+	jnc {am: addressingMode}				 => 0b100010`6 @ 0b000`3 @ am
+	jo  {am: addressingMode}				 => 0b100011`6 @ 0b000`3 @ am
+    jno {am: addressingMode}				 => 0b100100`6 @ 0b000`3 @ am
 	jp  {am: addressingMode} 				 => 0b100101`6 @ 0b000`3 @ am
 	jnp {am: addressingMode} 				 => 0b100110`6 @ 0b000`3 @ am
 	jn  {am: addressingMode} 				 => 0b100111`6 @ 0b000`3 @ am
