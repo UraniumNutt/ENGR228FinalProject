@@ -13,6 +13,9 @@ module MemoryAddressRegister(
 
     );
 
+    // reg [15:0] addressBuffer;
+    // initial addressBuffer = 0;
+
     localparam initialAddress = 16'h0000; // what the memory address register starts at
 
     initial memoryAddressOut = initialAddress;
@@ -21,7 +24,9 @@ module MemoryAddressRegister(
 
         if (loadMemoryAddress == 1) begin
             memoryAddressOut = memoryAddressIn;
-        end
+
+        end 
 
     end
+
 endmodule
