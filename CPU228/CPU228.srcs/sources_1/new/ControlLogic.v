@@ -632,6 +632,56 @@ module ControlLogic(
 
                 case (am) 
 
+                    direct: begin
+
+                        case (microInstructionCounter)
+
+
+                        endcase
+
+                    end
+
+                    immediate: begin
+
+                        case (microInstructionCounter)
+
+
+                        endcase
+
+                    end
+
+                    indirect: begin
+
+                        case (microInstructionCounter)
+
+
+                        endcase
+
+
+                    end
+
+                    directIndexed: begin
+
+                        case (microInstructionCounter)
+
+
+                        endcase
+
+                    end
+
+                    indirectIndexed: begin
+
+                        case (microInstructionCounter)
+
+
+                        endcase
+
+
+                    end
+
+
+
+
                     register: begin
 
                         case (microInstructionCounter)
@@ -666,6 +716,15 @@ module ControlLogic(
                                 `latchClear
 
                             end
+
+                        endcase
+
+                    end
+
+                    registerIndirect: begin
+
+                        case (microInstructionCounter)
+
 
                         endcase
 
