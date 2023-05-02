@@ -291,6 +291,68 @@ module ControlLogic(
 
                 case (am) 
 
+                    direct: begin
+
+                        case (microInstructionCounter)
+
+                            0: begin
+
+                                microInstructionReset = 0;
+                                pcup = 1;
+                                `latchClear
+
+                            end
+
+                            1: begin
+
+                                bd = progarmCounterOut;
+                                marin = 1;
+                                `latchClear
+
+                            end
+
+                            2: begin
+
+                                bd = RAMOut;
+                                marin = 1;
+                                `latchClear
+
+                            end
+
+                            3: begin
+
+                                bd = RAMOut;
+                                rfw = 1;
+                                rfwa = rx;
+                                `latchClear
+
+                            end
+
+                            4: begin
+
+                                `fetchnext0
+                                `latchClear
+
+                            end
+
+                            5: begin
+
+                                `fetchnext1
+                                `latchClear
+
+                            end
+
+                            6: begin
+
+                                `fetchnext2
+                                `latchClear
+
+                            end
+
+                        endcase
+
+                    end
+
                     immediate: begin
 
                         case (microInstructionCounter)
@@ -313,7 +375,7 @@ module ControlLogic(
                                 `latchClear
                             end
                             3: begin
-                                `fetchnext0
+                                `fenchnext0
                                 `latchClear
                             end
 
@@ -331,7 +393,106 @@ module ControlLogic(
 
                     end
 
+                    indirect: begin
 
+                        case (micrcoInstructionCounter)
+
+                            0: begin
+                                pcup = 1;
+                                `latchClear
+                            end
+                            1: begin
+                                bd = programCounterOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            2: begin
+                                bd = RAMOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            3: begin
+                                bd = RAMOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            4: begin
+                                bd = RAMOut;
+                                rfw = 1
+                                rfwa = rx;
+                                `latchClear
+                            end
+                            5: begin
+                                `fetchnext0
+                                `latchClear
+                            end
+                            6: begin
+                                `fetchnext1
+                                `latchClear
+                            end
+                            7: begin
+                                `fetchnext2
+                                `latchClear
+                            end
+
+                        endcase
+
+                    end
+
+                    directIndexed: begin
+
+                        case (microInstructionCounter)
+
+                            0: begin
+                                pcup = 1;
+                                `latchClear
+                            end
+                            1: begin
+                                bd = programCounterOut;
+                                bs = 1;
+                                raa = ry;
+                                fs = ALUadd;
+                                `latchClear
+                            end
+                            2: begin
+                                bd = ALUOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            3: begin
+                                bd = RAMOut;
+                                rfw = 1;
+                                rfwa = rx;
+                                `latchClear;
+                            end
+                            4: begin
+                                `fetchnext0
+                                `latchClear
+                            end
+                            5: begin
+                                `fetchnext1
+                                `latchClear
+                            end
+                            6: begin
+                                `fetchnext2
+                                `latchClear
+                            end
+
+                        endcase
+
+                    end
+
+                    indirectIndexed: begin
+
+                    end
+
+                    register: begin
+
+                    end
+
+                    registerIndirect: begin
+
+                    end
 
                     default: begin
 
