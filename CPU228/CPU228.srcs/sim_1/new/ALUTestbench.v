@@ -36,7 +36,10 @@ module ALUTestbench;
 
     initial begin
 
-        A = 14; B = 28; constant = 28; functionSelect = 2; bSource = 0;
+        // A = 14; B = 28; constant = 28; functionSelect = 2; bSource = 0;
+        // #10 clk = 1; #10 clk = 0;
+
+        A = 69; B = 0; functionSelect = 0;
         #10 clk = 1; #10 clk = 0;
 
         // #10 functionSelect = 17; overwriteFlagsMask = 5'b11111; setFlagBits = 5'b00100;

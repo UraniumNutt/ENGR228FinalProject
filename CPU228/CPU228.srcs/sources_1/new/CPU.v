@@ -24,7 +24,11 @@ module CPU(
     output wire RAMWriteReadTest,              
     output wire bSourceTest,                  
     output wire [2:0] busDriveTest,
-    output wire [15:0] busTest
+    output wire [15:0] busTest,
+    output wire [15:0] ramin,
+    output wire [15:0] ramout,
+    output wire [15:0] ramaddress,
+    output wire [15:0] aluresulttest
 
 
     );
@@ -48,6 +52,10 @@ module CPU(
     assign RAMWriteReadTest          = RAMWriteRead;
     assign bSourceTest               = bSource;
     assign busDriveTest              = busDrive;
+    assign ramin                     = RAMdataIn;
+    assign ramout                    = RAMdataOut;
+    assign ramaddress                = RAMaddress;
+    assign aluresulttest             = result;
 
     wire clk;    
 

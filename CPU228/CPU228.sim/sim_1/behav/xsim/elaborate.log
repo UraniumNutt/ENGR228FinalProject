@@ -4,6 +4,5 @@ Running: /opt/Xilinx/Vivado/2022.2/bin/unwrapped/lnx64.o/xelab --incr --debug ty
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 5 for port 'overwriteFlagsMaskTest' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sim_1/new/CPUTestbench.v:46]
 Completed static elaboration
 INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel

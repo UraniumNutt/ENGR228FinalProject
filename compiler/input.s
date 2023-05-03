@@ -2,13 +2,23 @@
 
     ; load addressing mode testing
     nop
-    ld r3, #420
-    st store, r3
-    ld r0, store
+    ld r0, #14
+    ld r1, #foo
+    add r0, (r1)
+    
+    
 
 stop:
     jmp stop
 
+foopointer:
+#d16 foo
 
-store:
-#d16 0 
+foo:
+#d16 28
+#d16 28
+
+#addr 0x3fff
+end:
+#d16 0
+

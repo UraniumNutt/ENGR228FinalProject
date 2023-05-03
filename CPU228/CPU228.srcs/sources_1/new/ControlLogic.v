@@ -152,6 +152,38 @@ module ControlLogic(
         bd    = RAMOut; \
         microInstructionReset = 1;
 
+    // alu one arg macro
+    `define aluonearg(ALUoperation) \
+        case (microInstructionCounter) \
+                        0: begin \
+                            microInstructionReset = 0; \
+                            `latchClear \
+                        end \
+                        1: begin \
+                            fs = ALUoperation; \
+                            raa = rx; \
+                            `latchClear \
+                        end \
+                        2: begin \
+                            bd = ALUOut; \
+                            rfw = 1; \
+                            rfwa = rx; \
+                            `latchClear \
+                        end \
+                        3: begin \
+                            `fetchnext0 \
+                            `latchClear \
+                        end \
+                        4: begin \
+                            `fetchnext1 \
+                            `latchClear \
+                        end \
+                        5: begin \
+                            `fetchnext2 \
+                            `latchClear \
+                        end \
+                    endcase
+
     // where in the instruction the information is stored
     wire [5:0] opcode = instructionIn[15:10];
     wire [2:0] rx     = instructionIn[9:7];
@@ -496,31 +528,36 @@ module ControlLogic(
                             end
                             2: begin
                                 bd = RAMOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            3: begin
+                                bd = RAMOut;
                                 bs = 1;
                                 raa = ry;
                                 fs = ALUadd;
                                 `latchClear
                             end
-                            3: begin
+                            4: begin
                                 bd = ALUOut;
                                 marin = 1;
                                 `latchClear
                             end
-                            4: begin
+                            5: begin
                                 bd = RAMOut;
                                 rfw = 1;
                                 rfwa = rx;
                                 `latchClear
                             end
-                            5: begin
+                            6: begin
                                 `fetchnext0
                                 `latchClear
                             end
-                            6: begin
+                            7: begin
                                 `fetchnext1
                                 `latchClear
                             end
-                            7: begin
+                            8: begin
                                 `fetchnext2
                                 `latchClear
                             end
@@ -649,24 +686,24 @@ module ControlLogic(
                             end
 
                             2: begin
-                                
                                 bd = RAMOut;
                                 marin = 1;
                                 `latchClear
                             end
 
                             3: begin
-
                                 fs = ALUref;
-                                raa = ry;
+                                raa = rx;
                                 `latchClear
                             end
+                            
                             4: begin
 
                                 bd = ALUOut;
                                 ramw = 1;
                                 `latchClear
                             end
+                            
                             5: begin
                                 `fetchnext0
                                 `latchClear
@@ -685,19 +722,56 @@ module ControlLogic(
 
                     end
 
-                    immediate: begin
-
-                        case (microInstructionCounter)
-
-
-                        endcase
-
-                    end
 
                     indirect: begin
 
                         case (microInstructionCounter)
 
+                            0: begin
+                                microInstructionReset = 0;
+                                pcup = 1;
+                                `latchClear
+                            end
+                            1: begin
+                                bd = programCounterOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            2: begin
+                                bd = RAMOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            3: begin
+                                bd = RAMOut;
+                                marin = 1;
+                                `latchClear
+                            end
+
+                            4: begin
+
+                                fs = ALUref;
+                                raa = rx;
+                                `latchClear
+                            end
+                            5: begin
+
+                                bd = ALUOut;
+                                ramw = 1;
+                                `latchClear
+                            end
+                            6: begin
+                                `fetchnext0
+                                `latchClear
+                            end
+                            7: begin
+                                `fetchnext1
+                                `latchClear
+                            end
+                            8: begin
+                                `fetchnext2
+                                `latchClear
+                            end
 
                         endcase
 
@@ -708,6 +782,54 @@ module ControlLogic(
 
                         case (microInstructionCounter)
 
+                            0: begin
+                                microInstructionReset = 0;
+                                pcup = 1;
+                                `latchClear
+                            end
+
+                            1: begin
+                                bd = programCounterOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            2: begin
+
+                                bd = RAMOut;
+                                bs = 1;
+                                raa = ry;
+                                fs = ALUadd;
+                                `latchClear
+                            end
+                            3: begin
+                                bd = ALUOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            4: begin
+
+                                fs = ALUref;
+                                raa = rx;
+                                `latchClear
+                            end
+                            5: begin
+
+                                bd = ALUOut;
+                                ramw = 1;
+                                `latchClear
+                            end
+                            6: begin
+                                `fetchnext0
+                                `latchClear
+                            end
+                            7: begin
+                                `fetchnext1
+                                `latchClear
+                            end
+                            8: begin
+                                `fetchnext2
+                                `latchClear
+                            end
 
                         endcase
 
@@ -717,6 +839,57 @@ module ControlLogic(
 
                         case (microInstructionCounter)
 
+                            0: begin
+                                microInstructionReset = 0;
+                                pcup = 1;
+                                `latchClear
+                            end
+                            1: begin
+                                bd = programCounterOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            2: begin
+                                bd = RAMOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            3: begin
+                                bd = RAMOut;
+                                bs = 1;
+                                raa = ry;
+                                fs = ALUadd;
+                                `latchClear
+                            end
+                            4: begin
+                                bd = ALUOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            5: begin
+
+                                fs = ALUref;
+                                raa = rx;
+                                `latchClear
+                            end
+                            6: begin
+
+                                bd = ALUOut;
+                                ramw = 1;
+                                `latchClear
+                            end
+                            7: begin
+                                `fetchnext0
+                                `latchClear
+                            end
+                            8: begin
+                                `fetchnext1
+                                `latchClear
+                            end
+                            9: begin
+                                `fetchnext2
+                                `latchClear
+                            end
 
                         endcase
 
@@ -731,35 +904,34 @@ module ControlLogic(
                         case (microInstructionCounter)
 
                             0: begin
-                                
                                 microInstructionReset = 0;
-                                rfw = 1;
-                                rfwa = ry;
+
+                                `latchClear
+                            end
+                            1: begin
+                                fs = ALUref;
                                 raa = rx;
                                 `latchClear
-
                             end
-
-                            1: begin
-
+                            2: begin
+                                bd = ALUOut;
+                                rfw = 1;
+                                rfwa = ry;
+                                `latchClear
+                            end
+                            3: begin
                                 `fetchnext0
                                 `latchClear
-
                             end
-
-                            2: begin
-
+                            4: begin
                                 `fetchnext1
-                                `latchClear 
-
+                                `latchClear
                             end
-
-                            3: begin
-
+                            5: begin
                                 `fetchnext2
                                 `latchClear
-
                             end
+
 
                         endcase
 
@@ -769,6 +941,43 @@ module ControlLogic(
 
                         case (microInstructionCounter)
 
+                            0: begin
+                                microInstructionReset = 0;
+
+                                `latchClear
+                            end
+                            1: begin
+                                fs = ALUref;
+                                raa = ry;
+                                `latchClear
+                            end
+                            2: begin
+                                bd = ALUOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            3: begin
+                                fs = ALUref;
+                                raa = rx;
+                                `latchClear
+                            end
+                            4: begin
+                                bd = ALUOut;
+                                ramw = 1;
+                                `latchClear
+                            end
+                            5: begin
+                                `fetchnext0
+                                `latchClear
+                            end
+                            6: begin
+                                `fetchnext1
+                                `latchClear
+                            end
+                            7: begin
+                                `fetchnext2
+                                `latchClear
+                            end
 
                         endcase
 
@@ -779,70 +988,402 @@ module ControlLogic(
 
             end
 
+            ref: begin
+
+                `aluonearg(ALUref)
+
+            end
+
             add: begin
 
                 case (am) 
 
-                    immediate: begin
+                    direct: begin
 
-                    case (microInstructionCounter)
+                        case (microInstructionCounter)
 
-                        0: begin
+                            0: begin
+                                microInstructionReset = 0;
+                                pcup = 1;
+                                `latchClear
 
-                            microInstructionReset = 0;
-                            pcup = 1;
-                            `latchClear
-                            
+                            end
+                            1: begin
+                                bd = programCounterOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            2: begin
+                                bd = RAMOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            3: begin
+                               bd = RAMOut;
+                               bs = 1;
+                               fs = ALUadd;
+                               raa = rx;
+                               `latchClear
+                            end
+                            4: begin
+                                bd = ALUOut;
+                                rfw = 1;
+                                rfwa = rx;
+                                `latchClear
+                            end
+                            5: begin
+                                `fetchnext0
+                                `latchClear
+                            end
+                            6: begin
+                                `fetchnext1
+                                `latchClear
+                            end
+                            7: begin
+                                `fetchnext2
+                                `latchClear
+                            end
 
-                        end
-
-                        1: begin
-
-                            bd = programCounterOut;
-                            marin = 1;
-                            `latchClear 
-                            
-                        end
-
-                        2: begin
-
-                            bd = RAMOut;
-                            bs = 1;
-                            fs = ALUadd;
-                            raa = rx;
-                            `latchClear
-
-                        end
-
-                        3: begin
-
-                            bd = ALUOut;
-                            rfw = 1;
-                            rfwa = rx;
-                            `latchClear
-
-                        end
-
-                        4: begin
-
-                            `fetchnext0
-                            `latchClear
-
-                        end
-
-                        5: begin 
-                            `fetchnext1
-                            `latchClear
-                        end
-
-                        6: begin
-                            `fetchnext2
-                            `latchClear
-                        end
-
-                    endcase
+                        endcase
 
                     end
+
+                    immediate: begin
+
+                        case (microInstructionCounter)
+
+                            0: begin
+
+                                microInstructionReset = 0;
+                                pcup = 1;
+                                `latchClear
+                                
+
+                            end
+
+                            1: begin
+
+                                bd = programCounterOut;
+                                marin = 1;
+                                `latchClear 
+                                
+                            end
+
+                            2: begin
+
+                                bd = RAMOut;
+                                bs = 1;
+                                fs = ALUadd;
+                                raa = rx;
+                                `latchClear
+
+                            end
+
+                            3: begin
+
+                                bd = ALUOut;
+                                rfw = 1;
+                                rfwa = rx;
+                                `latchClear
+
+                            end
+
+                            4: begin
+
+                                `fetchnext0
+                                `latchClear
+
+                            end
+
+                            5: begin 
+                                `fetchnext1
+                                `latchClear
+                            end
+
+                            6: begin
+                                `fetchnext2
+                                `latchClear
+                            end
+
+                        endcase
+
+                    end
+
+                    indirect: begin
+
+                        case (microInstructionCounter)
+
+                            0: begin
+                                microInstructionReset = 0;
+                                pcup = 1;
+                                `latchClear
+                            end
+                            1: begin
+                                bd = programCounterOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            2: begin
+                                bd = RAMOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            3: begin
+                                bd = RAMOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            4: begin
+                                bd = RAMOut;
+                                fs = ALUadd;
+                                bs = 1;
+                                raa = rx;
+                                `latchClear
+                            end
+                            5: begin
+                                bd = ALUOut;
+                                rfw = 1;
+                                rfwa = rx;
+                                `latchClear
+                            end
+                            6: begin
+
+                                `fetchnext0
+                                `latchClear
+
+                            end
+
+                            7: begin 
+                                `fetchnext1
+                                `latchClear
+                            end
+
+                            8: begin
+                                `fetchnext2
+                                `latchClear
+                            end
+
+                        endcase
+
+                    end
+
+                    directIndexed: begin
+
+                        case (microInstructionCounter)
+
+                            0: begin
+                                microInstructionReset = 0;
+                                pcup = 1;
+                                `latchClear
+                            end
+
+                            1: begin
+                                bd = programCounterOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            2: begin
+
+                                bd = RAMOut;
+                                bs = 1;
+                                raa = ry;
+                                fs = ALUadd;
+                                `latchClear
+                            end
+                            3: begin
+                                bd = ALUOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            4: begin
+                                bd = RAMOut;
+                                fs = ALUadd;
+                                bs = 1;
+                                raa = rx;
+                                `latchClear
+                            end
+                            5: begin
+                                bd = ALUOut;
+                                rfw = 1;
+                                rfwa = rx;
+                                `latchClear
+                            end
+                            6: begin
+
+                                `fetchnext0
+                                `latchClear
+
+                            end
+
+                            7: begin 
+                                `fetchnext1
+                                `latchClear
+                            end
+
+                            8: begin
+                                `fetchnext2
+                                `latchClear
+                            end
+
+
+
+                        endcase
+
+                    end
+
+                    indirectIndexed: begin
+
+                        case (microInstructionCounter)
+
+                            
+                            0: begin
+                                microInstructionReset = 0;
+                                pcup = 1;
+                                `latchClear
+                            end
+
+                            1: begin
+                                bd = programCounterOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            2: begin
+                                bd = RAMOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            3: begin
+
+                                bd = RAMOut;
+                                bs = 1;
+                                raa = ry;
+                                fs = ALUadd;
+                                `latchClear
+                            end
+                            4: begin
+                                bd = ALUOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            5: begin
+                                bd = RAMOut;
+                                fs = ALUadd;
+                                bs = 1;
+                                raa = rx;
+                                `latchClear
+                            end
+                            6: begin
+                                bd = ALUOut;
+                                rfw = 1;
+                                rfwa = rx;
+                                `latchClear
+                            end
+                            7: begin
+
+                                `fetchnext0
+                                `latchClear
+
+                            end
+
+                            8: begin 
+                                `fetchnext1
+                                `latchClear
+                            end
+
+                            9: begin
+                                `fetchnext2
+                                `latchClear
+                            end
+
+                        endcase
+
+
+
+
+                    end
+
+                    register: begin
+
+                        case (microInstructionCounter)
+
+                            0: begin
+                                microInstructionReset = 0;
+                                `latchClear
+                            end
+                            1: begin
+                                fs = ALUadd;
+                                raa = rx;
+                                rab = ry;
+                                `latchClear
+                            end
+                            2: begin
+                                bd = ALUOut;
+                                rfw = 1;
+                                rfwa = rx;
+                                `latchClear
+                            end
+                            3: begin
+                                `fetchnext0
+                                `latchClear
+                            end
+                            4: begin
+                                `fetchnext1
+                                `latchClear
+                            end
+                            5: begin
+                                `fetchnext2
+                                `latchClear
+                            end
+
+                        endcase
+
+                    end
+
+                    registerIndirect: begin
+
+                        case (microInstructionCounter)
+
+                            0: begin
+                                microInstructionReset = 0;
+                                fs = ALUref;
+                                raa = ry;
+                                `latchClear
+                            end
+                            1: begin
+                                bd = ALUOut;
+                                marin = 1;
+                                `latchClear
+                            end
+                            2: begin
+                                bd = RAMOut;
+                                bs = 1;
+                                fs = ALUadd;
+                                raa = rx;
+                                `latchClear
+                            end
+                            4: begin
+                                bd = ALUOut;
+                                rfw = 1;
+                                rfwa = rx;
+                                `latchClear
+                            end
+                            5: begin
+                                `fetchnext0
+                                `latchClear
+                            end
+                            6: begin
+                                `fetchnext1
+                                `latchClear
+                            end
+                            7: begin
+                                `fetchnext2
+                                `latchClear
+                            end
+
+                        endcase
+
+                    end
+
 
                 endcase
 
