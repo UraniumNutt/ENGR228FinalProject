@@ -533,31 +533,31 @@ module ControlLogic(
                         
                         case (microInstructionCounter) 
 
-                        0: begin
-                            microInstructionReset = 0;
-                            fs = ALUref;
-                            raa = ry;
-                            `latchClear
+                            0: begin
+                                microInstructionReset = 0;
+                                fs = ALUref;
+                                raa = ry;
+                                `latchClear
 
-                        end
-                        1: begin
-                            bd = ALUOut;
-                            rfw = 1;
-                            rfwa = rx;
-                            `latchClear
-                        end
-                        2: begin
-                            `fetchnext0
-                            `latchClear
-                        end
-                        3: begin
-                            `fetchnext1
-                            `latchClear
-                        end
-                        4: begin
-                            `fetchnext2
-                            `latchClear
-                        end
+                            end
+                            1: begin
+                                bd = ALUOut;
+                                rfw = 1;
+                                rfwa = rx;
+                                `latchClear
+                            end
+                            2: begin
+                                `fetchnext0
+                                `latchClear
+                            end
+                            3: begin
+                                `fetchnext1
+                                `latchClear
+                            end
+                            4: begin
+                                `fetchnext2
+                                `latchClear
+                            end
                         
                         endcase
 
@@ -635,6 +635,50 @@ module ControlLogic(
                     direct: begin
 
                         case (microInstructionCounter)
+
+                            0: begin
+                                microInstructionReset = 0;
+                                pcup = 1;
+                                `latchClear
+
+                            end
+                            1: begin
+                                bd = programCounterOut;
+                                marin = 1;
+                                `latchClear
+                            end
+
+                            2: begin
+                                
+                                bd = RAMOut;
+                                marin = 1;
+                                `latchClear
+                            end
+
+                            3: begin
+
+                                fs = ALUref;
+                                raa = ry;
+                                `latchClear
+                            end
+                            4: begin
+
+                                bd = ALUOut;
+                                ramw = 1;
+                                `latchClear
+                            end
+                            5: begin
+                                `fetchnext0
+                                `latchClear
+                            end
+                            6: begin
+                                `fetchnext1
+                                `latchClear
+                            end
+                            7: begin
+                                `fetchnext2
+                                `latchClear
+                            end
 
 
                         endcase

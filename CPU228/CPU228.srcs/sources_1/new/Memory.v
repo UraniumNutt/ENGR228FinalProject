@@ -12,7 +12,7 @@ module Memory(
 
     );
 
-    reg [15:0] ram [1023:0];
+    reg [15:0] ram [(2^16)-1:0];
     // reg [15:0] outputBuffer;
 
     // assign outputBuffer = ram[address];
