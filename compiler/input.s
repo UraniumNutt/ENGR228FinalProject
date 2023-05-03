@@ -1,9 +1,24 @@
 #include "CPU228.cpu"
 
-    ; simple addition program
+    ; load addressing mode testing
     nop
     ld r0, #14
-    add r0, #28
-    ;st r1, r0
+    ld r1, #foo
+    add r0, (r1)
+    
+    
+
 stop:
     jmp stop
+
+foopointer:
+#d16 foo
+
+foo:
+#d16 28
+#d16 28
+
+#addr 0x3fff
+end:
+#d16 0
+

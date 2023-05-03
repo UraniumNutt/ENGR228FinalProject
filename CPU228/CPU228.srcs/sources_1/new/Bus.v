@@ -17,7 +17,7 @@ module Bus(
 
     );
 
-    always @(driveSelect) begin
+    always @(*) begin
         
         case (driveSelect)
 

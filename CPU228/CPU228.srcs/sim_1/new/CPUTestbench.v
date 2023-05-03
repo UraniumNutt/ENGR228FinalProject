@@ -25,6 +25,10 @@ module CPUTestbench;
     wire bSourceTest;                  
     wire [2:0] busDriveTest;
     wire [15:0] busTest;
+    wire [15:0] ramin;
+    wire [15:0] ramout;
+    wire [15:0] ramaddress;
+    wire [15:0] aluresulttest;
 
     CPU uut(
 
@@ -43,12 +47,16 @@ module CPUTestbench;
         .ReadAddressATest(ReadAddressATest),
         .ReadAddressBTest(ReadAddressBTest),
         .functionSelectTest(functionSelectTest),
-        .overwriteFlagsMaskTest(overWriteFlagsMaskTest),
+        .overwriteFlagsMaskTest(overwriteFlagsMaskTest),
         .setFlagBitsTest(setFlagBitsTest),
-        .RAMWriteReadTest(RAMWritereadTest),
+        .RAMWriteReadTest(RAMWriteReadTest),
         .bSourceTest(bSourceTest),
         .busDriveTest(busDriveTest),
-        .busTest(busTest)
+        .busTest(busTest),
+        .ramin(ramin),
+        .ramout(ramout),
+        .ramaddress(ramaddress),
+        .aluresulttest(aluresulttest)
 
     );
 
@@ -61,29 +69,11 @@ module CPUTestbench;
         #10 boardclk = 0; #10 boardclk = 1; 
         #10 boardclk = 0; #10 boardclk = 1; 
         #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
         #10 boardclk = 0; #10 boardclk = 1;
         #10 boardclk = 0; #10 boardclk = 1; 
         #10 boardclk = 0; #10 boardclk = 1; 
@@ -91,31 +81,43 @@ module CPUTestbench;
         #10 boardclk = 0; #10 boardclk = 1; 
         #10 boardclk = 0; #10 boardclk = 1; 
         #10 boardclk = 0; #10 boardclk = 1;
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
         #10 boardclk = 0; #10 boardclk = 1;
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
         #10 boardclk = 0; #10 boardclk = 1;
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
         #10 boardclk = 0; #10 boardclk = 1;
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
         #10 boardclk = 0; #10 boardclk = 1;
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
         #10 boardclk = 0; #10 boardclk = 1;
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
+        #10 boardclk = 0; #10 boardclk = 1; 
         #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-        #10 boardclk = 0; #10 boardclk = 1;
-
+        
     end
 
 endmodule
