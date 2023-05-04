@@ -1,0 +1,14 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ArithmeticLogicUnit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ArithmeticLogicUnit
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CPU
+WARNING: [VRFC 10-3380] identifier 'programCounter' is used before its declaration [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:20]
+WARNING: [VRFC 10-3380] identifier 'instructionRegister' is used before its declaration [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:21]
+WARNING: [VRFC 10-3380] identifier 'stackPointer' is used before its declaration [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:22]
+WARNING: [VRFC 10-3380] identifier 'memoryAddressRegister' is used before its declaration [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:23]
+WARNING: [VRFC 10-3380] identifier 'A' is used before its declaration [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:24]
+WARNING: [VRFC 10-3380] identifier 'B' is used before its declaration [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:25]
+WARNING: [VRFC 10-3380] identifier 'functionSelect' is used before its declaration [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:26]
+WARNING: [VRFC 10-3380] identifier 'result' is used before its declaration [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:27]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sim_1/new/CPUTestbench.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CPUTestbench
