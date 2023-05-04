@@ -6,226 +6,250 @@ module CPU(
 
     output [15:0] led,
     input boardclk,
-    output wire [15:0] instructionOutTest,  
-    output wire [4:0] currentFlagsTest,        
-    output wire programCounterCountUpTest,     
-    output wire programCounterJumpTest,        
-    output wire loadInstructionTest,           
-    output wire loadMemoryAddressTest,         
-    output wire StackCountUpTest,              
-    output wire StackCountDownTest,            
-    output wire RegFileWriteEnableTest,        
-    output wire [2:0] RegFileWriteAddressTest, 
-    output wire [2:0] ReadAddressATest,        
-    output wire [2:0] ReadAddressBTest,        
-    output wire [4:0] functionSelectTest,      
-    output wire [4:0] overwriteFlagsMaskTest,  
-    output wire [4:0] setFlagBitsTest,         
-    output wire RAMWriteReadTest,              
-    output wire bSourceTest,                  
-    output wire [2:0] busDriveTest,
-    output wire [15:0] busTest,
-    output wire [15:0] ramin,
-    output wire [15:0] ramout,
-    output wire [15:0] ramaddress,
-    output wire [15:0] aluresulttest
-
+    output [15:0] programCounterTest,
+    output [15:0] instructionRegisterTest,
+    output [15:0] stackPointerTest,
+    output [15:0] memoryAddressRegisterTest,
+    output [15:0] ATest,
+    output [15:0] BTest,
+    output [4:0] functionSelectTest,
+    output [15:0] resultTest
 
     );
 
-    assign busTest                   = bus;
-    assign instructionOutTest        = instructionOut;
-    assign currentFlagsTest          = currentFlags;
-    assign programCounterCountUpTest = programCounterCountUp;
-    assign programCounterJumpTest    = programCounterJump;
-    assign loadInstructionTest       = loadInstruction;
-    assign loadMemoryAddressTest     = loadMemoryAddress;
-    assign StackCountUpTest          = StackCountUp;
-    assign StackCountDownTest        = StackCountDown;
-    assign RegFileWriteEnableTest    = RegFileWriteEnable;
-    assign RegFileWriteAddressTest   = RegFileWriteAddress;
-    assign ReadAddressATest          = ReadAddressA;
-    assign ReadAddressBTest          = ReadAddressB;
-    assign functionSelectTest        = functionSelect;
-    assign overwriteFlagsMaskTest    = overwriteFlagsMask;
-    assign setFlagBitsTest           = setFlagBits;
-    assign RAMWriteReadTest          = RAMWriteRead;
-    assign bSourceTest               = bSource;
-    assign busDriveTest              = busDrive;
-    assign ramin                     = RAMdataIn;
-    assign ramout                    = RAMdataOut;
-    assign ramaddress                = RAMaddress;
-    assign aluresulttest             = result;
+    assign programCounterTest = programCounter;
+    assign instructionRegisterTest = instructionRegister;
+    assign stackPointerTest = stackPointer;
+    assign memoryAddressRegisterTest = memoryAddressRegister;
+    assign ATest = A;
+    assign BTest = B;
+    assign functionSelectTest = functionSelect;
+    assign resultTest = result;
+
+    `include "opcodeParams.v"
+    `include "addressingModeParams.v"
+    `include "aluParams.v"
 
     wire clk;    
-
     assign clk = boardclk;
-    // clkModule mainClk(boardclk, clk);
+    //clkModule mainClk(boardclk, clk);
 
-    wire [2:0] busDrive;
-    wire [15:0] bus;
-    wire [15:0] TopOfStack;
-    wire signed [15:0] result;
-    wire [15:0] RAMdataOut;
-
-    Bus BUS(
-
-        busDrive,
-        16'h0000,
-        programCounterAddressOut,
-        16'h0000,   
-        TopOfStack,
-        result,
-        RAMdataOut,
-        16'h0000,
-        16'h0000,
-        bus
-
-    );
-
-
-    wire programCounterCountUp;
-    wire programCounterJump;
-    wire [15:0] programCounterAddressIn;
-    wire [15:0] programCounterAddressOut;
-    assign programCounterAddressIn = bus;
-
-    ProgramCounter PC(
-
-        clk,
-        programCounterCountUp,
-        programCounterJump,
-        programCounterAddressIn,
-        programCounterAddressOut
-
-    );
-
-    wire loadInstruction;
-    wire [15:0] instructionIn;
-    wire [15:0] instructionOut;
-    assign instructionIn = bus;
-
-    InstructionRegister IR(
-
-        clk,
-        loadInstruction,
-        instructionIn,
-        instructionOut
-
-    );
-
-    wire loadMemoryAddress;
-    wire [15:0] memoryAddressIn;
-    wire [15:0] memoryAddressOut;
-    assign memoryAddressIn = bus;
-
-    MemoryAddressRegister MR(
-
-        clk,
-        loadMemoryAddress,
-        memoryAddressIn,
-        memoryAddressOut
-
-    );
-
-    wire StackCountUp;
-    wire StackCountDown;
     
+    localparam startVector = 16'h0000; // location in memory where execution starts. change as needed
+    reg [15:0] programCounter;
+    initial programCounter = startVector;
 
-    StackPointer SP(
+    localparam initialInstruction = 16'h0000;
+    reg [15:0] instructionRegister;
+    initial instructionRegister = initialInstruction;
 
-        clk,
-        StackCountUp,
-        StackCountDown,
-        TopOfStack
+    localparam topOfStack = 16'h8000;
+    reg [15:0] stackPointer;
+    initial stackPointer = topOfStack;
 
-    );
+    localparam initialmemoryAddressRegister = 16'h0000;
+    reg [15:0] memoryAddressRegister;
+    initial memoryAddressRegister = initialmemoryAddressRegister;
 
-    wire RegFileWriteEnable; 
-    wire [2:0] RegFileWriteAddress;
-    wire [15:0] RegFileWriteData;
-    wire [2:0] ReadAddressA;
-    wire [2:0] ReadAddressB;
-    wire signed [15:0] ReadDataA;
-    wire signed [15:0] ReadDataB;
-    assign RegFileWriteData = bus;
+    reg [15:0] ram [16383:0];
 
-    RegisterFile RF(
+    
+    
+    reg [15:0] registerFile [7:0];
+    assign led = registerFile[0];
 
-        led,
-        clk,
-        RegFileWriteEnable,
-        RegFileWriteAddress,
-        RegFileWriteData,
-        ReadAddressA,
-        ReadAddressB,
-        ReadDataA,
-        ReadDataB
-
-    );
-
-    wire [4:0] functionSelect;
-    wire [4:0] overwriteFlagsMask;
-    wire [4:0] setFlagBits;
+    
+    reg signed [15:0] A;
+    reg signed [15:0] B;
+    reg signed [15:0] constant;
+    reg bSource;
+    reg [4:0] functionSelect;
+    reg [4:0] overwriteFlagsMask;
+    reg [4:0] setFlagBits;
+    wire signed [15:0] result;
     wire [4:0] currentFlags;
-    wire bSource;
 
+    ArithmeticLogicUnit alu(
 
-    ArithmeticLogicUnit ALU(
-
-        clk,
-        ReadDataA,
-        ReadDataB,
-        bus,
-        bSource,
-        functionSelect,
-        overwriteFlagsMask,
-        setFlagBits,
-        result,
-        currentFlags
+        .clk(clk),
+        .A(A),
+        .B(B),
+        .constant(constant),
+        .bSource(bSource),
+        .functionSelect(functionSelect),
+        .overwriteFlagsMask(overwriteFlagsMask),
+        .setFlagBits(setFlagBits),
+        .result(result),
+        .currentFlags(currentFlags)
 
     );
 
-    wire RAMWriteRead;
-    wire [15:0] RAMaddress;
-    wire [15:0] RAMdataIn;
-    assign RAMdataIn = bus;
-    assign RAMaddress = memoryAddressOut;
+    wire [5:0] opcode = instructionRegister[15:10];
+    wire [2:0] rx     = instructionRegister[9:7];
+    wire [2:0] am     = instructionRegister[6:4];
+    wire [2:0] ry     = instructionRegister[3:1];
 
-    Memory RAM(
+    initial begin
+        $readmemb("/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/compiler/output.txt", ram, 0, 16383);
+    end
 
-        clk,
-        RAMWriteRead,
-        RAMaddress,
-        RAMdataIn,
-        RAMdataOut
-        
-    );
+  
 
+    always @(posedge clk) begin
 
-    ControlLogic CL(
+        case (opcode)
 
-        clk,
-        instructionOut,
-        currentFlags,
-        programCounterCountUp,
-        programCounterJump,
-        loadInstruction,
-        loadMemoryAddress,
-        StackCountUp,
-        StackCountDown,
-        RegFileWriteEnable,
-        RegFileWriteAddress,
-        ReadAddressA,
-        ReadAddressB,
-        functionSelect,
-        overwriteFlagsMask,
-        setFlagBits,
-        RAMWriteRead,
-        bSource,
-        busDrive
+            NOP: begin
+                programCounter = programCounter + 1;
+            end
 
-    );
+            LD: begin
+
+                case (am)
+
+                    direct: begin
+
+                        memoryAddressRegister = ram[programCounter + 1];
+                        registerFile[rx] = ram[memoryAddressRegister];
+                        programCounter = programCounter + 2;
+                        
+                    end
+
+                    immediate: begin
+
+                        registerFile[rx] = ram[programCounter + 1];
+                        programCounter = programCounter + 2;
+
+                    end
+
+                    indirect: begin
+
+                        memoryAddressRegister = ram[programCounter + 1];
+                        memoryAddressRegister = ram[memoryAddressRegister];
+                        registerFile[rx] = ram[memoryAddressRegister];
+                        programCounter = programCounter + 2;
+
+                    end
+
+                    directIndexed: begin
+
+                        memoryAddressRegister = ram[programCounter + 1];
+                        registerFile[rx] = ram[memoryAddressRegister + registerFile[ry]];
+                        programCounter = programCounter + 2;
+
+                    end
+
+                    indirectIndexed: begin
+
+                        memoryAddressRegister = ram[programCounter + 1];
+                        memoryAddressRegister = ram[memoryAddressRegister];
+                        registerFile[rx] = ram[memoryAddressRegister + registerFile[ry]];
+                        programCounter = programCounter + 2;
+
+                    end
+
+                    register: begin
+
+                        registerFile[rx] = registerFile[ry];
+                        programCounter = programCounter + 1;
+
+                    end
+
+                    registerIndirect: begin
+
+                        registerFile[rx] = ram[registerFile[ry]];
+                        programCounter = programCounter + 1;
+
+                    end
+
+                endcase
+
+            end
+
+            ST: begin
+
+                case (am)
+
+                    direct: begin
+
+                        memoryAddressRegister = ram[programCounter + 1];
+                        ram[memoryAddressRegister] = registerFile[rx];
+                        programCounter = programCounter + 2;
+
+                    end
+
+                    indirect: begin
+
+                        memoryAddressRegister = ram[programCounter + 1];
+                        memoryAddressRegister = ram[memoryAddressRegister];
+                        ram[memoryAddressRegister] = registerFile[rx];
+                        programCounter = programCounter + 2;
+
+                    end
+
+                    directIndexed: begin
+
+                        memoryAddressRegister = ram[programCounter + 1];
+                        ram[memoryAddressRegister + registerFile[ry]] = registerFile[rx];
+                        programCounter = programCounter + 2;
+
+                    end
+
+                    indirectIndexed: begin
+                        
+                        memoryAddressRegister = ram[programCounter + 1];
+                        memoryAddressRegister = ram[memoryAddressRegister];
+                        ram[memoryAddressRegister + registerFile[ry]] = registerFile[rx];
+                        programCounter = programCounter + 2;
+
+                    end
+
+                    register: begin
+
+                        registerFile[ry] = registerFile[rx];
+                        programCounter = programCounter + 1;
+
+                    end
+
+                    registerIndirect: begin
+
+                        ram[registerFile[ry]] = registerFile[rx];
+                        programCounter = programCounter + 1;
+
+                    end
+
+                endcase
+
+            end
+
+            default: begin
+
+                programCounter = programCounter + 1;
+
+            end
+
+            REF: begin
+
+                A = registerFile[rx];
+                functionSelect = aluref;
+                registerFile[rx] = result;
+                bSource = 0;
+                programCounter = programCounter + 1;
+
+            end
+
+            JMP: begin
+
+                programCounter = ram[programCounter + 1];
+
+            end
+
+        endcase
+
+        instructionRegister = ram[programCounter];
+
+    end
+
 
 
     

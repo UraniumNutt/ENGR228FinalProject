@@ -6,57 +6,27 @@ module CPUTestbench;
 
     wire [15:0] led;
     reg boardclk;
-    wire [15:0] instructionOutTest; 
-    wire [4:0] currentFlagsTest;        
-    wire programCounterCountUpTest;     
-    wire programCounterJumpTest;        
-    wire loadInstructionTest;           
-    wire loadMemoryAddressTest;         
-    wire StackCountUpTest;              
-    wire StackCountDownTest;            
-    wire RegFileWriteEnableTest;        
-    wire [2:0] RegFileWriteAddressTest; 
-    wire [2:0] ReadAddressATest;        
-    wire [2:0] ReadAddressBTest;        
-    wire [4:0] functionSelectTest;      
-    wire [4:0] overwriteFlagsMaskTest;  
-    wire [4:0] setFlagBitsTest;         
-    wire RAMWriteReadTest;              
-    wire bSourceTest;                  
-    wire [2:0] busDriveTest;
-    wire [15:0] busTest;
-    wire [15:0] ramin;
-    wire [15:0] ramout;
-    wire [15:0] ramaddress;
-    wire [15:0] aluresulttest;
+    wire [15:0] programCounterTest;
+    wire [15:0] instructionRegisterTest;
+    wire [15:0] stackPointerTest;
+    wire [15:0] memoryAddressRegisterTest;
+    wire [15:0] ATest;
+    wire [15:0] BTest;
+    wire [4:0] functionSelectTest;
+    wire [15:0] resultTest;
 
     CPU uut(
 
         .led(led),
         .boardclk(boardclk),
-        .instructionOutTest(instructionOutTest),
-        .currentFlagsTest(currentFlagsTest),
-        .programCounterCountUpTest(programCounterCountUpTest),
-        .programCounterJumpTest(programCounterJumpTest),
-        .loadInstructionTest(loadInstructionTest),
-        .loadMemoryAddressTest(loadMemoryAddressTest),
-        .StackCountUpTest(StackCountUpTest),
-        .StackCountDownTest(StackCountDownTest),
-        .RegFileWriteEnableTest(RegFileWriteEnableTest),
-        .RegFileWriteAddressTest(RegFileWriteAddressTest),
-        .ReadAddressATest(ReadAddressATest),
-        .ReadAddressBTest(ReadAddressBTest),
+        .programCounterTest(programCounterTest),
+        .instructionRegisterTest(instructionRegisterTest),
+        .stackPointerTest(stackPointerTest),
+        .memoryAddressRegisterTest(memoryAddressRegisterTest),
+        .ATest(ATest),
+        .BTest(BTest),
         .functionSelectTest(functionSelectTest),
-        .overwriteFlagsMaskTest(overwriteFlagsMaskTest),
-        .setFlagBitsTest(setFlagBitsTest),
-        .RAMWriteReadTest(RAMWriteReadTest),
-        .bSourceTest(bSourceTest),
-        .busDriveTest(busDriveTest),
-        .busTest(busTest),
-        .ramin(ramin),
-        .ramout(ramout),
-        .ramaddress(ramaddress),
-        .aluresulttest(aluresulttest)
+        .resultTest(resultTest)
 
     );
 
