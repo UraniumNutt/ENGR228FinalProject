@@ -22,7 +22,7 @@
 loop:
     jmp loop
 
-#addr 0x0100
+#addr 0xf0
 foo:
 #d16 72
 #d16 7234
@@ -37,7 +37,7 @@ thing2:
 idkanymore:
 #d16 1001
 
-#addr 0x3fff
+#addr 0xff
 end:
 #d16 0
 

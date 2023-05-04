@@ -17,15 +17,6 @@ module CPU(
 
     );
 
-    assign programCounterTest = programCounter;
-    assign instructionRegisterTest = instructionRegister;
-    assign stackPointerTest = stackPointer;
-    assign memoryAddressRegisterTest = memoryAddressRegister;
-    assign ATest = A;
-    assign BTest = B;
-    assign functionSelectTest = functionSelect;
-    assign resultTest = result;
-
     `include "opcodeParams.v"
     `include "addressingModeParams.v"
     `include "aluParams.v"
@@ -51,7 +42,7 @@ module CPU(
     reg [15:0] memoryAddressRegister;
     initial memoryAddressRegister = initialmemoryAddressRegister;
 
-    reg [15:0] ram [16383:0];
+    (* ram_style = "block" *) reg [15:0] ram [65535:0];
 
     
     
@@ -68,6 +59,16 @@ module CPU(
     reg [4:0] setFlagBits;
     wire signed [15:0] result;
     wire [4:0] currentFlags;
+    
+    assign programCounterTest = programCounter;
+    assign instructionRegisterTest = instructionRegister;
+    assign stackPointerTest = stackPointer;
+    assign memoryAddressRegisterTest = memoryAddressRegister;
+    assign ATest = A;
+    assign BTest = B;
+    assign functionSelectTest = functionSelect;
+    assign resultTest = result;
+
 
     ArithmeticLogicUnit alu(
 
@@ -90,7 +91,7 @@ module CPU(
     wire [2:0] ry     = instructionRegister[3:1];
 
     initial begin
-        $readmemb("/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/compiler/output.txt", ram, 0, 16383);
+        $readmemb("/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/compiler/output.txt", ram);
     end
 
   
@@ -228,15 +229,17 @@ module CPU(
 
             end
 
-            REF: begin
+            // REF: begin
 
-                A = registerFile[rx];
-                functionSelect = aluref;
-                registerFile[rx] = result;
-                bSource = 0;
-                programCounter = programCounter + 1;
+            //     A = registerFile[rx];
+            //     B = 0;
+            //     constant = 0;
+            //     functionSelect = aluref;
+            //     registerFile[rx] = result;
+            //     bSource = 0;
+            //     programCounter = programCounter + 1;
 
-            end
+            // end
 
             JMP: begin
 
