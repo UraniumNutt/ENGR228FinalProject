@@ -2,13 +2,13 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Fri May  5 13:48:49 2023
-# Process ID: 6878
+# Start of session at: Fri May  5 17:22:54 2023
+# Process ID: 42941
 # Current directory: /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.runs/synth_1
 # Command line: vivado -log CPU.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source CPU.tcl
 # Log file: /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.runs/synth_1/CPU.vds
 # Journal file: /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.runs/synth_1/vivado.jou
-# Running On: archlinux, OS: Linux, CPU Frequency: 3054.381 MHz, CPU Physical cores: 4, Host memory: 16532 MB
+# Running On: archlinux, OS: Linux, CPU Frequency: 3805.038 MHz, CPU Physical cores: 4, Host memory: 16684 MB
 #-----------------------------------------------------------
 source CPU.tcl -notrace
 Command: read_checkpoint -auto_incremental -incremental /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/utils_1/imports/synth_1/CPU.dcp
@@ -23,33 +23,8 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 6931
+INFO: [Synth 8-7075] Helper process launched with PID 42987
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [/opt/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:2]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:3]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:4]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:5]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:6]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:7]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:8]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:9]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:10]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:11]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:12]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:13]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:14]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:15]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:16]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:17]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:18]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:19]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/addressingModeParams.v:2]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/addressingModeParams.v:3]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/addressingModeParams.v:4]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/addressingModeParams.v:5]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/addressingModeParams.v:6]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/addressingModeParams.v:7]
-WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/addressingModeParams.v:8]
 WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/opcodeParams.v:2]
 WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/opcodeParams.v:3]
 WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/opcodeParams.v:4]
@@ -95,107 +70,173 @@ WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K 
 WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/opcodeParams.v:44]
 WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/opcodeParams.v:45]
 WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/opcodeParams.v:46]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/addressingModeParams.v:2]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/addressingModeParams.v:3]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/addressingModeParams.v:4]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/addressingModeParams.v:5]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/addressingModeParams.v:6]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/addressingModeParams.v:7]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/addressingModeParams.v:8]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:2]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:3]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:4]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:5]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:6]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:7]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:8]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:9]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:10]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:11]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:12]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:13]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:14]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:15]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:16]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:17]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:18]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v:19]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/jumpTemplates.v:4]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/jumpTemplates.v:5]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/jumpTemplates.v:6]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/jumpTemplates.v:7]
+WARNING: [Synth 8-11145] root scope declaration is not allowed in Verilog 95/2K mode [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/jumpTemplates.v:8]
+INFO: [Synth 8-11241] undeclared symbol 'flagsTest', assumed default net type 'wire' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:67]
+INFO: [Synth 8-11241] undeclared symbol 'programCounterTest', assumed default net type 'wire' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:69]
+INFO: [Synth 8-11241] undeclared symbol 'instructionRegisterTest', assumed default net type 'wire' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:70]
+INFO: [Synth 8-11241] undeclared symbol 'stackPointerTest', assumed default net type 'wire' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:71]
+INFO: [Synth 8-11241] undeclared symbol 'memoryAddressRegisterTest', assumed default net type 'wire' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:72]
+INFO: [Synth 8-11241] undeclared symbol 'ATest', assumed default net type 'wire' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:73]
+INFO: [Synth 8-11241] undeclared symbol 'BTest', assumed default net type 'wire' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:74]
+INFO: [Synth 8-11241] undeclared symbol 'functionSelectTest', assumed default net type 'wire' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:75]
+INFO: [Synth 8-11241] undeclared symbol 'resultTest', assumed default net type 'wire' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:76]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1942.453 ; gain = 372.738 ; free physical = 6221 ; free virtual = 15081
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1376.969; parent = 1170.793; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 2938.062; parent = 1942.457; children = 995.605
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1940.312 ; gain = 369.801 ; free physical = 6557 ; free virtual = 11789
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1519.905; parent = 1255.066; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2938.906; parent = 1943.285; children = 995.621
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'CPU' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:5]
-INFO: [Synth 8-3876] $readmem data file '/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/compiler/output.txt' is read successfully [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:108]
+INFO: [Synth 8-3876] $readmem data file '/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/compiler/output.txt' is read successfully [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:109]
+INFO: [Synth 8-6157] synthesizing module 'clkModule' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/clkModule.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clkModule' (0#1) [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/clkModule.v:6]
 INFO: [Synth 8-6157] synthesizing module 'ArithmeticLogicUnit' [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ArithmeticLogicUnit.v:5]
 INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ArithmeticLogicUnit.v:52]
 INFO: [Synth 8-6155] done synthesizing module 'ArithmeticLogicUnit' (0#1) [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ArithmeticLogicUnit.v:5]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:121]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:145]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:172]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:196]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:228]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:256]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:288]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:312]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:141]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:344]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:374]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:409]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:439]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:473]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:500]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:340]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:548]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:555]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:555]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:561]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:561]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:567]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:567]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:573]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:573]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:579]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:579]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:585]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:591]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:597]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:603]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:603]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:610]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:610]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:616]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:622]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:622]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:628]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:634]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:644]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:640]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:684]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:680]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:719]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:752]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:785]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:818]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:851]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:884]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:917]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:950]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:983]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1016]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1050]
-INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:528]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:122]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:146]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:173]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:197]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:229]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:257]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:289]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:313]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:142]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:345]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:375]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:410]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:440]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:474]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:501]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:341]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:549]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:556]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:556]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:562]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:562]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:568]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:568]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:574]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:574]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:580]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:580]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:586]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:592]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:598]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:604]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:604]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:611]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:611]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:617]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:623]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:623]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:629]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:635]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:645]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:641]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:685]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:681]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:720]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:753]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:786]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:819]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:852]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:885]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:918]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:951]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:984]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1017]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1055]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1051]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1076]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1076]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1076]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1076]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1082]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1082]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1082]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1082]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1088]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1088]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1088]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1088]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1094]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1094]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1094]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1094]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1100]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1100]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1100]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1100]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1106]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1106]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1106]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1106]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1112]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1112]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1112]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1112]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1118]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1118]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1118]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1118]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1124]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1124]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1124]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1124]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1130]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1130]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1130]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:1130]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:529]
 INFO: [Synth 8-6155] done synthesizing module 'CPU' (0#1) [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/CPU.v:5]
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[15] driven by constant 1
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[14] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[13] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[12] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[11] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[10] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[9] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[8] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[7] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[6] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[5] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[4] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[3] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[2] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[1] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[0] driven by constant 0
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2026.422 ; gain = 456.707 ; free physical = 6275 ; free virtual = 15137
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1376.969; parent = 1170.793; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3022.031; parent = 2026.426; children = 995.605
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2028.250 ; gain = 457.738 ; free physical = 6611 ; free virtual = 11844
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1519.905; parent = 1255.066; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3023.875; parent = 2028.254; children = 995.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2041.266 ; gain = 471.551 ; free physical = 6274 ; free virtual = 15136
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1376.969; parent = 1170.793; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3036.875; parent = 2041.270; children = 995.605
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2046.062 ; gain = 475.551 ; free physical = 6608 ; free virtual = 11842
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1519.905; parent = 1255.066; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3041.688; parent = 2046.066; children = 995.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2041.266 ; gain = 471.551 ; free physical = 6274 ; free virtual = 15136
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1376.969; parent = 1170.793; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3036.875; parent = 2041.270; children = 995.605
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2046.062 ; gain = 475.551 ; free physical = 6608 ; free virtual = 11842
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1519.905; parent = 1255.066; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3041.688; parent = 2046.066; children = 995.621
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2041.266 ; gain = 0.000 ; free physical = 6269 ; free virtual = 15132
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2046.062 ; gain = 0.000 ; free physical = 6608 ; free virtual = 11842
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -206,40 +247,40 @@ INFO: [Project 1-236] Implementation specific constraints were found while readi
 Resolution: To avoid this warning, move constraints listed in [.Xil/CPU_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2192.016 ; gain = 0.000 ; free physical = 6157 ; free virtual = 15030
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2194.875 ; gain = 0.000 ; free physical = 6440 ; free virtual = 11683
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2192.016 ; gain = 0.000 ; free physical = 6157 ; free virtual = 15030
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2194.875 ; gain = 0.000 ; free physical = 6440 ; free virtual = 11683
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [/opt/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2192.016 ; gain = 622.301 ; free physical = 6244 ; free virtual = 15118
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1376.969; parent = 1170.793; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3155.609; parent = 2160.004; children = 995.605
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2194.875 ; gain = 624.363 ; free physical = 6567 ; free virtual = 11811
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1519.905; parent = 1255.066; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3158.484; parent = 2162.863; children = 995.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2192.016 ; gain = 622.301 ; free physical = 6244 ; free virtual = 15118
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1376.969; parent = 1170.793; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3155.609; parent = 2160.004; children = 995.605
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2194.875 ; gain = 624.363 ; free physical = 6567 ; free virtual = 11811
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1519.905; parent = 1255.066; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3158.484; parent = 2162.863; children = 995.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2192.016 ; gain = 622.301 ; free physical = 6244 ; free virtual = 15118
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1376.969; parent = 1170.793; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3155.609; parent = 2160.004; children = 995.605
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2194.875 ; gain = 624.363 ; free physical = 6567 ; free virtual = 11811
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1519.905; parent = 1255.066; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3158.484; parent = 2162.863; children = 995.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2192.016 ; gain = 622.301 ; free physical = 6221 ; free virtual = 15096
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1376.969; parent = 1170.793; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3155.609; parent = 2160.004; children = 995.605
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:12 . Memory (MB): peak = 2194.875 ; gain = 624.363 ; free physical = 6554 ; free virtual = 11799
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1519.905; parent = 1255.066; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3158.484; parent = 2162.863; children = 995.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -250,44 +291,47 @@ Detailed RTL Component Info :
 	   3 Input   17 Bit       Adders := 1     
 	   2 Input   16 Bit       Adders := 2     
 	   2 Input   12 Bit       Adders := 2     
+	   2 Input    8 Bit       Adders := 2     
 +---XORs : 
 	   2 Input     32 Bit         XORs := 1     
 +---Registers : 
 	               32 Bit    Registers := 1     
 	               16 Bit    Registers := 14    
+	               12 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
 	                5 Bit    Registers := 5     
-	                1 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
 +---RAMs : 
 	              64K Bit	(4096 X 16 bit)          RAMs := 1     
 +---Muxes : 
 	   5 Input   32 Bit        Muxes := 1     
 	  11 Input   32 Bit        Muxes := 1     
-	   2 Input   16 Bit        Muxes := 4     
+	   2 Input   16 Bit        Muxes := 11    
 	  18 Input   16 Bit        Muxes := 1     
-	   8 Input   16 Bit        Muxes := 4     
 	   6 Input   16 Bit        Muxes := 1     
+	  42 Input   16 Bit        Muxes := 3     
+	   8 Input   16 Bit        Muxes := 3     
 	   7 Input   16 Bit        Muxes := 2     
-	   4 Input   16 Bit        Muxes := 1     
-	  32 Input   16 Bit        Muxes := 2     
+	   3 Input   16 Bit        Muxes := 1     
 	   7 Input   12 Bit        Muxes := 1     
-	   2 Input    5 Bit        Muxes := 7     
-	  32 Input    5 Bit        Muxes := 2     
+	   2 Input    5 Bit        Muxes := 5     
+	  42 Input    5 Bit        Muxes := 2     
 	  18 Input    4 Bit        Muxes := 1     
 	  18 Input    3 Bit        Muxes := 1     
-	  32 Input    3 Bit        Muxes := 11    
-	   2 Input    3 Bit        Muxes := 8     
+	  42 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 4     
 	   8 Input    3 Bit        Muxes := 1     
-	   4 Input    3 Bit        Muxes := 6     
-	   6 Input    3 Bit        Muxes := 2     
+	   4 Input    3 Bit        Muxes := 2     
+	   6 Input    3 Bit        Muxes := 1     
 	   7 Input    3 Bit        Muxes := 1     
-	  32 Input    2 Bit        Muxes := 2     
-	   2 Input    1 Bit        Muxes := 134   
+	  42 Input    2 Bit        Muxes := 5     
+	   2 Input    1 Bit        Muxes := 116   
+	  42 Input    1 Bit        Muxes := 13    
 	   8 Input    1 Bit        Muxes := 12    
-	   4 Input    1 Bit        Muxes := 61    
-	   6 Input    1 Bit        Muxes := 17    
 	   7 Input    1 Bit        Muxes := 13    
-	   5 Input    1 Bit        Muxes := 11    
-	  32 Input    1 Bit        Muxes := 7     
+	   4 Input    1 Bit        Muxes := 52    
+	   6 Input    1 Bit        Muxes := 13    
+	   3 Input    1 Bit        Muxes := 4     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -306,26 +350,10 @@ Start Cross Boundary and Area Optimization
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 DSP Report: Generating DSP internalResult0, operation Mode is: A*B.
 DSP Report: operator internalResult0 is absorbed into DSP internalResult0.
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[15] driven by constant 1
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[14] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[13] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[12] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[11] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[10] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[9] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[8] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[7] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[6] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[5] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[4] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[3] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[2] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[1] driven by constant 0
-WARNING: [Synth 8-3917] design CPU has port stackPointerTest[0] driven by constant 0
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2192.016 ; gain = 622.301 ; free physical = 6176 ; free virtual = 15061
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1386.499; parent = 1180.386; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3155.609; parent = 2160.004; children = 995.605
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2194.875 ; gain = 624.363 ; free physical = 6511 ; free virtual = 11762
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1543.182; parent = 1279.343; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3158.484; parent = 2162.863; children = 995.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -335,7 +363,8 @@ ROM: Preliminary Mapping Report
 +------------+----------------+---------------+----------------+
 |Module Name | RTL Object     | Depth x Width | Implemented As | 
 +------------+----------------+---------------+----------------+
-|CPU         | functionSelect | 32x5          | LUT            | 
+|CPU         | functionSelect | 64x5          | LUT            | 
+|CPU         | functionSelect | 64x5          | LUT            | 
 +------------+----------------+---------------+----------------+
 
 
@@ -363,17 +392,17 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:23 ; elapsed = 00:00:24 . Memory (MB): peak = 2192.016 ; gain = 622.301 ; free physical = 6038 ; free virtual = 14930
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1528.222; parent = 1322.108; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3155.609; parent = 2160.004; children = 995.605
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 2194.875 ; gain = 624.363 ; free physical = 6375 ; free virtual = 11633
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1653.014; parent = 1389.175; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3158.484; parent = 2162.863; children = 995.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 2192.016 ; gain = 622.301 ; free physical = 5947 ; free virtual = 14845
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1589.140; parent = 1383.026; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3177.594; parent = 2181.988; children = 995.605
+Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:26 . Memory (MB): peak = 2194.875 ; gain = 624.363 ; free physical = 6360 ; free virtual = 11618
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1658.920; parent = 1395.081; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3158.484; parent = 2162.863; children = 995.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -393,9 +422,9 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 2198.000 ; gain = 628.285 ; free physical = 5944 ; free virtual = 14842
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1595.894; parent = 1389.780; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3193.609; parent = 2198.004; children = 995.605
+Finished Technology Mapping : Time (s): cpu = 00:00:26 ; elapsed = 00:00:28 . Memory (MB): peak = 2194.875 ; gain = 624.363 ; free physical = 6354 ; free virtual = 11612
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1664.533; parent = 1400.694; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3158.484; parent = 2162.863; children = 995.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -413,49 +442,49 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 2198.000 ; gain = 628.285 ; free physical = 5943 ; free virtual = 14840
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1595.894; parent = 1389.780; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3193.609; parent = 2198.004; children = 995.605
+Finished IO Insertion : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 2194.875 ; gain = 624.363 ; free physical = 6351 ; free virtual = 11609
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1664.533; parent = 1400.694; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3158.484; parent = 2162.863; children = 995.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:35 ; elapsed = 00:00:36 . Memory (MB): peak = 2198.000 ; gain = 628.285 ; free physical = 5943 ; free virtual = 14840
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1595.894; parent = 1389.780; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3193.609; parent = 2198.004; children = 995.605
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 2194.875 ; gain = 624.363 ; free physical = 6351 ; free virtual = 11609
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1664.533; parent = 1400.694; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3158.484; parent = 2162.863; children = 995.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2198.000 ; gain = 628.285 ; free physical = 5938 ; free virtual = 14836
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1595.894; parent = 1389.780; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3193.609; parent = 2198.004; children = 995.605
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2194.875 ; gain = 624.363 ; free physical = 6351 ; free virtual = 11609
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1664.533; parent = 1400.694; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3158.484; parent = 2162.863; children = 995.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2198.000 ; gain = 628.285 ; free physical = 5936 ; free virtual = 14834
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1595.894; parent = 1389.780; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3193.609; parent = 2198.004; children = 995.605
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2194.875 ; gain = 624.363 ; free physical = 6351 ; free virtual = 11609
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1664.533; parent = 1400.694; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3158.484; parent = 2162.863; children = 995.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2198.000 ; gain = 628.285 ; free physical = 5936 ; free virtual = 14834
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1595.894; parent = 1389.780; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3193.609; parent = 2198.004; children = 995.605
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2194.875 ; gain = 624.363 ; free physical = 6351 ; free virtual = 11609
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1664.533; parent = 1400.694; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3158.484; parent = 2162.863; children = 995.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2198.000 ; gain = 628.285 ; free physical = 5936 ; free virtual = 14834
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1595.894; parent = 1389.780; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3193.609; parent = 2198.004; children = 995.605
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2194.875 ; gain = 624.363 ; free physical = 6351 ; free virtual = 11609
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1664.533; parent = 1400.694; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3158.484; parent = 2162.863; children = 995.621
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -479,49 +508,49 @@ Report Cell Usage:
 +------+---------+------+
 |      |Cell     |Count |
 +------+---------+------+
-|1     |BUFG     |     1|
-|2     |CARRY4   |    37|
+|1     |BUFG     |     2|
+|2     |CARRY4   |    35|
 |3     |DSP48E1  |     1|
-|4     |LUT1     |    12|
-|5     |LUT2     |   141|
-|6     |LUT3     |    23|
-|7     |LUT4     |    24|
-|8     |LUT5     |   108|
-|9     |LUT6     |  2088|
-|10    |MUXF7    |   695|
-|11    |MUXF8    |   320|
+|4     |LUT1     |    16|
+|5     |LUT2     |   170|
+|6     |LUT3     |    30|
+|7     |LUT4     |    38|
+|8     |LUT5     |    86|
+|9     |LUT6     |  2050|
+|10    |MUXF7    |   666|
+|11    |MUXF8    |   316|
 |12    |RAM64M   |  1600|
 |13    |RAM64X1D |   320|
-|14    |FDRE     |   394|
+|14    |FDRE     |   349|
 |15    |IBUF     |     1|
-|16    |OBUF     |   138|
+|16    |OBUF     |    16|
 +------+---------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2198.000 ; gain = 628.285 ; free physical = 5936 ; free virtual = 14834
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1595.894; parent = 1389.780; children = 206.176
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3193.609; parent = 2198.004; children = 995.605
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2194.875 ; gain = 624.363 ; free physical = 6351 ; free virtual = 11609
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1664.533; parent = 1400.694; children = 264.839
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3158.484; parent = 2162.863; children = 995.621
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 17 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:34 ; elapsed = 00:00:36 . Memory (MB): peak = 2198.000 ; gain = 477.535 ; free physical = 6004 ; free virtual = 14902
-Synthesis Optimization Complete : Time (s): cpu = 00:00:36 ; elapsed = 00:00:37 . Memory (MB): peak = 2198.008 ; gain = 628.285 ; free physical = 6004 ; free virtual = 14902
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 2194.875 ; gain = 475.551 ; free physical = 6402 ; free virtual = 11660
+Synthesis Optimization Complete : Time (s): cpu = 00:00:31 ; elapsed = 00:00:33 . Memory (MB): peak = 2194.875 ; gain = 624.363 ; free physical = 6402 ; free virtual = 11660
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.09 . Memory (MB): peak = 2198.008 ; gain = 0.000 ; free physical = 6122 ; free virtual = 15021
-INFO: [Netlist 29-17] Analyzing 2973 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.07 . Memory (MB): peak = 2194.875 ; gain = 0.000 ; free physical = 6522 ; free virtual = 11783
+INFO: [Netlist 29-17] Analyzing 2938 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 WARNING: [Netlist 29-101] Netlist 'CPU' is not ideal for floorplanning, since the cellview 'CPU' contains a large number of primitives.  Please consider enabling hierarchy in synthesis if you want to do floorplanning.
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2222.012 ; gain = 0.000 ; free physical = 6057 ; free virtual = 14956
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 2194.875 ; gain = 0.000 ; free physical = 6450 ; free virtual = 11711
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 1920 instances were transformed.
   RAM64M => RAM64M (RAMD64E(x4)): 1600 instances
   RAM64X1D => RAM64X1D (RAMD64E(x2)): 320 instances
 
-Synth Design complete, checksum: 967f3729
+Synth Design complete, checksum: d8f8636b
 INFO: [Common 17-83] Releasing license: Synthesis
-84 Infos, 104 Warnings, 0 Critical Warnings and 0 Errors encountered.
+136 Infos, 77 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:44 ; elapsed = 00:00:43 . Memory (MB): peak = 2222.012 ; gain = 895.742 ; free physical = 6314 ; free virtual = 15212
+synth_design: Time (s): cpu = 00:00:39 ; elapsed = 00:00:39 . Memory (MB): peak = 2194.875 ; gain = 929.590 ; free physical = 6668 ; free virtual = 11929
 INFO: [Common 17-1381] The checkpoint '/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.runs/synth_1/CPU.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file CPU_utilization_synth.rpt -pb CPU_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri May  5 13:49:39 2023...
+INFO: [Common 17-206] Exiting Vivado at Fri May  5 17:23:41 2023...

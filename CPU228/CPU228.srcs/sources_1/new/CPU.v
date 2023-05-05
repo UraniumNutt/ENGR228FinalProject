@@ -5,16 +5,16 @@
 module CPU(
 
     output [15:0] led,
-    input boardclk,
-    output [15:0] programCounterTest,
-    output [15:0] instructionRegisterTest,
-    output [15:0] stackPointerTest,
-    output [15:0] memoryAddressRegisterTest,
-    output [15:0] ATest,
-    output [15:0] BTest,
-    output [4:0] functionSelectTest,
-    output [15:0] resultTest,
-    output [4:0] flagsTest
+    input boardclk
+    // output [15:0] programCounterTest,
+    // output [15:0] instructionRegisterTest,
+    // output [15:0] stackPointerTest,
+    // output [15:0] memoryAddressRegisterTest,
+    // output [15:0] ATest,
+    // output [15:0] BTest,
+    // output [4:0] functionSelectTest,
+    // output [15:0] resultTest,
+    // output [4:0] flagsTest
 
     );
 
@@ -24,10 +24,11 @@ module CPU(
     `include "addressingModeParams.v"
     `include "aluParams.v"
     `include "aluInstructionParams.v"
+    `include "jumpTemplates.v"
 
     wire clk;    
-    assign clk = boardclk;
-    //clkModule mainClk(boardclk, clk);
+    //assign clk = boardclk;
+    clkModule mainClk(boardclk, clk);
 
     
     localparam startVector = 16'h0000; // location in memory where execution starts. change as needed
@@ -1068,67 +1069,65 @@ module CPU(
 
                 endcase
 
-                
-                
-
             end
 
             JZ: begin
 
-                case (flags[2])
+                `jumpOnSet(aluzero)
 
-                    0: begin
+            end
 
-                        case (am)
+            JNZ: begin
 
-                            direct: begin
+                `jumpOnClear(aluzero)
 
-                                case (ucode)
+            end
 
-                                    0: begin
-                                        programCounter = programCounter + 1;
-                                        ucode = ucode + 1;
-                                    end
-                                    1: begin
-                                        instructionRegister = ram[programCounter];
-                                        ucode = 0;
-                                    end
+            JC: begin
 
-                                endcase
+                `jumpOnSet(alucarry)
 
-                            end
+            end
 
-                        endcase
+            JNC: begin 
 
-                    end
+                `jumpOnClear(alucarry)
 
-                    1: begin
+            end
 
-                    case (am)
+            JO: begin
 
-                        direct: begin
+                `jumpOnSet(aluoverflow)
 
-                            case (ucode)
+            end
 
-                                0: begin
-                                    
-                                    memoryAddressRegister = ram[programCounter + 1];
-                                    instructionRegister = ram[memoryAddressRegister];
-                                    ucode = 0;
+            JNO: begin
 
-                                end
+                `jumpOnClear(aluoverflow)
 
-                            endcase
+            end
 
-                        end
+            JP: begin
 
-                    endcase
+                `jumpOnSet(alupos)
 
-                    end
+            end
 
-                endcase
+            JNP: begin
 
-                
+                `jumpOnClear(alupos)
+
+            end
+
+            JN: begin
+
+                `jumpOnSet(aluneg)
+
+            end
+
+            JNN: begin
+
+                `jumpOnClear(aluneg)
 
             end
 
@@ -1139,7 +1138,4 @@ module CPU(
 
     end
 
-
-
-    
 endmodule

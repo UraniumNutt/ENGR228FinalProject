@@ -18,11 +18,6 @@
     localparam alubit   = 5'd16; // bit  rx, *    - BIt Test                 | rx & * ; Note: does not write back, only updates flags
     localparam aluchangeFlags  = 5'd17; // do nothing to internalResult
 
-    // carry overflow zero pos neg
-    localparam alucarry    = 5'b10000;
-    localparam aluoverflow = 5'b01000;
-    localparam aluzero     = 5'b00100;
-    localparam alupos      = 5'b00010;
-    localparam aluneg      = 5'b00001;
+    
 
     

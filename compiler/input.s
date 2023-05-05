@@ -2,24 +2,13 @@
 
     ; load addressing mode testing
     nop
-    
+    ld r0, #0
 loop:
-    jmp loop
+    inc r0
+    jp loop
 
-#addr 0x00f0
-foo:
-#d16 72
-#d16 7234
-
-thing1:
-#d16 thing2
-
-thing2:
-#d16 587
-#d16 9812
-
-idkanymore:
-#d16 1001
+endprog:
+    jmp endprog
 
 #addr 0x1000
 end:
