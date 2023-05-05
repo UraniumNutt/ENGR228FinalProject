@@ -13,9 +13,12 @@ module CPU(
     output [15:0] ATest,
     output [15:0] BTest,
     output [4:0] functionSelectTest,
-    output [15:0] resultTest
+    output [15:0] resultTest,
+    output [4:0] flagsTest
 
     );
+
+    
 
     `include "opcodeParams.v"
     `include "addressingModeParams.v"
@@ -60,6 +63,7 @@ module CPU(
     wire [4:0] currentFlags;
 
     reg [4:0] flags;
+    assign flagsTest = flags;
     
     assign programCounterTest = programCounter;
     assign instructionRegisterTest = instructionRegister;
@@ -546,25 +550,582 @@ module CPU(
 
             end
 
+            ADD: begin
+
+                `aluTwoArg(aluadd)
+
+            end
+
+            ADWC: begin
+
+                `aluTwoArg(aluadwc)
+
+            end
+
+            SUB: begin
+
+                `aluTwoArg(alusub)
+
+            end
+
+            SBWC: begin
+
+                `aluTwoArg(alusuwb)
+
+            end
+
+            MUL: begin
+
+                `aluTwoArg(alumul)
+
+            end
+
             INC: begin
 
                 `aluOneArg(aluinc)
 
             end
 
-            JMP: begin
+            DEC: begin
+
+                `aluOneArg(aludec)
+
+            end
+
+            CHS: begin
+
+                `aluOneArg(aluchs)
+
+            end
+
+            AND: begin
+
+                `aluTwoArg(aluAND)
+
+
+            end
+
+            OR: begin
+
+                `aluTwoArg(aluOR)
+
+            end
+
+            NOT: begin
+
+                `aluOneArg(aluNOT)
+
+            end
+
+            XOR: begin
+
+                `aluTwoArg(aluXOR)
+
+            end
+
+            SL: begin
+
+                `aluOneArg(aluSL)
+
+            end
+
+            SR: begin
+
+                `aluOneArg(aluSR)
+
+            end
+
+            CMP: begin
+
+                case (am)
+
+                    register: begin
+
+                        case (ucode) 
+
+                            0: begin
+                                A = registerFile[rx];
+                                B = registerFile[ry];
+                                constant = 0;
+                                bSource = 0;
+                                functionSelect = alucmp;
+                                ucode = ucode + 1;
+                            end
+                            1: begin
+                                ucode = ucode + 1;
+                            end
+                            2: begin
+                                //registerFile[rx] = result; dont write back to register
+                                flags = currentFlags;
+                                programCounter = programCounter + 1;
+                                ucode = ucode + 1;
+                            end
+                            3: begin
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+                            end
+
+                        endcase
+
+                    end
+
+
+                endcase
+
+
+            end
+
+            BIT: begin
+
+                case (am)
+
+                    register: begin
+
+                        case (ucode) 
+
+                            0: begin
+                                A = registerFile[rx];
+                                B = registerFile[ry];
+                                constant = 0;
+                                bSource = 0;
+                                functionSelect = alubit;
+                                ucode = ucode + 1;
+                            end
+                            1: begin
+                                ucode = ucode + 1;
+                            end
+                            2: begin
+                                //registerFile[rx] = result; dont write back to register
+                                flags = currentFlags;
+                                programCounter = programCounter + 1;
+                                ucode = ucode + 1;
+                            end
+                            3: begin
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+                            end
+
+                        endcase
+
+                    end
+
+
+                endcase
+
+            end
+
+            ZC: begin
 
                 case (ucode)
 
                     0: begin
-                        programCounter = ram[programCounter + 1];
+
+                        // carry overflow zero pos neg
+                        A = 0;
+                        B = 0;
+                        constant = 0;
+                        bSource = 0;
+                        functionSelect = aluchangeFlags;
+                        overwriteFlagsMask = 5'b00100;
+                        setFlagBits        = 5'b00000;   
                         ucode = ucode + 1;
                     end
                     1: begin
+                        ucode = ucode + 1;
+                    end
+                    2: begin
+                        flags = currentFlags;
+                        programCounter = programCounter + 1;
+                        ucode = ucode + 1;
+                    end
+                    3: begin
                         instructionRegister = ram[programCounter];
                         ucode = 0;
                     end
+
+                endcase
+
+            end
+
+            ZS: begin
+
+                case (ucode)
+
+                    0: begin
+
+                        // carry overflow zero pos neg
+                        A = 0;
+                        B = 0;
+                        constant = 0;
+                        bSource = 0;
+                        functionSelect = aluchangeFlags;
+                        overwriteFlagsMask = 5'b00100;
+                        setFlagBits        = 5'b00100;   
+                        ucode = ucode + 1;
+                    end
+                    1: begin
+                        ucode = ucode + 1;
+                    end
+                    2: begin
+                        flags = currentFlags;
+                        programCounter = programCounter + 1;
+                        ucode = ucode + 1;
+                    end
+                    3: begin
+                        instructionRegister = ram[programCounter];
+                        ucode = 0;
+                    end
+
+                endcase
+
+            end
+
+            CC: begin
+
+                case (ucode)
+
+                    0: begin
+
+                        // carry overflow zero pos neg
+                        A = 0;
+                        B = 0;
+                        constant = 0;
+                        bSource = 0;
+                        functionSelect = aluchangeFlags;
+                        overwriteFlagsMask = 5'b10000;
+                        setFlagBits        = 5'b00000;   
+                        ucode = ucode + 1;
+                    end
+                    1: begin
+                        ucode = ucode + 1;
+                    end
+                    2: begin
+                        flags = currentFlags;
+                        programCounter = programCounter + 1;
+                        ucode = ucode + 1;
+                    end
+                    3: begin
+                        instructionRegister = ram[programCounter];
+                        ucode = 0;
+                    end
+
+                endcase
+
+            end
+
+            CS: begin
+
+                case (ucode)
+
+                    0: begin
+
+                        // carry overflow zero pos neg
+                        A = 0;
+                        B = 0;
+                        constant = 0;
+                        bSource = 0;
+                        functionSelect = aluchangeFlags;
+                        overwriteFlagsMask = 5'b10000;
+                        setFlagBits        = 5'b10000;   
+                        ucode = ucode + 1;
+                    end
+                    1: begin
+                        ucode = ucode + 1;
+                    end
+                    2: begin
+                        flags = currentFlags;
+                        programCounter = programCounter + 1;
+                        ucode = ucode + 1;
+                    end
+                    3: begin
+                        instructionRegister = ram[programCounter];
+                        ucode = 0;
+                    end
+
+                endcase
+
+            end
+
+            OC: begin
+
+                case (ucode)
+
+                    0: begin
+
+                        // carry overflow zero pos neg
+                        A = 0;
+                        B = 0;
+                        constant = 0;
+                        bSource = 0;
+                        functionSelect = aluchangeFlags;
+                        overwriteFlagsMask = 5'b01000;
+                        setFlagBits        = 5'b00000;   
+                        ucode = ucode + 1;
+                    end
+                    1: begin
+                        ucode = ucode + 1;
+                    end
+                    2: begin
+                        flags = currentFlags;
+                        programCounter = programCounter + 1;
+                        ucode = ucode + 1;
+                    end
+                    3: begin
+                        instructionRegister = ram[programCounter];
+                        ucode = 0;
+                    end
+
+                endcase
+
+            end
+
+            OS: begin
+
+                case (ucode)
+
+                    0: begin
+
+                        // carry overflow zero pos neg
+                        A = 0;
+                        B = 0;
+                        constant = 0;
+                        bSource = 0;
+                        functionSelect = aluchangeFlags;
+                        overwriteFlagsMask = 5'b01000;
+                        setFlagBits        = 5'b01000;   
+                        ucode = ucode + 1;
+                    end
+                    1: begin
+                        ucode = ucode + 1;
+                    end
+                    2: begin
+                        flags = currentFlags;
+                        programCounter = programCounter + 1;
+                        ucode = ucode + 1;
+                    end
+                    3: begin
+                        instructionRegister = ram[programCounter];
+                        ucode = 0;
+                    end
+
+                endcase
+
+            end
+
+            PC: begin
+
+                case (ucode)
+
+                    0: begin
+
+                        // carry overflow zero pos neg
+                        A = 0;
+                        B = 0;
+                        constant = 0;
+                        bSource = 0;
+                        functionSelect = aluchangeFlags;
+                        overwriteFlagsMask = 5'b00010;
+                        setFlagBits        = 5'b00000;   
+                        ucode = ucode + 1;
+                    end
+                    1: begin
+                        ucode = ucode + 1;
+                    end
+                    2: begin
+                        flags = currentFlags;
+                        programCounter = programCounter + 1;
+                        ucode = ucode + 1;
+                    end
+                    3: begin
+                        instructionRegister = ram[programCounter];
+                        ucode = 0;
+                    end
+
+                endcase
+
+            end
+
+            PS: begin
+
+                case (ucode)
+
+                    0: begin
+
+                        // carry overflow zero pos neg
+                        A = 0;
+                        B = 0;
+                        constant = 0;
+                        bSource = 0;
+                        functionSelect = aluchangeFlags;
+                        overwriteFlagsMask = 5'b00010;
+                        setFlagBits        = 5'b00010;   
+                        ucode = ucode + 1;
+                    end
+                    1: begin
+                        ucode = ucode + 1;
+                    end
+                    2: begin
+                        flags = currentFlags;
+                        programCounter = programCounter + 1;
+                        ucode = ucode + 1;
+                    end
+                    3: begin
+                        instructionRegister = ram[programCounter];
+                        ucode = 0;
+                    end
+
+                endcase
+
+            end
+
+            NC: begin
+
+                case (ucode)
+
+                    0: begin
+
+                        // carry overflow zero pos neg
+                        A = 0;
+                        B = 0;
+                        constant = 0;
+                        bSource = 0;
+                        functionSelect = aluchangeFlags;
+                        overwriteFlagsMask = 5'b00001;
+                        setFlagBits        = 5'b00000;   
+                        ucode = ucode + 1;
+                    end
+                    1: begin
+                        ucode = ucode + 1;
+                    end
+                    2: begin
+                        flags = currentFlags;
+                        programCounter = programCounter + 1;
+                        ucode = ucode + 1;
+                    end
+                    3: begin
+                        instructionRegister = ram[programCounter];
+                        ucode = 0;
+                    end
+
+                endcase
+
+            end
+
+            NS: begin
+
+                case (ucode)
+
+                    0: begin
+
+                        // carry overflow zero pos neg
+                        A = 0;
+                        B = 0;
+                        constant = 0;
+                        bSource = 0;
+                        functionSelect = aluchangeFlags;
+                        overwriteFlagsMask = 5'b00001;
+                        setFlagBits        = 5'b00001;   
+                        ucode = ucode + 1;
+                    end
+                    1: begin
+                        ucode = ucode + 1;
+                    end
+                    2: begin
+                        flags = currentFlags;
+                        programCounter = programCounter + 1;
+                        ucode = ucode + 1;
+                    end
+                    3: begin
+                        instructionRegister = ram[programCounter];
+                        ucode = 0;
+                    end
+
+                endcase
+
+            end
+
+
+            JMP: begin
+
+                case (am)
+
+                    direct: begin
+
+                        case (ucode)
+
+                            0: begin
+                                programCounter = ram[programCounter + 1];
+                                ucode = ucode + 1;
+                            end
+                            1: begin
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+                            end
                     
+                        endcase
+
+                    end
+
+                endcase
+
+                
+                
+
+            end
+
+            JZ: begin
+
+                case (flags[2])
+
+                    0: begin
+
+                        case (am)
+
+                            direct: begin
+
+                                case (ucode)
+
+                                    0: begin
+                                        programCounter = programCounter + 1;
+                                        ucode = ucode + 1;
+                                    end
+                                    1: begin
+                                        instructionRegister = ram[programCounter];
+                                        ucode = 0;
+                                    end
+
+                                endcase
+
+                            end
+
+                        endcase
+
+                    end
+
+                    1: begin
+
+                    case (am)
+
+                        direct: begin
+
+                            case (ucode)
+
+                                0: begin
+                                    
+                                    memoryAddressRegister = ram[programCounter + 1];
+                                    instructionRegister = ram[memoryAddressRegister];
+                                    ucode = 0;
+
+                                end
+
+                            endcase
+
+                        end
+
+                    endcase
+
+                    end
+
                 endcase
 
                 

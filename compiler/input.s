@@ -2,28 +2,7 @@
 
     ; load addressing mode testing
     nop
-    ld r0, foo
-    ld r0, #8088
-    ld r0, (thing1)
-    ld r1, #1
-    ld r0, foo[r1]
-    ld r0, (thing1)[r1]
-    ld r3, #420
-    ld r0, r3
-    ld r2, #idkanymore
-    ld r0, (r2)
-
-    ld r1, #6502
-    st idkanymore, r1
-    ld r0, idkanymore
-
-    ref r0
-    inc r0
-    inc r0
-    inc r0
-    inc r0
-    inc r0
-
+    
 loop:
     jmp loop
 

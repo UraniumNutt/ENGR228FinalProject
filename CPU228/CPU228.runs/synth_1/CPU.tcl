@@ -86,6 +86,7 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
   /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/ArithmeticLogicUnit.v
+  /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluInstructionParams.v
   /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/aluParams.v
   /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/addressingModeParams.v
   /home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sources_1/new/opcodeParams.v

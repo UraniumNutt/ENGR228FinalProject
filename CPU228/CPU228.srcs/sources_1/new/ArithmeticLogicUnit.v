@@ -13,8 +13,8 @@ module ArithmeticLogicUnit(
     input [4:0] overwriteFlagsMask,
     input [4:0] setFlagBits, // carry overflow zero pos neg
     output signed [15:0] result,
-    output reg [4:0] currentFlags    // carry overflow zero pos neg
-    
+    output reg [4:0] currentFlags    
+    // carry overflow zero pos neg
     );
 
     // what the current state of the flags is, and how it should start
@@ -73,10 +73,31 @@ module ArithmeticLogicUnit(
         
         // explicitly change flags
         if (functionSelect == changeFlags) begin
-            currentFlags = setFlagBits & overwriteFlagsMask;
+            //currentFlags = setFlagBits & overwriteFlagsMask;
+
+            if (overwriteFlagsMask[4] == 1) begin
+                currentFlags[4] = setFlagBits[4];
+            end
+
+            if (overwriteFlagsMask[3] == 1) begin
+                currentFlags[3] = setFlagBits[3];
+            end
+
+            if (overwriteFlagsMask[2] == 1) begin
+                currentFlags[2] = setFlagBits[2];
+            end
+
+            if (overwriteFlagsMask[1] == 1) begin
+                currentFlags[1] = setFlagBits[1];
+            end
+
+            if (overwriteFlagsMask[0] == 1) begin
+                currentFlags[0] = setFlagBits[0];
+            end
+
         end
 
-        else begin
+        if (functionSelect != changeFlags) begin
 
             // carry flag
             if (internalResult > 65536) begin
