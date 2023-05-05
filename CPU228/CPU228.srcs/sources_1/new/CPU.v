@@ -20,6 +20,7 @@ module CPU(
     `include "opcodeParams.v"
     `include "addressingModeParams.v"
     `include "aluParams.v"
+    `include "aluInstructionParams.v"
 
     wire clk;    
     assign clk = boardclk;
@@ -57,6 +58,8 @@ module CPU(
     reg [4:0] setFlagBits;
     wire signed [15:0] result;
     wire [4:0] currentFlags;
+
+    reg [4:0] flags;
     
     assign programCounterTest = programCounter;
     assign instructionRegisterTest = instructionRegister;
@@ -66,6 +69,15 @@ module CPU(
     assign BTest = B;
     assign functionSelectTest = functionSelect;
     assign resultTest = result;
+
+    initial A = 0;
+    initial B = 0;
+    initial functionSelect = 0;
+    initial constant = 0;
+    initial bSource = 0;
+    initial setFlagBits = 0;
+    initial overwriteFlagsMask = 0;
+
 
 
     ArithmeticLogicUnit alu(
@@ -104,12 +116,19 @@ module CPU(
 
                 case (ucode)
 
-                    0: programCounter = programCounter + 1;
-                    1: ucode = 0;
+                    0: begin
+                        programCounter = programCounter + 1;
+                        ucode = ucode + 1;
+                    end
+                    1: begin
+                        instructionRegister = ram[programCounter];
+                        ucode = 0;
+                    end
+
 
                 endcase
 
-                ucode = ucode + 1;
+                
                 
             end
 
@@ -121,14 +140,26 @@ module CPU(
 
                         case (ucode) 
 
-                            0: memoryAddressRegister = ram[programCounter + 1];
-                            1: registerFile[rx] = ram[memoryAddressRegister];
-                            2: programCounter = programCounter + 2;
-                            3: ucode = 0;
+                            0: begin
+                                memoryAddressRegister = ram[programCounter + 1];
+                                ucode = ucode + 1;
+                            end
+                            1: begin
+                                registerFile[rx] = ram[memoryAddressRegister];
+                                ucode = ucode + 1;
+                            end
+                            2: begin
+                                programCounter = programCounter + 2;
+                                ucode = ucode + 1;
+                            end
+                            3: begin
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+                            end
 
                         endcase
 
-                        ucode = ucode + 1;
+                        
 
                     end
 
@@ -136,13 +167,23 @@ module CPU(
 
                         case (ucode)
 
-                            0: registerFile[rx] = ram[programCounter + 1];
-                            1: programCounter = programCounter + 2;
-                            2: ucode = 0;
+                            0: begin
+                                registerFile[rx] = ram[programCounter + 1];
+                                ucode = ucode + 1;
+                            end
+                            1: begin
+                                programCounter = programCounter + 2;
+                                ucode = ucode + 1;
+                            end
+                            2: begin
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+                            end
+                            
 
                         endcase
 
-                        ucode = ucode + 1;
+                        
                         
                     end
 
@@ -150,15 +191,31 @@ module CPU(
 
                         case (ucode)
 
-                            0: memoryAddressRegister = ram[programCounter + 1];
-                            1: memoryAddressRegister = ram[memoryAddressRegister];
-                            2: registerFile[rx] = ram[memoryAddressRegister];
-                            3: programCounter = programCounter + 2;
-                            4: ucode = 0;
+                            0: begin
+                                memoryAddressRegister = ram[programCounter + 1];
+                                ucode = ucode + 1;
+                            end
+                            1: begin
+                                memoryAddressRegister = ram[memoryAddressRegister];
+                                ucode = ucode + 1;
+                            end
+                            2: begin
+                                registerFile[rx] = ram[memoryAddressRegister];
+                                ucode = ucode + 1;
+                            end
+                            3: begin
+                                programCounter = programCounter + 2;
+                                ucode = ucode + 1;
+                            end
+                            4: begin
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+                            end
+                            
 
                         endcase
 
-                        ucode = ucode + 1;
+                        
 
                     end
 
@@ -166,14 +223,27 @@ module CPU(
 
                         case (ucode)
 
-                            0: memoryAddressRegister = ram[programCounter + 1];
-                            1: registerFile[rx] = ram[memoryAddressRegister + registerFile[ry]];
-                            2: programCounter = programCounter + 2;
-                            3: ucode = 0;
+                            0: begin
+                                memoryAddressRegister = ram[programCounter + 1];
+                                ucode = ucode + 1;
+                            end
+                            1: begin
+                                registerFile[rx] = ram[memoryAddressRegister + registerFile[ry]];
+                                ucode = ucode + 1;
+                            end
+                            2: begin
+                                programCounter = programCounter + 2;
+                                ucode = ucode + 1;
+                            end
+                            3: begin
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+                            end
+                            
 
                         endcase
 
-                        ucode = ucode + 1;
+                        
                         
                     end
 
@@ -181,15 +251,31 @@ module CPU(
 
                         case (ucode)
 
-                            0: memoryAddressRegister = ram[programCounter + 1];
-                            1: memoryAddressRegister = ram[memoryAddressRegister];
-                            2: registerFile[rx] = ram[memoryAddressRegister + registerFile[ry]];
-                            3: programCounter = programCounter + 2;
-                            4: ucode = 0;
+                            0: begin
+                                memoryAddressRegister = ram[programCounter + 1];
+                                ucode = ucode + 1;
+                            end
+                            1: begin
+                                memoryAddressRegister = ram[memoryAddressRegister];
+                                ucode = ucode + 1;
+                            end
+                            2: begin
+                                registerFile[rx] = ram[memoryAddressRegister + registerFile[ry]];
+                                ucode = ucode + 1;
+                            end
+                            3: begin
+                                programCounter = programCounter + 2;
+                                ucode = ucode + 1;
+                            end
+                            4: begin
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+                            end
+                            
 
                         endcase
 
-                        ucode = ucode + 1;
+                        
                         
                     end
 
@@ -197,13 +283,23 @@ module CPU(
 
                         case (ucode)
 
-                            0: registerFile[rx] = registerFile[ry];
-                            1: programCounter = programCounter + 1;
-                            2: ucode = 0;
+                            0: begin
+                                registerFile[rx] = registerFile[ry];
+                                ucode = ucode + 1;
+                            end
+                            1: begin
+                                programCounter = programCounter + 1;
+                                ucode = ucode + 1;
+                            end
+                            2: begin
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+                            end
+                            
 
                         endcase
 
-                        ucode = ucode + 1;
+                        
 
                     end
 
@@ -211,13 +307,23 @@ module CPU(
 
                         case (ucode)
 
-                            0: registerFile[rx] = ram[registerFile[ry]];
-                            1: programCounter = programCounter + 1;
-                            3: ucode = 0;
+                            0: begin
+                                registerFile[rx] = ram[registerFile[ry]];
+                                ucode = ucode + 1;
+                            end
+                            1: begin
+                                programCounter = programCounter + 1;
+                                ucode = ucode + 1;
+                            end
+                            2: begin
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+                            end
+                            
 
                         endcase
 
-                        ucode = ucode + 1;
+                        
 
                     end
 
@@ -233,14 +339,27 @@ module CPU(
 
                         case (ucode)
 
-                            0: memoryAddressRegister = ram[programCounter + 1];
-                            1: ram[memoryAddressRegister] = registerFile[rx];
-                            2: programCounter = programCounter + 2;
-                            3: ucode = 0;
+                            0: begin
+                                memoryAddressRegister = ram[programCounter + 1];
+                                ucode = ucode + 1;
+                            end
+                            1: begin
+                                ram[memoryAddressRegister] = registerFile[rx];
+                                ucode = ucode + 1;
+                            end
+                            2: begin
+                                programCounter = programCounter + 2;
+                                ucode = ucode + 1;
+                            end
+                            3: begin
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+                            end
+                            
 
                         endcase
 
-                        ucode = ucode + 1;
+                        
 
                         
 
@@ -250,15 +369,32 @@ module CPU(
 
                         case (ucode) 
 
-                            0: memoryAddressRegister = ram[programCounter + 1];
-                            1: memoryAddressRegister = ram[memoryAddressRegister];
-                            2: ram[memoryAddressRegister] = registerFile[rx];
-                            3: programCounter = programCounter + 2;
-                            4: ucode = 0;
+                            0: begin
+                                memoryAddressRegister = ram[programCounter + 1];
+                                ucode = ucode + 1;
+                            end
+                            1: begin
+                                memoryAddressRegister = ram[memoryAddressRegister];
+                                ucode = ucode + 1;
+                            end
+                            2: begin
+                                ram[memoryAddressRegister] = registerFile[rx];
+                                ucode = ucode + 1;
+                            end
+                            3: begin
+                                programCounter = programCounter + 2;
+                                ucode = ucode + 1;
+                            end
+                            4: begin
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+                            end
+
+                            
 
                         endcase
 
-                        ucode = ucode + 1;
+                        
 
                         
 
@@ -268,14 +404,27 @@ module CPU(
 
                         case (ucode)
 
-                            0: memoryAddressRegister = ram[programCounter + 1];
-                            1: ram[memoryAddressRegister + registerFile[ry]] = registerFile[rx];
-                            2: programCounter = programCounter + 2;
-                            3: ucode = 0;
+                            0: begin
+                                memoryAddressRegister = ram[programCounter + 1];
+                                ucode = ucode + 1;
+                            end
+                            1: begin
+                                ram[memoryAddressRegister + registerFile[ry]] = registerFile[rx];
+                                ucode = ucode + 1;
+                            end
+                            2: begin
+                                programCounter = programCounter + 2;
+                                ucode = ucode + 1;
+                            end
+                            3: begin
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+                            end
+                            
 
                         endcase
 
-                        ucode = ucode + 1;
+                        
 
                         
 
@@ -285,15 +434,31 @@ module CPU(
 
                         case (ucode)
 
-                            0: memoryAddressRegister = ram[programCounter + 1];
-                            1: memoryAddressRegister = ram[memoryAddressRegister];
-                            2: ram[memoryAddressRegister + registerFile[ry]] = registerFile[rx];
-                            3: programCounter = programCounter + 2;
-                            4: ucode = 0;
+                            0: begin
+                                memoryAddressRegister = ram[programCounter + 1];
+                                ucode = ucode + 1;
+                            end
+                            1: begin
+                                memoryAddressRegister = ram[memoryAddressRegister];
+                                ucode = ucode + 1;
+                            end
+                            2: begin
+                                ram[memoryAddressRegister + registerFile[ry]] = registerFile[rx];
+                                ucode = ucode + 1;
+                            end
+                            3: begin
+                                programCounter = programCounter + 2;
+                                ucode = ucode + 1;
+                            end
+                            4: begin
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+                            end
+                            
 
                         endcase
 
-                        ucode = ucode + 1;
+                        
                         
                         
 
@@ -303,13 +468,24 @@ module CPU(
 
                         case (ucode)
 
-                            0: registerFile[ry] = registerFile[rx];
-                            1: programCounter = programCounter + 1;
-                            2: ucode = 0;
+                            0: begin
+                                registerFile[ry] = registerFile[rx];
+                                ucode = ucode + 1;
+                            end
+                            1: begin
+                                programCounter = programCounter + 1;
+                                ucode = ucode + 1;
+                            end
+                            2: begin
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+                            end
+                            
+                            
 
                         endcase
 
-                        ucode = ucode + 1;
+                        
 
                         
 
@@ -319,13 +495,23 @@ module CPU(
 
                         case (ucode)
 
-                            0: ram[registerFile[ry]] = registerFile[rx];
-                            1: programCounter = programCounter + 1;
-                            2: ucode = 0;
+                            0: begin
+                                ram[registerFile[ry]] = registerFile[rx];
+                                ucode = ucode + 1;
+                            end
+                            1: begin
+                                programCounter = programCounter + 1;
+                                ucode = ucode + 1;
+                            end
+                            2: begin
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+                            end
+                            
 
                         endcase
 
-                        ucode = ucode + 1;
+                        
 
                     end
 
@@ -337,43 +523,56 @@ module CPU(
 
                 case (ucode)
 
-                    0: programCounter = programCounter + 1;
-                    1: ucode = 0;
-
+                    0: begin
+                        programCounter = programCounter + 1;
+                        ucode = ucode + 1;
+                    end
+                    1: begin
+                        instructionRegister = ram[programCounter];
+                        ucode = 0;
+                    end
+                    
                 endcase
 
-                ucode = ucode + 1;
+                
 
             end
 
-            // REF: begin
+            REF: begin
 
-            //     A = registerFile[rx];
-            //     B = 0;
-            //     constant = 0;
-            //     functionSelect = aluref;
-            //     registerFile[rx] = result;
-            //     bSource = 0;
-            //     programCounter = programCounter + 1;
+                
+                `aluOneArg(aluref)
 
-            // end
+
+            end
+
+            INC: begin
+
+                `aluOneArg(aluinc)
+
+            end
 
             JMP: begin
 
                 case (ucode)
 
-                    0: programCounter = ram[programCounter + 1];
-                    1: ucode = 0;
-
+                    0: begin
+                        programCounter = ram[programCounter + 1];
+                        ucode = ucode + 1;
+                    end
+                    1: begin
+                        instructionRegister = ram[programCounter];
+                        ucode = 0;
+                    end
+                    
                 endcase
 
-                ucode = ucode + 1;
+                
 
             end
 
         endcase
 
-        instructionRegister = ram[programCounter];
 
         
 

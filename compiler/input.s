@@ -18,6 +18,11 @@
     ld r0, idkanymore
 
     ref r0
+    inc r0
+    inc r0
+    inc r0
+    inc r0
+    inc r0
 
 loop:
     jmp loop
