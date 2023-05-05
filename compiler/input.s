@@ -3,7 +3,7 @@
     ; load addressing mode testing
     nop
     ld r0, foo
-    ld r0, #721
+    ld r0, #8088
     ld r0, (thing1)
     ld r1, #1
     ld r0, foo[r1]
@@ -22,7 +22,7 @@
 loop:
     jmp loop
 
-#addr 0xf0
+#addr 0x00f0
 foo:
 #d16 72
 #d16 7234
@@ -37,7 +37,7 @@ thing2:
 idkanymore:
 #d16 1001
 
-#addr 0xff
+#addr 0x1000
 end:
 #d16 0
 
