@@ -102,3 +102,11 @@ pul rx        - PULl                     | sp-- & rx <- tos
 jsr *         - Jump Sub Routine         | tos <- pc & sp++ & pc <- *
 rts           - ReTurn Sub routine       | sp-- & pc <- tos
 
+// uart
+
+    tra rx     - Transmit                | tx <- rx
+    rec rx     - receive                 | rx <- receive
+    jtf *      - Jumpt Transmit Full     | if tx full then pc <- *
+    jte *      - Jumpt Transmit Empty    | if tx empty then pc <- *
+    jrf *      - Jumpt Receive Full      | if rx full then pc <- *
+    jre *      - Jumpt Receive Empty     | if rx empty then pc <- *

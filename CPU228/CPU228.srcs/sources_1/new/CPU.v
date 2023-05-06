@@ -65,6 +65,10 @@ module CPU(
 
     reg [4:0] flags;
     assign flagsTest = flags;
+
+    reg [1:0] uartflags; // transmit empty, receive full
+    initial uartflags = 2'b10
+
     
     assign programCounterTest = programCounter;
     assign instructionRegisterTest = instructionRegister;
@@ -1276,6 +1280,34 @@ module CPU(
                 endcase
 
             end
+
+            TRA: begin
+
+            end
+
+            REC: begin
+
+            end
+
+            JTF: begin
+
+            end
+
+            JTE: begin
+
+            end
+
+            JRF: begin
+
+            end
+
+            JRE: begin
+
+            end
+
+
+
+
 
             
 

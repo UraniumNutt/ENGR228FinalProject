@@ -61,9 +61,7 @@ dotproduct:
 
                             ; now do the math
     mul r3, r4              ; A X B
-    ld r0, r3               ; debug
     add r2, r3              ; increment running total by r3   
-    ld r0, r2               ; debug    
 
     inc r5                  ; increment the dotproduct index
     cmp r5, #3              ; if the dotproduct index is less than 3, the do the next dotproduct loop
@@ -72,11 +70,8 @@ dotproduct:
 .exit:
 
     ld r3, CPointers[r6]    ; load r3 with the row pointer specified by the row index
-    ld r0, r3               ; debug
     add r3, r7              ; add the collum index to the pointer
-    ld r0, r3               ; debug
     st (r3), r2             ; store the dotproduct result for that cell into C
-    ld r0, r2               ; debug
     rts                     ; return from the dotproduct subroutine
 
 

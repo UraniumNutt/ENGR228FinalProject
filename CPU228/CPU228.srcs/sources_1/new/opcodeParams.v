@@ -44,3 +44,14 @@
     localparam PUL  = 6'b101010;
     localparam JSR  = 6'b101011;
     localparam RTS  = 6'b101100;
+    localparam TRA  = 6'b101101;
+    localparam REC  = 6'b101110;
+    localparam JTF  = 6'b101111;
+    localparam JTE  = 6'b110000;
+    localparam JRF  = 6'b110001;
+    localparam JRE  = 6'b110010;    
+
+
+
+
+
