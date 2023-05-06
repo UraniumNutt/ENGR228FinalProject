@@ -5,12 +5,17 @@
     ld r0, #0
 loop:
     inc r0
-    jp loop
+    cmp r0, #3
+    jnz loop
 
-endprog:
-    jmp endprog
+endloop:
+    jmp endloop
 
-#addr 0x1000
+sub:
+    ld r0, #101
+    rts
+
+#addr 0x0fff
 end:
 #d16 0
 

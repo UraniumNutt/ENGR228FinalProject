@@ -4,13 +4,5 @@ Running: /opt/Xilinx/Vivado/2022.2/bin/unwrapped/lnx64.o/xelab --incr --debug ty
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-ERROR: [VRFC 10-3180] cannot find port 'flagsTest' on this module [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sim_1/new/CPUTestbench.v:31]
-ERROR: [VRFC 10-3180] cannot find port 'resultTest' on this module [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sim_1/new/CPUTestbench.v:30]
-ERROR: [VRFC 10-3180] cannot find port 'functionSelectTest' on this module [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sim_1/new/CPUTestbench.v:29]
-ERROR: [VRFC 10-3180] cannot find port 'BTest' on this module [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sim_1/new/CPUTestbench.v:28]
-ERROR: [VRFC 10-3180] cannot find port 'ATest' on this module [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sim_1/new/CPUTestbench.v:27]
-ERROR: [VRFC 10-3180] cannot find port 'memoryAddressRegisterTest' on this module [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sim_1/new/CPUTestbench.v:26]
-ERROR: [VRFC 10-3180] cannot find port 'stackPointerTest' on this module [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sim_1/new/CPUTestbench.v:25]
-ERROR: [VRFC 10-3180] cannot find port 'instructionRegisterTest' on this module [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sim_1/new/CPUTestbench.v:24]
-ERROR: [VRFC 10-3180] cannot find port 'programCounterTest' on this module [/home/uraniumnutt/Documents/VerilogProjects/ENGR228FinalProject/CPU228/CPU228.srcs/sim_1/new/CPUTestbench.v:23]
-ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel

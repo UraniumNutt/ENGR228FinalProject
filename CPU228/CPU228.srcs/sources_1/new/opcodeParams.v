@@ -43,4 +43,4 @@
     localparam PSH  = 6'b101001;
     localparam PUL  = 6'b101010;
     localparam JSR  = 6'b101011;
-    localparam RST  = 6'b101100;
+    localparam RTS  = 6'b101100;

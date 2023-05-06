@@ -5,16 +5,16 @@
 module CPU(
 
     output [15:0] led,
-    input boardclk
-    // output [15:0] programCounterTest,
-    // output [15:0] instructionRegisterTest,
-    // output [15:0] stackPointerTest,
-    // output [15:0] memoryAddressRegisterTest,
-    // output [15:0] ATest,
-    // output [15:0] BTest,
-    // output [4:0] functionSelectTest,
-    // output [15:0] resultTest,
-    // output [4:0] flagsTest
+    input boardclk,
+    output [15:0] programCounterTest,
+    output [15:0] instructionRegisterTest,
+    output [15:0] stackPointerTest,
+    output [15:0] memoryAddressRegisterTest,
+    output [15:0] ATest,
+    output [15:0] BTest,
+    output [4:0] functionSelectTest,
+    output [15:0] resultTest,
+    output [4:0] flagsTest
 
     );
 
@@ -27,8 +27,8 @@ module CPU(
     `include "jumpTemplates.v"
 
     wire clk;    
-    //assign clk = boardclk;
-    clkModule mainClk(boardclk, clk);
+    assign clk = boardclk;
+    // clkModule mainClk(boardclk, clk);
 
     
     localparam startVector = 16'h0000; // location in memory where execution starts. change as needed
@@ -39,7 +39,7 @@ module CPU(
     reg [15:0] instructionRegister;
     initial instructionRegister = initialInstruction;
 
-    localparam topOfStack = 16'h8000;
+    localparam topOfStack = 16'h0eff;
     reg [15:0] stackPointer;
     initial stackPointer = topOfStack;
 
@@ -670,6 +670,44 @@ module CPU(
 
                     end
 
+                    immediate: begin
+
+                        case (ucode)
+
+                            0: begin
+
+                                A = registerFile[rx];
+                                B = 0;
+                                constant = ram[programCounter + 1];
+                                bSource = 1;
+                                functionSelect = alucmp;
+                                ucode = ucode + 1;
+                            end
+
+                            1: begin
+
+                                ucode = ucode + 1;
+
+                            end
+
+                            2: begin
+
+                                flags = currentFlags;
+                                programCounter = programCounter + 1;
+                                ucode = ucode + 1;
+                            end
+
+                            3: begin
+
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+
+                            end
+
+                        endcase
+
+                    end
+
 
                 endcase
 
@@ -1128,6 +1166,114 @@ module CPU(
             JNN: begin
 
                 `jumpOnClear(aluneg)
+
+            end
+
+            PSH: begin
+
+                case (ucode)
+
+                    0: begin
+
+                        stackPointer = stackPointer + 1;
+                        ram[stackPointer] = registerFile[rx];
+                        programCounter = programCounter + 1;
+                        ucode = ucode + 1;
+
+                    end
+
+                    1: begin
+
+                        instructionRegister = ram[programCounter];
+                        ucode = 0;
+
+                    end
+
+                endcase
+
+            end
+
+            PUL: begin
+
+                case (ucode)
+
+                    0: begin
+
+                        registerFile[rx] = ram[stackPointer];
+                        stackPointer = stackPointer - 1;
+                        programCounter = programCounter + 1;
+                        ucode = ucode + 1;
+
+                    end
+
+                    1: begin
+
+                        instructionRegister = ram[programCounter];
+                        ucode = 0;
+
+                    end
+
+                endcase
+
+            end
+
+            JSR: begin
+
+                case (am)
+
+                    direct: begin
+
+                        case(ucode)
+
+                            0: begin
+
+                                stackPointer = stackPointer + 1;
+                                ram[stackPointer] = programCounter;
+                                ucode = ucode + 1;
+                            end
+
+                            1: begin
+
+                                programCounter = ram[programCounter + 1];
+                                ucode = ucode + 1;
+                            end
+
+                            2: begin
+
+                                instructionRegister = ram[programCounter];
+                                ucode = 0;
+
+                            end
+                            
+                        endcase
+
+                    end
+
+                endcase
+
+            end
+
+            RTS: begin
+
+                case (ucode)
+
+                    0: begin
+
+                        programCounter = ram[stackPointer];
+                        programCounter = programCounter + 2; // next instruction after jsr
+                        stackPointer = stackPointer - 1;
+                        ucode = ucode + 1;
+
+                    end
+
+                    1: begin
+
+                        instructionRegister = ram[programCounter];
+                        ucode = 0;
+
+                    end
+
+                endcase
 
             end
 
