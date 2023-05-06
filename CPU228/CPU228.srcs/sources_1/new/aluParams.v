@@ -17,3 +17,7 @@
     localparam alucmp   = 5'd15; // cmp  rx, *    - CoMPare                  | rx - * ; Note: does not write back, only updates flags
     localparam alubit   = 5'd16; // bit  rx, *    - BIt Test                 | rx & * ; Note: does not write back, only updates flags
     localparam aluchangeFlags  = 5'd17; // do nothing to internalResult
+
+    
+
+    
