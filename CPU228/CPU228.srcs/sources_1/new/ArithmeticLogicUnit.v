@@ -25,6 +25,8 @@ module ArithmeticLogicUnit(
     wire signed [15:0] secondArg;
     assign secondArg = (B & ~{16{bSource}}) | (constant & {16{bSource}});
 
+    assign testOut = internalResult;
+
     // instruction aliases
     localparam ref   = 5'd0;  // ref  rx       - REFlect rx               | rx <-  rx
     localparam add   = 5'd1;  // add  rx, *    - ADD with carry           | rx <-  rx + * + Cin
@@ -51,17 +53,17 @@ module ArithmeticLogicUnit(
 
         case (functionSelect)
             
-            ref:   internalResult = A;
-            add:   internalResult = A + secondArg + currentFlags[4];  // add carry flag
-            adwc:  internalResult = A + secondArg;
-            sub:   internalResult = A - secondArg - currentFlags[4];
-            suwb:  internalResult = A - secondArg;
-            mul:   internalResult = (A * secondArg);            // truncate NOTE: need to fix mul flag sets
-            inc:   internalResult = A + 1;
-            dec:   internalResult = A - 1;
-            chs:   internalResult = ~A + 1;
-            AND:   internalResult = A & secondArg;
-            OR:    internalResult = A | secondArg;
+            ref:   internalResult = A;                                     // just return A
+            add:   internalResult = A + secondArg + currentFlags[4];       // A + secondArg + Carry 
+            adwc:  internalResult = A + secondArg;                         // A + secondArg
+            sub:   internalResult = A - secondArg - currentFlags[4];       // A - secondArg - Carry (Borrow)
+            suwb:  internalResult = A - secondArg;                         
+            mul:   internalResult = (A * secondArg);                       
+            inc:   internalResult = A + 1;                                 
+            dec:   internalResult = A - 1;                                 
+            chs:   internalResult = ~A + 1;                                
+            AND:   internalResult = A & secondArg;                         
+            OR:    internalResult = A | secondArg;                         
             NOT:   internalResult = ~A;
             XOR:   internalResult = A ^ secondArg;
             SL:    internalResult = A << 1;

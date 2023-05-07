@@ -4,6 +4,7 @@
 
 module ALUTestbench;
 
+    wire [15:0] testOut;
     reg clk;
     reg signed [15:0] A;
     reg signed [15:0] B;
@@ -17,6 +18,7 @@ module ALUTestbench;
 
     ArithmeticLogicUnit uut(
 
+        .testOut(testOut),
         .clk(clk),
         .A(A),
         .B(B),

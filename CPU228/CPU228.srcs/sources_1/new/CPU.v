@@ -31,7 +31,7 @@ module CPU(
     // clkModule mainClk(boardclk, clk);
 
     
-    localparam startVector = 16'h0000; // location in memory where execution starts. change as needed
+    localparam startVector = 16'h0000;
     reg [15:0] programCounter;
     initial programCounter = startVector;
 
