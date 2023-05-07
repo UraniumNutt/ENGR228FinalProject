@@ -2,18 +2,30 @@
 
     ; load addressing mode testing
     nop
-    ld r0, #0
+    ld r2, #0
+    ld r3, #0
+waitLong:
+    inc r2
+    jnn waitLong
+    ld r2, #0
+    inc r3
+    jnn waitLong
+    
+    ld r1, #0
 loop:
-    inc r0
-    cmp r0, #3
-    jnz loop
+    ld r0, message[r1]
+    jz exit
+waitTx:
+    jtf waitTx
+    tra r0
+    inc r1
+    jmp loop
 
-endloop:
-    jmp endloop
+exit:
+    jmp exit
 
-sub:
-    ld r0, #101
-    rts
+message:
+    #d "Hello, World!\0"
 
 #addr 0x0fff
 end:

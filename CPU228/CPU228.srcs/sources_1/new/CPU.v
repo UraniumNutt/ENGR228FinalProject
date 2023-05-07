@@ -5,16 +5,19 @@
 module CPU(
 
     output [15:0] led,
+    input sw,
     input boardclk,
-    output [15:0] programCounterTest,
-    output [15:0] instructionRegisterTest,
-    output [15:0] stackPointerTest,
-    output [15:0] memoryAddressRegisterTest,
-    output [15:0] ATest,
-    output [15:0] BTest,
-    output [4:0] functionSelectTest,
-    output [15:0] resultTest,
-    output [4:0] flagsTest
+    input RsTx,
+    // output [15:0] programCounterTest,
+    // output [15:0] instructionRegisterTest,
+    // output [15:0] stackPointerTest,
+    // output [15:0] memoryAddressRegisterTest,
+    // output [15:0] ATest,
+    // output [15:0] BTest,
+    // output [4:0] functionSelectTest,
+    // output [15:0] resultTest,
+    // output [4:0] flagsTest,
+    output RsRx
 
     );
 
@@ -27,8 +30,8 @@ module CPU(
     `include "jumpTemplates.v"
 
     wire clk;    
-    assign clk = boardclk;
-    // clkModule mainClk(boardclk, clk);
+    // assign clk = boardclk;
+    clkModule mainClk(boardclk, sw, clk);
 
     
     localparam startVector = 16'h0000; // location in memory where execution starts. change as needed
@@ -66,10 +69,6 @@ module CPU(
     reg [4:0] flags;
     assign flagsTest = flags;
 
-    reg [1:0] uartflags; // transmit empty, receive full
-    initial uartflags = 2'b10
-
-    
     assign programCounterTest = programCounter;
     assign instructionRegisterTest = instructionRegister;
     assign stackPointerTest = stackPointer;
@@ -87,7 +86,23 @@ module CPU(
     initial setFlagBits = 0;
     initial overwriteFlagsMask = 0;
 
+    reg newTransmit;
+    initial newTransmit = 0;
+    reg [7:0] transmitIn;
+    wire [7:0] receiveOut;
+    wire [1:0] uartflags; // transmit empty, receive full
 
+    uart uart(
+
+        .boardclk(boardclk),
+        .clk(clk),
+        .RsRx(RsRx),
+        .newTransmit(newTransmit),
+        .transmitIn(transmitIn),
+        .receiveOut(receiveOut),
+        .uartflags(uartflags)
+
+    );
 
     ArithmeticLogicUnit alu(
 
@@ -1283,6 +1298,33 @@ module CPU(
 
             TRA: begin
 
+                case (ucode) 
+
+                    0: begin
+
+                        transmitIn = registerFile[rx];
+                        newTransmit = 1;
+                        ucode = ucode + 1;
+
+                    end
+
+                    1: begin
+
+
+                        newTransmit = 0;
+                        ucode = ucode + 1;
+
+                    end
+
+                    2: begin
+
+                        instructionRegister = ram[programCounter];
+                        ucode = 0;
+
+                    end
+                    
+                endcase
+
             end
 
             REC: begin
@@ -1291,9 +1333,117 @@ module CPU(
 
             JTF: begin
 
+                case (am) 
+
+                    direct: begin
+
+                        case (uartflags[1])
+
+                            0: begin
+
+                                case (ucode)
+
+                                    0: begin
+
+                                        programCounter = programCounter + 2;
+                                        ucode = ucode + 1;
+
+                                    end
+
+                                    1: begin
+
+                                        instructionRegister = ram[programCounter];
+                                        ucode = 0;
+
+                                    end
+
+                                endcase
+
+                            end
+
+                            1: begin
+
+                                case (ucode)
+
+                                    0: begin
+                                        memoryAddressRegister = ram[programCounter + 1];
+                                        programCounter = memoryAddressRegister;
+                                        ucode = ucode + 1;
+                                    end
+                                    1: begin
+                                        instructionRegister = ram[programCounter];
+                                        ucode = 0;
+                                    end
+
+                                endcase
+
+                            end
+
+                        endcase
+
+
+
+                    end
+
+                endcase
+
             end
 
             JTE: begin
+
+                case (am) 
+
+                    direct: begin
+
+                        case (uartflags[1])
+
+                            0: begin
+
+                                case (ucode)
+
+                                    0: begin
+                                        memoryAddressRegister = ram[programCounter + 1];
+                                        programCounter = memoryAddressRegister;
+                                        ucode = ucode + 1;
+                                    end
+                                    1: begin
+                                        instructionRegister = ram[programCounter];
+                                        ucode = 0;
+                                    end
+
+                                endcase
+
+                            end
+
+                            1: begin
+
+                                case (ucode)
+
+                                    0: begin
+
+                                        programCounter = programCounter + 2;
+                                        ucode = ucode + 1;
+
+                                    end
+
+                                    1: begin
+
+                                        instructionRegister = ram[programCounter];
+                                        ucode = 0;
+
+                                    end
+                                    
+                                endcase
+
+                            end
+
+                        endcase
+
+
+
+                    end
+
+                endcase
 
             end
 

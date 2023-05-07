@@ -6,6 +6,7 @@
 module clkModule(
 
     input inputclk,
+    input enable,
     output reg clk
 
     );
@@ -14,11 +15,13 @@ module clkModule(
     initial clk = 0;
 
     always @(posedge inputclk) begin
-        counter = counter + 1;
+        if (enable == 1) begin
+            counter = counter + 1;
 
-        if (counter == 49) begin
-            counter = 0;
-            clk = ~clk;
+            if (counter == 49) begin
+                counter = 0;
+                clk = ~clk;
+            end
         end
     end
 endmodule
